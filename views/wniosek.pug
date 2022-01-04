@@ -1,0 +1,121 @@
+include index.pug
+div(class="mx-auto" style="width: 1200px;")
+    form(id="formularz" class="formularz")
+        div.m-3.row
+            div.col
+                div(id="pesel-container" class="input-group mb-3")
+                    input(type="text" class="form-control" id="pesel" placeholder="PESEL")
+                    div.input-group-append
+                        button(id="check-btn" class="btn btn-outline-primary" type="button") Wyszukaj PESEL
+            br
+            div.col
+                div(id="id-container" class="m-3 form-field invisible")
+                    label(for="id" class="form-label") ID
+                    input(type="text" class="form-control" id="id" placeholder="ID" readonly)    
+        div(id="form-container" class="m-3 invisible")
+            h3.text-center Wniosek o przyznanie dofinansowania z ZFŚS w roku 2022
+            div
+                div.input-group.my-3
+                    span.input-group-text.fw-bold Imię i nazwisko
+                    input(type="text" class="form-control" id="name" style="height: 50px;")
+                div.input-group.my-3
+                    span.input-group-text.fw-bold Komórka organizacyjna (Oddział/Dział)
+                    input(type="text" class="form-control" id="unit" style="height: 50px;")
+            
+            div.border.border-dark.mb-2
+                div.m-3.form.field
+                    label(for="application" class="form-label fw-bold") I. Wnoszę o przyznanie dopłaty do wypoczynku, którą przeznaczę na (proszę zaznaczyć właściwą rubrykę):
+                    div(class="mx-3 form-check" id="application-own")
+                        input(type="checkbox" value="" class="form-check-input" id="application-own")
+                        | 
+                        label(for="application-own" class="form-check-label") 1. Różne formy wypoczynku organizowanego we własnym zakresie.
+                    div(class="m-3 form-check" id="application-kids")
+                        input(type="checkbox" value="" class="form-check-input" id="application-kids")
+                        | 
+                        label(for="application-kids" class="form-check-label") 2. Zorganizowany w formie obozu, kolonii, półkolonii, zielonej szkoły wypoczynek mojego dziecka:
+                            div.form-field.mt-3
+                                div.row
+                                    div.input-group.col
+                                        span.input-group-text.fw-bold 1.
+                                        input(type="text" class="form-control bg-white col" value="")
+                                    div.input-group.col
+                                        span.input-group-text.fw-bold Data urodzenia
+                                        input(type="date" class="form-control bg-white col" value="")
+                                div.row
+                                    div.input-group.col
+                                        span.input-group-text.fw-bold 2.
+                                        input(type="text" class="form-control bg-white col" value="")
+                                    div.input-group.col
+                                        span.input-group-text.fw-bold Data urodzenia
+                                        input(type="date" class="form-control bg-white col" value="")
+                                div.row
+                                    div.input-group.col
+                                        span.input-group-text.fw-bold 3.
+                                        input(type="text" class="form-control bg-white col" value="")
+                                    div.input-group.col
+                                        span.input-group-text.fw-bold Data urodzenia
+                                        input(type="date" class="form-control bg-white col" value="")
+            
+            div.border.border-dark.mb-2  
+                div.m-3.form-field
+                    label(for="statement-family" class="form-label fw-bold") II. Oświadczam, że w dniu złożenia oświadczenia w skład mojej rodziny wchodziły następujące osoby: 
+                    div.mx-3.form-check
+                        input(type="checkbox" value="" class="form-check-input" id="statement-consort")
+                        | 
+                        label(for="statement-consort" class="form-check-label") Małżonek
+                div.row.mx-3        
+                    div.mx-3.form-check.col
+                        input(type="checkbox" value="" class="form-check-input" id="statement-kids")
+                        | 
+                        label(for="statement-kids" class="form-check-label") Dzieci do 18 (lub 26 roku życia)
+                    div(class="input-group col invisible" id="statement-kids-quantity")
+                        span.input-group-text.fw-bold Wpisz liczbę dzieci:  
+                        input(type="number" class="form-control" id="statement-kids-quantity" value="")
+                    div.mx-3.col
+
+            div.border.border-dark.mb-2
+                div.m-3.form-field
+                    div.input-group.my-3
+                        label(for="statement-salary" class="form-label fw-bold") III. Oświadczam, że miesięczny dochód brutto na jedną osobę wynosi
+                        span.invisible | 
+                        a(href="/obliczanie-dochodu" class="fw-bold") (www.zfss.spsk4.lublin.pl/obliczanie-dochodu):   
+                        span.input-group-text.fw-bold Dochód brutto
+                        input(type="number" class="form-control bg-white" id="statement-salary" style="height: 50px;")
+            
+            div.border.border-dark.mb-2
+                div.m-3
+                    a(href="/obliczanie-dochodu" class="fw-bold") IV. Oświadczam, że podane powyżej dane są prawdziwe. Jestem świadomy odpowiedzialności karnej za złożenie oświadczenia niezgodnego z prawdą (www.zfss.spsk4.lublin.pl/obliczanie-dochodu). 
+                div.m-3
+                    a(href="/rodo" class="fw-bold") V. Oświadczam, że wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do uzyskania świadczeń z Zakładowego Funduszu Świadczeń Socjalnych (www.zfss.spsk4.lublin.pl/rodo).   
+                    div.input-group.my-3
+                        span.input-group-text.fw-bold Data i podpis pracownika
+                        input(type="text" class="form-control bg-white" id="sign-employee" readonly style="height: 75px;")
+            
+            div.border.border-dark.border-1.bg-light
+                    h5.text-center.mt-3 Wypełnia pracownik Działu Kadr i Płac
+                    div.row
+                        div.input-group.my-3.col
+                            span.input-group-text.fw-bold Wniosek nr
+                            input(type="text" class="form-control bg-white col" id="application-number" readonly)
+                        div.input-group.my-3.col
+                            span.input-group-text.fw-bold Lublin, dn.
+                            input(type="text" class="form-control bg-white col" id="application-date" readonly)
+                    div
+                        h5.text-center Powyższy pracownik spełnia warunki do przyznania dofinansowania do wypoczynku w 2022 roku.
+                    div.input-group.my-3
+                        span.input-group-text.fw-bold Na podstawie dochodu na 1 członka rodziny ustala się dotację w wysokości:  
+                        input(type="text" class="form-control bg-white" id="application-value" readonly style="height: 75px;")
+                    div.input-group.my-3
+                        span.input-group-text.fw-bold Podpis pracownika Działu Kadr i Płac
+                        input(type="text" class="form-control bg-white" id="sign-hr" readonly style="height: 75px;")
+                    
+    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+        button(id="submit-btn" class="btn btn-outline-secondary btn-lg form invisible") Wydrukuj wniosek i podpisz
+script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js") 
+script(src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.3/html2canvas.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js")  
+script(src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer") 
+script(src="/js/data.js") 
+script(src="/js/client.js") 
+script(src="/js/utils.js") 
+script(src="/js/add-application.js")
