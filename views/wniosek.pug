@@ -1,60 +1,69 @@
 include index.pug
-div(class="mx-auto" style="width: 1200px;")
-    form(id="formularz" class="formularz")
+div(class="mx-auto" id="alert" style="width: 700px; display: none;")
+    div.container.px-4.px-lg-5
+        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                h3.text-center.m-3 Nie wszystkie wymagane pola zostały uzupełnione bądź zaznaczone. Sprawdź i uzupełnij!
+                div.d-grid.gap-2.col-6.mx-auto 
+                    a(class="btn btn-outline-secondary m-3" id="confirm-btn" role="button") Ok
+
+
+div(class="mx-auto" id="full-form" style="width: 1200px;")
+    form(id="form-printable" class="formularz" style="display: block;")
         div.m-3.row
             div.col
                 div(id="pesel-container" class="input-group mb-3")
-                    input(type="text" class="form-control" id="pesel" placeholder="PESEL")
+                    input(type="text" class="form-control" id="pesel" placeholder="Wpisz swój PESEL")
                     div.input-group-append
-                        button(id="check-btn" class="btn btn-outline-primary" type="button") Wyszukaj PESEL
+                        button(id="check-btn" class="btn btn-outline-secondary" type="button") Wyszukaj swój wniosek
             br
             div.col
                 div(id="id-container" class="m-3 form-field invisible")
-                    label(for="id" class="form-label") ID
-                    input(type="text" class="form-control" id="id" placeholder="ID" readonly)    
+                    label(for="id" class="form-label")
+                    input(type="text" class="form-control" id="id" readonly style="font-size: 20px;")    
         div(id="form-container" class="m-3 invisible")
             h3.text-center Wniosek o przyznanie dofinansowania z ZFŚS w roku 2022
             div
                 div.input-group.my-3
                     span.input-group-text.fw-bold Imię i nazwisko
-                    input(type="text" class="form-control" id="name" style="height: 50px;")
+                    input(type="text" class="form-control" id="name" style="height: 50px; font-size: 25px;")
                 div.input-group.my-3
                     span.input-group-text.fw-bold Komórka organizacyjna (Oddział/Dział)
-                    input(type="text" class="form-control" id="unit" style="height: 50px;")
+                    input(type="text" class="form-control" id="unit" style="height: 50px; font-size: 25px;")
             
             div.border.border-dark.mb-2
                 div.m-3.form.field
                     label(for="application" class="form-label fw-bold") I. Wnoszę o przyznanie dopłaty do wypoczynku, którą przeznaczę na (proszę zaznaczyć właściwą rubrykę):
-                    div(class="mx-3 form-check" id="application-own")
-                        input(type="checkbox" value="" class="form-check-input" id="application-own")
+                    div(class="mx-3 form-check" id="application-own-div")
+                        input(type="checkbox" class="form-check-input" id="application-own")
                         | 
                         label(for="application-own" class="form-check-label") 1. Różne formy wypoczynku organizowanego we własnym zakresie.
-                    div(class="m-3 form-check" id="application-kids")
-                        input(type="checkbox" value="" class="form-check-input" id="application-kids")
+                    div(class="m-3 form-check" id="application-kids-div")
+                        input(type="checkbox" class="form-check-input" id="application-kids")
                         | 
                         label(for="application-kids" class="form-check-label") 2. Zorganizowany w formie obozu, kolonii, półkolonii, zielonej szkoły wypoczynek mojego dziecka:
                             div.form-field.mt-3
                                 div.row
                                     div.input-group.col
                                         span.input-group-text.fw-bold 1.
-                                        input(type="text" class="form-control bg-white col" value="")
+                                        input(type="text" class="form-control bg-white col" value="" style="font-size: 20px;")
                                     div.input-group.col
                                         span.input-group-text.fw-bold Data urodzenia
-                                        input(type="date" class="form-control bg-white col" value="")
+                                        input(type="date" class="form-control bg-white col" value="" style="font-size: 20px;")
                                 div.row
                                     div.input-group.col
                                         span.input-group-text.fw-bold 2.
-                                        input(type="text" class="form-control bg-white col" value="")
+                                        input(type="text" class="form-control bg-white col" value="" style="font-size: 20px;")
                                     div.input-group.col
                                         span.input-group-text.fw-bold Data urodzenia
-                                        input(type="date" class="form-control bg-white col" value="")
+                                        input(type="date" class="form-control bg-white col" value="" style="font-size: 20px;")  
                                 div.row
                                     div.input-group.col
                                         span.input-group-text.fw-bold 3.
-                                        input(type="text" class="form-control bg-white col" value="")
+                                        input(type="text" class="form-control bg-white col" value="" style="font-size: 20px;")
                                     div.input-group.col
                                         span.input-group-text.fw-bold Data urodzenia
-                                        input(type="date" class="form-control bg-white col" value="")
+                                        input(type="date" class="form-control bg-white col" value="" style="font-size: 20px;")
             
             div.border.border-dark.mb-2  
                 div.m-3.form-field
@@ -67,26 +76,24 @@ div(class="mx-auto" style="width: 1200px;")
                     div.mx-3.form-check.col
                         input(type="checkbox" value="" class="form-check-input" id="statement-kids")
                         | 
-                        label(for="statement-kids" class="form-check-label") Dzieci do 18 (lub 26 roku życia)
-                    div(class="input-group col invisible" id="statement-kids-quantity")
+                        label(for="statement-kids" class="form-check-label") Dzieci
+                    div(class="input-group col invisible mb-2" id="statement-kids-quantity")
                         span.input-group-text.fw-bold Wpisz liczbę dzieci:  
-                        input(type="number" class="form-control" id="statement-kids-quantity" value="")
+                        input(type="number" class="form-control" id="statement-kids-quantity" value="" style="font-size: 20px;")
                     div.mx-3.col
 
             div.border.border-dark.mb-2
-                div.m-3.form-field
+                div.m-3
+                    a(href="/obliczanie-dochodu" target="blank" class="fw-bold") III. Oświadczam, że miesięczny dochód brutto na jedną osobę wynosi:*
                     div.input-group.my-3
-                        label(for="statement-salary" class="form-label fw-bold") III. Oświadczam, że miesięczny dochód brutto na jedną osobę wynosi
-                        span.invisible | 
-                        a(href="/obliczanie-dochodu" class="fw-bold") (www.zfss.spsk4.lublin.pl/obliczanie-dochodu):   
                         span.input-group-text.fw-bold Dochód brutto
-                        input(type="number" class="form-control bg-white" id="statement-salary" style="height: 50px;")
+                        input(type="number" class="form-control bg-white" id="statement-salary" style="height: 75px; font-size: 25px;")
             
             div.border.border-dark.mb-2
                 div.m-3
-                    a(href="/obliczanie-dochodu" class="fw-bold") IV. Oświadczam, że podane powyżej dane są prawdziwe. Jestem świadomy odpowiedzialności karnej za złożenie oświadczenia niezgodnego z prawdą (www.zfss.spsk4.lublin.pl/obliczanie-dochodu). 
+                    a(href="/obliczanie-dochodu" target="blank" class="fw-bold") IV. Oświadczam, że podane powyżej dane są prawdziwe. Jestem świadomy odpowiedzialności karnej za złożenie oświadczenia niezgodnego z prawdą.* 
                 div.m-3
-                    a(href="/rodo" class="fw-bold") V. Oświadczam, że wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do uzyskania świadczeń z Zakładowego Funduszu Świadczeń Socjalnych (www.zfss.spsk4.lublin.pl/rodo).   
+                    a(href="/rodo" target="blank" class="fw-bold") V. Oświadczam, że wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do uzyskania świadczeń z Zakładowego Funduszu Świadczeń Socjalnych.**   
                     div.input-group.my-3
                         span.input-group-text.fw-bold Data i podpis pracownika
                         input(type="text" class="form-control bg-white" id="sign-employee" readonly style="height: 75px;")
@@ -94,20 +101,25 @@ div(class="mx-auto" style="width: 1200px;")
             div.border.border-dark.border-1.bg-light
                     h5.text-center.mt-3 Wypełnia pracownik Działu Kadr i Płac
                     div.row
-                        div.input-group.my-3.col
+                        div(class="input-group my-3 col" style="height: 45px;")
                             span.input-group-text.fw-bold Wniosek nr
-                            input(type="text" class="form-control bg-white col" id="application-number" readonly)
-                        div.input-group.my-3.col
+                            input(type="text" class="form-control bg-white col" id="application-number" readonly style="font-size: 25px;")
+                        div(class="input-group my-3 col" style="height: 45px;")
                             span.input-group-text.fw-bold Lublin, dn.
-                            input(type="text" class="form-control bg-white col" id="application-date" readonly)
+                            input(type="text" class="form-control bg-white col" id="application-date" readonly style="font-size: 25px;")
                     div
                         h5.text-center Powyższy pracownik spełnia warunki do przyznania dofinansowania do wypoczynku w 2022 roku.
                     div.input-group.my-3
                         span.input-group-text.fw-bold Na podstawie dochodu na 1 członka rodziny ustala się dotację w wysokości:  
-                        input(type="text" class="form-control bg-white" id="application-value" readonly style="height: 75px;")
+                        input(type="text" class="form-control bg-white" id="application-value" readonly style="height: 75px; font-size: 25px;")
                     div.input-group.my-3
                         span.input-group-text.fw-bold Podpis pracownika Działu Kadr i Płac
-                        input(type="text" class="form-control bg-white" id="sign-hr" readonly style="height: 75px;")
+                        input(type="text" class="form-control bg-white" id="sign-hr" readonly style="height: 100px;")
+
+            div.m-3
+                h6.my-3.mt-4 *Sprawdź jak poprawnie obliczyć dochód - www.zfss.spsk4.lublin.pl/obliczanie-dochodu
+                h6.my-3.mb-4 **Klauzula RODO - www.zfss.spsk4.lublin.pl/rodo
+
                     
     div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
         button(id="submit-btn" class="btn btn-outline-secondary btn-lg form invisible") Wydrukuj wniosek i podpisz
@@ -119,3 +131,4 @@ script(src="/js/data.js")
 script(src="/js/client.js") 
 script(src="/js/utils.js") 
 script(src="/js/add-application.js")
+include footer.pug 

@@ -9,8 +9,8 @@ handleEventListener("#check-btn", "click", (e) => {
     setElementValue("#name", person.imie + " " + person.nazwisko);
     setElementValue("#unit", person.jednorg);
   });
-  setClass("#formularz", "border");
-  setClass("#formularz", "border-dark");
+  setClass("#form-printable", "border");
+  setClass("#form-printable", "border-dark");
   setClass("#pesel-container", "invisible");
   removeClass("#id-container", "invisible");
   removeClass("#form-container", "invisible");
@@ -22,20 +22,20 @@ handleEventListener("#submit-btn", "click", generatePDF);
 handleEventListener("#application-own", "click", (e) => {
   if (e.target.checked) {
     setElementValue("#application-number", `FDK.KS.1620/                           /2022`);
-    setClass("#application-kids", "invisible");
+    setClass("#application-kids-div", "invisible");
   } else {
     setElementValue("#application-number", "");
-    removeClass("#application-kids", "invisible");
+    removeClass("#application-kids-div", "invisible");
   }
 });
 
 handleEventListener("#application-kids", "click", (e) => {
   if (e.target.checked) {
     setElementValue("#application-number", `FDK.KS.1621/                           /2022`);
-    setClass("#application-own", "invisible");
+    setClass("#application-own-div", "invisible");
   } else {
     setElementValue("#application-number", "");
-    removeClass("#application-own", "invisible");
+    removeClass("#application-own-div", "invisible");
   }
 });
 

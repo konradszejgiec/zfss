@@ -58,24 +58,34 @@ const handleXls = async (event) => {
 const generatePDF = (e) => {
   e.preventDefault();
 
-  html2canvas(document.getElementById("formularz")).then(function (canvas) {
-    const imgData = canvas.toDataURL("image/png");
-    const imgWidth = 210;
-    const pageHeight = 297;
-    const imgHeight = (canvas.height * imgWidth) / canvas.width;
-    // let heightLeft = imgHeight;
-    const doc = new jspdf.jsPDF("p", "mm");
-    const position = 0;
+  if (getElementValue("#name") == "" || getElementValue("#unit") == "" || getElementValue("#statement-salary") == "") {
+    getElementBy("#alert").style.display = "block";
+    getElementBy("#full-form").style.display = "none";
 
-    doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-    // heightLeft -= pageHeight;
+    handleEventListener("#confirm-btn", "click", () => {
+      getElementBy("#alert").style.display = "none";
+      getElementBy("#full-form").style.display = "block";
+    });
+  } else {
+    html2canvas(document.getElementById("form-printable")).then(function (canvas) {
+      const imgData = canvas.toDataURL("image/png");
+      const imgWidth = 210;
+      const pageHeight = 297;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      // let heightLeft = imgHeight;
+      const doc = new jspdf.jsPDF("p", "mm");
+      const position = 0;
 
-    // while (heightLeft >= 0) {
-    //   position = heightLeft - imgHeight;
-    //   doc.addPage();
-    //   doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-    //   heightLeft -= pageHeight;
-    // }
-    doc.save("wniosek_o_dofinansowanie.pdf");
-  });
+      doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      // heightLeft -= pageHeight;
+
+      // while (heightLeft >= 0) {
+      //   position = heightLeft - imgHeight;
+      //   doc.addPage();
+      //   doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      //   heightLeft -= pageHeight;
+      // }
+      doc.save("wniosek_o_dofinansowanie.pdf");
+    });
+  }
 };
