@@ -27,11 +27,17 @@ const addElementValue = (selector, newValue) => {
 };
 
 const insertItemHTML = (existingElementSelector, newElementHtml) => {
-  return getElementBy(existingElementSelector).insertAdjacentHTML("beforeend", newElementHtml);
+  return getElementBy(existingElementSelector).insertAdjacentHTML(
+    "beforeend",
+    newElementHtml
+  );
 };
 
 const handleEventListener = (elementSelector, eventListener, callback) => {
-  return getElementBy(elementSelector).addEventListener(eventListener, callback);
+  return getElementBy(elementSelector).addEventListener(
+    eventListener,
+    callback
+  );
 };
 
 const changeClass = (selector, removedClass, newClass) => {
@@ -51,14 +57,23 @@ const handleXls = async (event) => {
   const file = event.target.files[0];
   const data = await file.arrayBuffer();
   const workbook = XLSX.readFile(data);
-  const personData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[workbook.SheetNames[0]]);
-  sendData("/post-data", { password: getElementValue("#password-input"), content: personData });
+  const personData = XLSX.utils.sheet_to_row_object_array(
+    workbook.Sheets[workbook.SheetNames[0]]
+  );
+  sendData("/post-data", {
+    password: getElementValue("#password-input"),
+    content: personData,
+  });
 };
 
 const generatePDF = (e) => {
   e.preventDefault();
 
-  if (getElementValue("#name") == "" || getElementValue("#unit") == "" || getElementValue("#statement-salary") == "") {
+  if (
+    getElementValue("#name") == "" ||
+    getElementValue("#unit") == "" ||
+    getElementValue("#statement-salary") == ""
+  ) {
     getElementBy("#alert").style.display = "block";
     getElementBy("#full-form").style.display = "none";
 
@@ -67,7 +82,9 @@ const generatePDF = (e) => {
       getElementBy("#full-form").style.display = "block";
     });
   } else {
-    html2canvas(document.getElementById("form-printable")).then(function (canvas) {
+    html2canvas(document.getElementById("form-printable")).then(function (
+      canvas
+    ) {
       const imgData = canvas.toDataURL("image/png");
       const imgWidth = 210;
       const pageHeight = 297;
@@ -76,7 +93,7 @@ const generatePDF = (e) => {
       const doc = new jspdf.jsPDF("p", "mm");
       const position = 0;
 
-      doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      doc.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
       // heightLeft -= pageHeight;
 
       // while (heightLeft >= 0) {
