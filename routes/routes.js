@@ -9,7 +9,7 @@ const routes = (app, bodyParser, controller) => {
 
   app.route("/wniosek").get(controller.displayAddApplication);
 
-  app.route("/wniosek/:pesel").get(controller.getPersonData);
+  app.route("/wniosek/:pracownik").get(controller.getPersonData);
 
   app.route("/rodo").get(controller.displayRodo);
 

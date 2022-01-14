@@ -10,15 +10,15 @@ const port = process.env.PORT || 3000;
 const DB = process.env.DATABASE.replace("<PASSWORD>", process.env.DATABASE_PASSWORD);
 const cors = require("cors");
 
-// mongoose
-//   .connect(DB, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => console.log("Database connection successful."))
-//   .catch((err) => {
-//     console.log("Error connecting to mongo", err);
-//   });
+mongoose
+  .connect(DB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Database connection successful."))
+  .catch((err) => {
+    console.log("Error connecting to mongo", err);
+  });
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

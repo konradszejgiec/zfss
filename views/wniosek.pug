@@ -7,20 +7,52 @@ div(class="mx-auto" id="alert" style="width: 700px; display: none;")
                 div.d-grid.gap-2.col-6.mx-auto 
                     a(class="btn btn-outline-secondary m-3" id="confirm-btn" role="button") Ok
 
+div(id="person-container" style="display: block;")
+    div.m-3.border.border-dark.border-1.bg-light
+        h2.m-3.text-center Instrukcja wypełnienia WNIOSKU O DOFINANSOWANIE
+        p.m-3.fw-bold 
+            em 1. Wniosek można wypełnić z opcją autouzupełnienia danych - wystarczy uzupełnić poniższe dane oraz kliknąć "WYSZUKAJ SWÓJ WNIOSEK". 
+        p.m-3.fw-bold 
+            em 2. Po kliknięcu "WYSZKUKAJ SWÓJ WNIOSEK" wyświelti się gotowy i wstępnie uzupełniony formularz. Należy go wypełnić.
+        p.m-3.fw-bold  
+            em 3. Następnie należy wniosek wygenerować (PDF), wydrukować (klikając na samym dole w przycisk "WYDRUKUJ WNIOSEK I PODPISZ") i podpisać.
+        p.m-1.ms-5
+            em (NIEREKOMENDOWANE) Wniosek można wypełnić bez opcji autouzupełnienia danych - wystarczy wtedy kliknąć "WYSZUKAJ SWÓJ WNIOSEK".  
+        p.m-1.ms-5
+            em (NIEREKOMENDOWANE) Wniosek można wypełnić także odręcznie pobierając wniosek i drukując - 
+            |
+            span 
+                a(href="/assets/pdf/wniosek_o_dofinansowanie_2022.pdf" target="blank") KLIKNIJ TUTAJ
+        p.m-3.mb-1.fw-bold UWAGI TECHNICZNE:
+        p.m-1.ms-5.mb-3 
+            em Rekomendowana przeglądarka do uzupełnienia wniosku to Google Chrome.
+
+        p.m-1.ms-5 1. W przypadku problemów z autouzupełnieniem wniosku należy chwilę odczekać, aż pobiorą się dane (maksymalnie do 30 sekund).
+        p.m-1.ms-5 2. W przypadku braku pobrania danych należy odświeżyć stronę, ponownie wpisać dane (sprawdzając wcześniej ich poprawność) i wyszukać.
+        p.m-1.ms-5 3. W przypadku dalszych problemów z pobraniem danych należy skontaktować się z pracownikiem socjalnym (patrz pkt. 5). 
+        p.m-1.ms-5 4. W razie problemów z wygenerowaniem wniosku w formacie PDF należy odświeżyć stronę lub zmienić przeglądarkę na inną.  
+        p.m-1.ms-5.mb-3 5. W przypadku wystąpienia innych problemów należy skontaktować się z pracownikiem socjalnym -
+            | 
+            span
+                a(href="/kontakt" target="blank") KLIKNIJ TUTAJ 
+
+    div(class="input-group mb-3")
+        input(type="text" class="form-control ms-3 bg-light" id="fname" placeholder="Wpisz swoje IMIĘ")
+        input(type="text" class="form-control  bg-light" id="sname" placeholder="Wpisz swoje NAZWISKO")
+        input(type="text" class="form-control  bg-light" id="lastThree" placeholder="Wpisz 3 OSTANIE CYFRY NR PESEL")
+        button(id="check-btn" class="btn btn-secondary me-3" type="button") Wyszukaj swój wniosek
 
 div(class="mx-auto" id="full-form" style="width: 1200px;")
     form(id="form-printable" class="formularz" style="display: block;")
         div.m-3.row
             div.col
-                div(id="pesel-container" class="input-group mb-3")
-                    input(type="password" class="form-control" id="pesel" placeholder="Wpisz swój PESEL")
-                    div.input-group-append
-                        button(id="check-btn" class="btn btn-outline-secondary" type="button") Wyszukaj swój wniosek
             br
+
             div.col
                 div(id="id-container" class="m-3 form-field invisible")
                     label(for="id" class="form-label")
-                    input(type="text" class="form-control" id="id" readonly style="font-size: 20px;")    
+                    input(type="text" class="form-control" id="id" readonly style="font-size: 20px;")  
+
         div(id="form-container" class="m-3 invisible")
             h3.text-center Wniosek o przyznanie dofinansowania z ZFŚS w roku 2022
             div

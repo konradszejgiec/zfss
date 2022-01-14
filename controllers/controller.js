@@ -40,7 +40,7 @@ exports.displayPostPage = async (req, res) => {
 
 exports.getPersonData = async (req, res) => {
   try {
-    const personData = await Person.findOne({ pesel: req.params.pesel });
+    const personData = await Person.findOne({ pracownik: req.params.pracownik });
     res.status(200).send(personData);
   } catch (err) {
     res.status(404).end();
@@ -53,7 +53,6 @@ exports.postDatabase = async (req, res) => {
     if (req.body.password != process.env.FORM_PASSWORD) res.status(403).send("Sorry, bad password");
     else {
       const person = await Person.insertMany(req.body.content);
-      console.log(req.body.content);
       res.status(200).end();
     }
   } catch (err) {

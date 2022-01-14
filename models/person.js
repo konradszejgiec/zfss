@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 const personSchema = new mongoose.Schema({
-  nrprac: {
+  pracownik: {
     type: String,
-    required: [true, "Please fill the id."],
+    required: [true, "Please fill the user name."],
     unique: true,
     bufferCommands: false,
     autoCreate: false,
   },
-  pesel: {
+  nrprac: {
     type: String,
-    required: [true, "Please fill the pesel."],
+    required: [true, "Please fill the id."],
     unique: true,
     bufferCommands: false,
     autoCreate: false,

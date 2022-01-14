@@ -106,7 +106,7 @@ const generatePDF = () => {
 const handleGeneratePDF = (e) => {
   e.preventDefault();
   if (checkingAppInputFulfillment()) handleAlertMsg();
-  else handleGeneratePDF();
+  else generatePDF();
 };
 
 const handleIndividualInputs = (person) => {
@@ -116,9 +116,9 @@ const handleIndividualInputs = (person) => {
 };
 
 const handlePeselCheck = () => {
+  setDisplayStyle("#person-container", "none");
   setClass("#form-printable", "border");
   setClass("#form-printable", "border-dark");
-  setClass("#pesel-container", "invisible");
   removeClass("#id-container", "invisible");
   removeClass("#form-container", "invisible");
   removeClass("#submit-btn", "invisible");
