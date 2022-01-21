@@ -1,0 +1,18 @@
+include index.pug
+div(id="message-container-dismiss-auth" style="display: none;")
+    div.m-3.border.border-dark.border-1.bg-light
+        h2.m-3.text-center BRAK AUTORYZACJI - PODAJ HASŁO
+
+div(id="message-container-get-auth" style="display: block;")
+    div.m-3.border.border-dark.border-1.bg-light
+        h2.m-3.text-center PODAJ HASŁO
+
+div(class="input-group mb-3")
+        input(type="text" class="form-control bg-light ms-3" id="password" placeholder="Wpisz HASŁO")
+        a(href=link id="check-btn-auth-post" class="btn btn-secondary me-3" type="button") UZYSKAJ DOSTĘP
+
+include footer.pug
+script(src="/js/data.js") 
+script(src="/js/client.js") 
+script(src="/js/utils.js") 
+script(src="/js/auth-post-section.js")

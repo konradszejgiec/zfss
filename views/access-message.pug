@@ -1,0 +1,17 @@
+include index.pug
+div.container.px-4.px-lg-5
+    div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+        div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light 
+            div(id="message-container" style="display: block;")
+                div.m-3
+                    h2.m-3.text-center BRAK AUTORYZACJI - PRÓBA NIEUPRAWNIONEGO DOSTĘPU
+                    p.m-3.fw-bold.text-center 
+                        em Spróbuj uzyskać dostęp ponownie lub skontaktuj się z pracownikiem socjalnym.
+
+            div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form 
+                a(href=link class="btn btn-outline-secondary form mb-3") POWRÓT
+include footer.pug
+script(src="/js/data.js") 
+script(src="/js/client.js") 
+script(src="/js/utils.js") 
+script(src="/js/auth.js")

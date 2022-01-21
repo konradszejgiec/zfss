@@ -4,7 +4,7 @@ getElementBy("#person-container").scrollIntoView();
 
 handleEventListener("#check-btn", "click", (e) => {
   e.preventDefault();
-  console.log(getElementValue("#fname").toLowerCase() + getElementValue("#sname").toLowerCase() + getElementValue("#lastThree").toLowerCase());
+
   fetchData(
     `/wniosek/${getElementValue("#fname").toLowerCase() + getElementValue("#sname").toLowerCase() + getElementValue("#lastThree").toLowerCase()}`,
     (person) => {
@@ -15,9 +15,8 @@ handleEventListener("#check-btn", "click", (e) => {
   setElementValue(
     "#sign-employee",
     new Date().toLocaleString("pl-PL", {
-      weekday: "long",
       year: "numeric",
-      month: "long",
+      month: "numeric",
       day: "numeric",
     })
   );

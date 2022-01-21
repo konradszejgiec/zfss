@@ -11,7 +11,41 @@ exports.displayMainPage = async (req, res) => {
 };
 
 exports.displayRules = async (req, res) => {
-  res.render("regulamin-zasady-wnioski");
+  try {
+    const personData = await Person.findOne({ pracownik: req.params.pracownik });
+    if (personData) {
+      res.render("regulamin-zasady-wnioski");
+    } else res.render("access-message", { link: "/regulamin-zasady-wnioski" });
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
+};
+
+exports.displayFaq = async (req, res) => {
+  try {
+    const personData = await Person.findOne({ pracownik: req.params.pracownik });
+    if (personData) {
+      res.render("faq");
+    } else res.render("access-message", { link: "/faq" });
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
+};
+
+exports.getPersonData = async (req, res) => {
+  try {
+    const personData = await Person.findOne({ pracownik: req.params.pracownik });
+    res.status(200).send(personData);
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
+};
+
+exports.displayAccessPage = async (req, res) => {
+  res.render("access", { link: req.path });
 };
 
 exports.displayAddApplication = async (req, res) => {
@@ -22,10 +56,6 @@ exports.displayRodo = async (req, res) => {
   res.render("rodo");
 };
 
-exports.displayCalcMethod = async (req, res) => {
-  res.render("obliczanie-dochodu");
-};
-
 exports.displayFaqPage = async (req, res) => {
   res.render("faq");
 };
@@ -34,8 +64,19 @@ exports.displayContact = async (req, res) => {
   res.render("kontakt");
 };
 
+exports.displayAccessPostPage = async (req, res) => {
+  res.render("access-post-data", { link: req.path });
+};
+
 exports.displayPostPage = async (req, res) => {
-  res.render("post-data");
+  try {
+    if (req.path == `/post-data/${process.env.FORM_PASSWORD}`) {
+      res.render("post-data");
+    } else res.render("access-message", { link: "/post-data" });
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
 };
 
 exports.getPersonData = async (req, res) => {
@@ -50,11 +91,8 @@ exports.getPersonData = async (req, res) => {
 
 exports.postDatabase = async (req, res) => {
   try {
-    if (req.body.password != process.env.FORM_PASSWORD) res.status(403).send("Sorry, bad password");
-    else {
-      const person = await Person.insertMany(req.body.content);
-      res.status(200).end();
-    }
+    const person = await Person.insertMany(req.body.content);
+    res.status(200).end();
   } catch (err) {
     res.status(404).end();
     console.log(err);

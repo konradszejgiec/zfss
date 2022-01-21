@@ -2,9 +2,7 @@ include index.pug
 div(class="hidden-form") 
   div.m-3
     p.fw-bold Pamiętaj, żeby zachować właściwy format pliku excel: zachować format zgodny z mongoose model schema, brak spacji i kropek w etykietach wierszy, brak pustych komórek, brak duplikatów w nrprac. To chyba tyle.
-  div(class="mx-auto" style="width: 500px;" id="password")
-    label(for="password" class="form-label") Podaj hasło w celu załadowania pliku
-    input(type="password" class="form-control" id="password-input" placeholder="Hasło")
+
   div(class="mx-auto" style="width: 500px;")
     label(for="formFile" class="form-label")
     input(class="form-control" type="file" id="form-file")

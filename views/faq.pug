@@ -2,6 +2,20 @@ include index.pug
 div.container.px-4.px-lg-5
     div.row.gx-4.gx-lg-5.justify-content-center.mb-3
         div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+            h3.text-justify.m-3 Jak poprawnie obliczyć dochód?
+            div(id="faq-0" style="display: none;")
+                p 
+                    em Za dochód brutto uznaje się sumę wszystkich dochodów pracownika i członków rodziny pracownika za rok poprzedni z tytułu: wynagrodzeń za pracę, działalności gospodarczej, emerytury, renty, zasiłków, umów cywilno-prawnych, pracy za granicą, innych świadczeń pieniężnych, itp.
+                p 
+                    em Wyliczenie dochodu brutto na jednego członka rodziny odbywa się poprzez zsumowanie wszystkich dochodów rocznych członków rodziny i podzieleniu ich przez 12 miesięcy, a następnie podzieleniu wychodzącej kwoty przez wszystkich członków rodziny tj.
+                h3 SUMA DOCHODÓW : 12 MIESIĘCY : ILOŚĆ CZŁONKÓW RODZINY = DOCHÓD NA 1 OSOBĘ 
+                p.fw-bold Podanie nieprawdziwych danych, poświadczenie nieprawdy może być powodem odpowiedzialności karnej, na podstawie art. 286 § 1 i 3 Kodeksu Karnego i może podlegać karze grzywny, karze ograniczenia wolności lub pozbawienia wolności.
+            div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                button(id="show-btn-0" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+div.container.px-4.px-lg-5
+    div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+        div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
             h3.text-justify.m-3 Jestem nowym pracownikiem. Czy przysługują mi świadczenia z ZFŚS?
             div(id="faq-1" style="display: none;")
                 p.text-justify
@@ -196,6 +210,16 @@ div.container.px-4.px-lg-5
                     em Wysokość pożyczek określa coroczny załącznik do Regulaminu ZFŚS.
             div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form    
                 button(id="show-btn-13" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+div.container.px-4.px-lg-5
+    div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+        div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+            h3.text-justify.m-3 Do czego będą wykorzystywane podane przeze mnie dane osobowe?
+            div(id="faq-14" style="display: none;")
+                p
+                    em Wszystkie dane są informacjami poufnymi. Wykorzystywane będą wyłącznie w celu ustalenia progów dochodowych, od których zależy wysokość dopłat do świadczeń socjalnych. Komisja Socjalna ma prawo wglądu do zeznań podatkowych, celem potwierdzenia wysokości dochodu.
+            div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                button(id="show-btn-14" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
 
 
 script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js")

@@ -1,4 +1,5 @@
 getElementBy("h3").scrollIntoView();
+displayFaqAnswer("0");
 displayFaqAnswer("1");
 displayFaqAnswer("2");
 displayFaqAnswer("3");
@@ -12,3 +13,4 @@ displayFaqAnswer("10");
 displayFaqAnswer("11");
 displayFaqAnswer("12");
 displayFaqAnswer("13");
+displayFaqAnswer("14");

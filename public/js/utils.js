@@ -61,7 +61,6 @@ const handleXls = async (event) => {
   const workbook = XLSX.readFile(data);
   const personData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[workbook.SheetNames[0]]);
   sendData("/post-data", {
-    password: getElementValue("#password-input"),
     content: personData,
   });
 };
@@ -117,8 +116,6 @@ const handleIndividualInputs = (person) => {
 
 const handlePeselCheck = () => {
   setDisplayStyle("#person-container", "none");
-  setClass("#form-printable", "border");
-  setClass("#form-printable", "border-dark");
   removeClass("#id-container", "invisible");
   removeClass("#form-container", "invisible");
   removeClass("#submit-btn", "invisible");
@@ -158,11 +155,13 @@ const showKidsQuantitySection = (e) => {
 };
 
 const displaySubsidy = (e) => {
-  if (e.target.value < 1500) {
-    setElementValue("#application-value", 1100);
-  } else if ((e.target.value >= 1500) & (e.target.value < 2000)) {
-    setElementValue("#application-value", 950);
-  } else if (e.target.value >= 2000) setElementValue("#application-value", 800);
+  const subsidyTable = [800, 950, 1100];
+  const salaryTable = [1499, 1500, 1999, 2000];
+  if (Math.round(e.target.value) <= salaryTable[0]) {
+    setElementValue("#application-value", subsidyTable[2]);
+  } else if ((Math.round(e.target.value) >= salaryTable[1]) & (Math.round(e.target.value) <= salaryTable[2])) {
+    setElementValue("#application-value", subsidyTable[1]);
+  } else if (Math.round(e.target.value) >= salaryTable[3]) setElementValue("#application-value", subsidyTable[0]);
 
   if (e.target.value == "") setElementValue("#application-value", "");
 };
@@ -175,6 +174,40 @@ const displayFaqAnswer = (questionNumber) => {
     } else if (getDisplayStyle(`#faq-${questionNumber}`) == "block") {
       setDisplayStyle(`#faq-${questionNumber}`, "none");
       setText(`#show-btn-${questionNumber}`, "POKAŻ ODPOWIEDŹ");
+    }
+  });
+};
+
+const authorize = () => {
+  return handleEventListener("#check-btn-auth", "click", (e) => {
+    let checkAuthInputs =
+      getElementValue("#fname") == "" ? true : getElementValue("#sname") == "" ? true : getElementValue("#lastThree") == "" ? true : false;
+    let authUser = `${
+      getElementValue("#fname").toLowerCase() + getElementValue("#sname").toLowerCase() + getElementValue("#lastThree").toLowerCase()
+    }`;
+    let link;
+    if (checkAuthInputs) {
+      setDisplayStyle("#message-container-dismiss-auth", "block");
+      setDisplayStyle("#message-container-get-auth", "none");
+      e.preventDefault();
+    } else {
+      link = getElementBy("#check-btn-auth");
+      link.href = `${link.href}/${authUser}`;
+    }
+  });
+};
+
+const authorizePostSection = () => {
+  return handleEventListener("#check-btn-auth-post", "click", (e) => {
+    let authUser = getElementValue("#password").toLowerCase();
+    let link;
+    if (getElementValue("#password") == "") {
+      setDisplayStyle("#message-container-dismiss-auth", "block");
+      setDisplayStyle("#message-container-get-auth", "none");
+      e.preventDefault();
+    } else {
+      link = getElementBy("#check-btn-auth-post");
+      link.href = `${link.href}/${authUser}`;
     }
   });
 };

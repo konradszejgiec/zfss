@@ -5,21 +5,25 @@ const routes = (app, bodyParser, controller) => {
 
   app.route("/").get(controller.displayMainPage);
 
-  app.route("/regulamin-zasady-wnioski").get(controller.displayRules);
-
   app.route("/wniosek").get(controller.displayAddApplication);
 
   app.route("/wniosek/:pracownik").get(controller.getPersonData);
 
+  app.route("/regulamin-zasady-wnioski/").get(controller.displayAccessPage);
+
+  app.route("/regulamin-zasady-wnioski/:pracownik").get(controller.displayRules);
+
+  app.route("/faq").get(controller.displayAccessPage);
+
+  app.route("/faq/:pracownik").get(controller.displayFaq);
+
   app.route("/rodo").get(controller.displayRodo);
-
-  app.route("/obliczanie-dochodu").get(controller.displayCalcMethod);
-
-  app.route("/faq").get(controller.displayFaqPage);
 
   app.route("/kontakt").get(controller.displayContact);
 
-  app.route("/post-data").get(controller.displayPostPage).post(jsonParser, controller.postDatabase);
+  app.route("/post-data").get(controller.displayAccessPostPage).post(jsonParser, controller.postDatabase);
+
+  app.route("/post-data/:admin").get(controller.displayPostPage);
 };
 
 module.exports = routes;
