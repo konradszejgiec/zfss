@@ -1,50 +1,37 @@
 include index.pug  
+
 div.container.px-4.px-lg-5
 
-    div.row.gx-4.gx-lg-5.justify-content-center.mb-3 
-        div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-            h3.text-center.m-3 Wniosek o dofinansowanie z ZFŚS
+    div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+        a(href="/wniosek" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
+            h3.text-center Wniosek o dofinansowanie z ZFŚS
             p.text-center 
-                em Jeśli chcesz wypełnić wniosek poprzez formularz internetowy przejdź do zakładki
-                | 
-                a(href="/wniosek")
-                    strong WNIOSEK O DOFINANSOWANIE
-
-    div.row.gx-4.gx-lg-5.justify-content-center.mb-3 
-        div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-            h3.text-center.m-3 Regulamin ZFŚS, zasady, progi dochodowe, stawki pożyczek oraz druki wniosków
-            p.text-center 
-                em Regulamin, zasady, progi, stawki pożyczek oraz druki wniosków do wydruku dostępne w zakładce
-                | 
-                a(href="/regulamin-zasady-wnioski")
-                    strong REGULAMIN, ZASADY, WNIOSKI
-
-    div.row.gx-4.gx-lg-5.justify-content-center.mb-3 
-        div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-            h3.text-center.m-3 Klauzula RODO
-            p.text-center 
-                em Chcesz wiedzieć w jakim zakresie będą wykorzystywane Twoje dane osobowe? Przejdź do zakładki
-                | 
-                a(href="/rodo")
-                    strong RODO
+            em Przejdź do wypełnienia interaktywnego formularza
 
     div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-        div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-            h3.text-center.m-3 Najczęściej zadawane pytania
+        a(href="/regulamin-zasady-wnioski" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
+            h3.text-center Regulamin ZFŚS, zasady, progi dochodowe, stawki pożyczek oraz druki
             p.text-center 
-                em Odpowiedzi na najczęściej zadawane pytania dostępne są w zakładce
-                | 
-                a(href="/faq")
-                    strong FAQ
-    
-    div.row.gx-4.gx-lg-5.justify-content-center.mb-3 
-        div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-            h3.text-center.m-3 Kontakt z pracownikiem socjalnym
+            em Przejdź do sekcji ze wszelkimi dokumentami oraz drukami dotyczącymi Zakładowego Funduszu Świadczeń Socjalnych
+
+    div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+        a(href="/rodo" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
+            h3.text-center Klauzula RODO
             p.text-center 
-                em Masz pytania? Skontaktuj się z pracownikiem socjalnym przechodząc do zakładki
-                | 
-                a(href="/kontakt")
-                    strong KONTAKT
-                    
+            em Dowiedz się w jakim zakresie będą wykorzystywane Twoje dane osobowe
+
+    div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+        a(href="/faq" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
+            h3.text-center Najczęściej zadawane pytania
+            p.text-center 
+            em Zobacz odpowiedzi na najczęściej zadawane pytania
+        
+    div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+        a(href="/kontakt" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
+            h3.text-center Kontakt z pracownikiem socjalnym
+            p.text-center 
+            em Masz pytania? Skontaktuj się z pracownikiem socjalnym
+
+                        
 script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js")
 include footer.pug 
