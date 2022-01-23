@@ -223,6 +223,17 @@ const displayFaqAnswer = (questionNumber) => {
   });
 };
 
+const generatePassword = () => {
+  let length = 8,
+    charset =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?!#%&",
+    retVal = "";
+  for (let i = 0, n = charset.length; i < length; ++i) {
+    retVal += charset.charAt(Math.floor(Math.random() * n));
+  }
+  return retVal;
+};
+
 const authorize = () => {
   return handleEventListener("#check-btn-auth", "click", (e) => {
     let checkAuthInputs =
@@ -247,13 +258,17 @@ const authorize = () => {
       link = getElementBy("#check-btn-auth");
       link.href = `${link.href}/pracownik?fname=${getElementValue(
         "#fname"
-      ).toLowerCase()}&sname=${getElementValue("#sname").toLowerCase()}&id=${
-        Math.random() * 1000000000000000000
-      }${getElementValue("#lastThree").toLowerCase()[2]}${
-        Math.random() * 1000000000000000000
-      }${getElementValue("#lastThree").toLowerCase()[0]}${
-        getElementValue("#lastThree").toLowerCase()[1]
-      }${Math.random() * 1000000000000000000}`;
+      ).toLowerCase()}&sname=${getElementValue(
+        "#sname"
+      ).toLowerCase()}&id=${generatePassword()}${Math.floor(
+        100000 + Math.random() * 900000
+      )}${getElementValue("#lastThree").toLowerCase()[2]}${Math.floor(
+        100000 + Math.random() * 900000
+      )}${getElementValue("#lastThree").toLowerCase()[0]}${Math.floor(
+        100000 + Math.random() * 900000
+      )}${getElementValue("#lastThree").toLowerCase()[1]}${Math.floor(
+        100000 + Math.random() * 900000
+      )}`;
     }
   });
 };
