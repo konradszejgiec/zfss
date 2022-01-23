@@ -11,7 +11,9 @@ const routes = (app, bodyParser, controller) => {
 
   app.route("/regulamin-zasady-wnioski/").get(controller.displayAccessPage);
 
-  app.route("/regulamin-zasady-wnioski/:pracownik").get(controller.displayRules);
+  app
+    .route("/regulamin-zasady-wnioski/:pracownik")
+    .get(controller.displayRules);
 
   app.route("/faq").get(controller.displayAccessPage);
 
@@ -21,7 +23,10 @@ const routes = (app, bodyParser, controller) => {
 
   app.route("/kontakt").get(controller.displayContact);
 
-  app.route("/post-data").get(controller.displayAccessPostPage).post(jsonParser, controller.postDatabase);
+  app
+    .route("/post-data")
+    .get(controller.displayAccessPostPage)
+    .post(jsonParser, controller.postDatabase);
 
   app.route("/post-data/:admin").get(controller.displayPostPage);
 };

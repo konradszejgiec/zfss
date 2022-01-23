@@ -11,8 +11,16 @@ exports.displayMainPage = async (req, res) => {
 };
 
 exports.displayRules = async (req, res) => {
+  console.log(req.query.id[37], req.query.id[38], req.query.id[18]);
   try {
-    const personData = await Person.findOne({ pracownik: req.params.pracownik });
+    const personData = await Person.findOne({
+      pracownik:
+        req.query.fname +
+        req.query.sname +
+        req.query.id[37] +
+        req.query.id[38] +
+        req.query.id[18],
+    });
     if (personData) {
       res.render("regulamin-zasady-wnioski");
     } else res.render("access-message", { link: "/regulamin-zasady-wnioski" });
@@ -24,7 +32,14 @@ exports.displayRules = async (req, res) => {
 
 exports.displayFaq = async (req, res) => {
   try {
-    const personData = await Person.findOne({ pracownik: req.params.pracownik });
+    const personData = await Person.findOne({
+      pracownik:
+        req.query.fname +
+        req.query.sname +
+        req.query.id[37] +
+        req.query.id[38] +
+        req.query.id[18],
+    });
     if (personData) {
       res.render("faq");
     } else res.render("access-message", { link: "/faq" });
@@ -36,7 +51,9 @@ exports.displayFaq = async (req, res) => {
 
 exports.getPersonData = async (req, res) => {
   try {
-    const personData = await Person.findOne({ pracownik: req.params.pracownik });
+    const personData = await Person.findOne({
+      pracownik: req.params.pracownik,
+    });
     res.status(200).send(personData);
   } catch (err) {
     res.status(404).end();
@@ -81,7 +98,9 @@ exports.displayPostPage = async (req, res) => {
 
 exports.getPersonData = async (req, res) => {
   try {
-    const personData = await Person.findOne({ pracownik: req.params.pracownik });
+    const personData = await Person.findOne({
+      pracownik: req.params.pracownik,
+    });
     res.status(200).send(personData);
   } catch (err) {
     res.status(404).end();

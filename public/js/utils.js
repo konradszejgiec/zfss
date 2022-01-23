@@ -35,11 +35,17 @@ const addElementValue = (selector, newValue) => {
 };
 
 const insertItemHTML = (existingElementSelector, newElementHtml) => {
-  return getElementBy(existingElementSelector).insertAdjacentHTML("beforeend", newElementHtml);
+  return getElementBy(existingElementSelector).insertAdjacentHTML(
+    "beforeend",
+    newElementHtml
+  );
 };
 
 const handleEventListener = (elementSelector, eventListener, callback) => {
-  return getElementBy(elementSelector).addEventListener(eventListener, callback);
+  return getElementBy(elementSelector).addEventListener(
+    eventListener,
+    callback
+  );
 };
 
 const changeClass = (selector, removedClass, newClass) => {
@@ -59,14 +65,22 @@ const handleXls = async (event) => {
   const file = event.target.files[0];
   const data = await file.arrayBuffer();
   const workbook = XLSX.readFile(data);
-  const personData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[workbook.SheetNames[0]]);
+  const personData = XLSX.utils.sheet_to_row_object_array(
+    workbook.Sheets[workbook.SheetNames[0]]
+  );
   sendData("/post-data", {
     content: personData,
   });
 };
 
 const checkingAppInputFulfillment = () => {
-  return getElementValue("#name") == "" ? true : getElementValue("#unit") == "" ? true : getElementValue("#statement-salary") == "" ? true : false;
+  return getElementValue("#name") == ""
+    ? true
+    : getElementValue("#unit") == ""
+    ? true
+    : getElementValue("#statement-salary") == ""
+    ? true
+    : false;
 };
 
 const handleAlertMsg = () => {
@@ -80,7 +94,9 @@ const handleAlertMsg = () => {
 };
 
 const generatePDF = () => {
-  return html2canvas(document.getElementById("form-printable")).then(function (canvas) {
+  return html2canvas(document.getElementById("form-printable")).then(function (
+    canvas
+  ) {
     const imgData = canvas.toDataURL("image/png");
     const imgWidth = 210;
     const pageHeight = 297;
@@ -122,7 +138,12 @@ const handlePeselCheck = () => {
   getElementBy("#form-container").scrollIntoView();
 };
 
-const handleSectionVisibilityAndAutofill = (autofillSection, autofillTxt, invisibleSection, isRemoveClass) => {
+const handleSectionVisibilityAndAutofill = (
+  autofillSection,
+  autofillTxt,
+  invisibleSection,
+  isRemoveClass
+) => {
   if (isRemoveClass) {
     setElementValue(autofillSection, autofillTxt);
     removeClass(invisibleSection, "invisible");
@@ -134,17 +155,37 @@ const handleSectionVisibilityAndAutofill = (autofillSection, autofillTxt, invisi
 
 const hideKidsSection = (e) => {
   if (e.target.checked) {
-    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1620/                           /2022`, "#application-kids-div", false);
+    handleSectionVisibilityAndAutofill(
+      "#application-number",
+      `FDK.KS.1620/                           /2022`,
+      "#application-kids-div",
+      false
+    );
   } else {
-    handleSectionVisibilityAndAutofill("#application-number", "", "#application-kids-div", true);
+    handleSectionVisibilityAndAutofill(
+      "#application-number",
+      "",
+      "#application-kids-div",
+      true
+    );
   }
 };
 
 const hideOwnSection = (e) => {
   if (e.target.checked) {
-    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1621/                           /2022`, "#application-own-div", false);
+    handleSectionVisibilityAndAutofill(
+      "#application-number",
+      `FDK.KS.1621/                           /2022`,
+      "#application-own-div",
+      false
+    );
   } else {
-    handleSectionVisibilityAndAutofill("#application-number", "", "#application-own-div", true);
+    handleSectionVisibilityAndAutofill(
+      "#application-number",
+      "",
+      "#application-own-div",
+      true
+    );
   }
 };
 
@@ -159,9 +200,13 @@ const displaySubsidy = (e) => {
   const salaryTable = [1499, 1500, 1999, 2000];
   if (Math.round(e.target.value) <= salaryTable[0]) {
     setElementValue("#application-value", subsidyTable[2]);
-  } else if ((Math.round(e.target.value) >= salaryTable[1]) & (Math.round(e.target.value) <= salaryTable[2])) {
+  } else if (
+    (Math.round(e.target.value) >= salaryTable[1]) &
+    (Math.round(e.target.value) <= salaryTable[2])
+  ) {
     setElementValue("#application-value", subsidyTable[1]);
-  } else if (Math.round(e.target.value) >= salaryTable[3]) setElementValue("#application-value", subsidyTable[0]);
+  } else if (Math.round(e.target.value) >= salaryTable[3])
+    setElementValue("#application-value", subsidyTable[0]);
 
   if (e.target.value == "") setElementValue("#application-value", "");
 };
@@ -181,9 +226,17 @@ const displayFaqAnswer = (questionNumber) => {
 const authorize = () => {
   return handleEventListener("#check-btn-auth", "click", (e) => {
     let checkAuthInputs =
-      getElementValue("#fname") == "" ? true : getElementValue("#sname") == "" ? true : getElementValue("#lastThree") == "" ? true : false;
+      getElementValue("#fname") == ""
+        ? true
+        : getElementValue("#sname") == ""
+        ? true
+        : getElementValue("#lastThree") == ""
+        ? true
+        : false;
     let authUser = `${
-      getElementValue("#fname").toLowerCase() + getElementValue("#sname").toLowerCase() + getElementValue("#lastThree").toLowerCase()
+      getElementValue("#fname").toLowerCase() +
+      getElementValue("#sname").toLowerCase() +
+      getElementValue("#lastThree").toLowerCase()
     }`;
     let link;
     if (checkAuthInputs) {
@@ -192,7 +245,15 @@ const authorize = () => {
       e.preventDefault();
     } else {
       link = getElementBy("#check-btn-auth");
-      link.href = `${link.href}/${authUser}`;
+      link.href = `${link.href}/pracownik?fname=${getElementValue(
+        "#fname"
+      ).toLowerCase()}&sname=${getElementValue("#sname").toLowerCase()}&id=${
+        Math.random() * 1000000000000000000
+      }${getElementValue("#lastThree").toLowerCase()[2]}${
+        Math.random() * 1000000000000000000
+      }${getElementValue("#lastThree").toLowerCase()[0]}${
+        getElementValue("#lastThree").toLowerCase()[1]
+      }${Math.random() * 1000000000000000000}`;
     }
   });
 };
