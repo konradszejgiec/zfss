@@ -35,17 +35,11 @@ const addElementValue = (selector, newValue) => {
 };
 
 const insertItemHTML = (existingElementSelector, newElementHtml) => {
-  return getElementBy(existingElementSelector).insertAdjacentHTML(
-    "beforeend",
-    newElementHtml
-  );
+  return getElementBy(existingElementSelector).insertAdjacentHTML("beforeend", newElementHtml);
 };
 
 const handleEventListener = (elementSelector, eventListener, callback) => {
-  return getElementBy(elementSelector).addEventListener(
-    eventListener,
-    callback
-  );
+  return getElementBy(elementSelector).addEventListener(eventListener, callback);
 };
 
 const changeClass = (selector, removedClass, newClass) => {
@@ -65,22 +59,14 @@ const handleXls = async (event) => {
   const file = event.target.files[0];
   const data = await file.arrayBuffer();
   const workbook = XLSX.readFile(data);
-  const personData = XLSX.utils.sheet_to_row_object_array(
-    workbook.Sheets[workbook.SheetNames[0]]
-  );
+  const personData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[workbook.SheetNames[0]]);
   sendData("/post-data", {
     content: personData,
   });
 };
 
 const checkingAppInputFulfillment = () => {
-  return getElementValue("#name") == ""
-    ? true
-    : getElementValue("#unit") == ""
-    ? true
-    : getElementValue("#statement-salary") == ""
-    ? true
-    : false;
+  return getElementValue("#name") == "" ? true : getElementValue("#unit") == "" ? true : getElementValue("#statement-salary") == "" ? true : false;
 };
 
 const handleAlertMsg = () => {
@@ -94,9 +80,7 @@ const handleAlertMsg = () => {
 };
 
 const generatePDF = () => {
-  return html2canvas(document.getElementById("form-printable")).then(function (
-    canvas
-  ) {
+  return html2canvas(document.getElementById("form-printable")).then(function (canvas) {
     const imgData = canvas.toDataURL("image/png");
     const imgWidth = 210;
     const pageHeight = 297;
@@ -138,12 +122,7 @@ const handlePeselCheck = () => {
   getElementBy("#form-container").scrollIntoView();
 };
 
-const handleSectionVisibilityAndAutofill = (
-  autofillSection,
-  autofillTxt,
-  invisibleSection,
-  isRemoveClass
-) => {
+const handleSectionVisibilityAndAutofill = (autofillSection, autofillTxt, invisibleSection, isRemoveClass) => {
   if (isRemoveClass) {
     setElementValue(autofillSection, autofillTxt);
     removeClass(invisibleSection, "invisible");
@@ -155,37 +134,17 @@ const handleSectionVisibilityAndAutofill = (
 
 const hideKidsSection = (e) => {
   if (e.target.checked) {
-    handleSectionVisibilityAndAutofill(
-      "#application-number",
-      `FDK.KS.1620/                           /2022`,
-      "#application-kids-div",
-      false
-    );
+    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1620/                           /2022`, "#application-kids-div", false);
   } else {
-    handleSectionVisibilityAndAutofill(
-      "#application-number",
-      "",
-      "#application-kids-div",
-      true
-    );
+    handleSectionVisibilityAndAutofill("#application-number", "", "#application-kids-div", true);
   }
 };
 
 const hideOwnSection = (e) => {
   if (e.target.checked) {
-    handleSectionVisibilityAndAutofill(
-      "#application-number",
-      `FDK.KS.1621/                           /2022`,
-      "#application-own-div",
-      false
-    );
+    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1621/                           /2022`, "#application-own-div", false);
   } else {
-    handleSectionVisibilityAndAutofill(
-      "#application-number",
-      "",
-      "#application-own-div",
-      true
-    );
+    handleSectionVisibilityAndAutofill("#application-number", "", "#application-own-div", true);
   }
 };
 
@@ -200,33 +159,34 @@ const displaySubsidy = (e) => {
   const salaryTable = [1499, 1500, 1999, 2000];
   if (Math.round(e.target.value) <= salaryTable[0]) {
     setElementValue("#application-value", subsidyTable[2]);
-  } else if (
-    (Math.round(e.target.value) >= salaryTable[1]) &
-    (Math.round(e.target.value) <= salaryTable[2])
-  ) {
+  } else if ((Math.round(e.target.value) >= salaryTable[1]) & (Math.round(e.target.value) <= salaryTable[2])) {
     setElementValue("#application-value", subsidyTable[1]);
-  } else if (Math.round(e.target.value) >= salaryTable[3])
-    setElementValue("#application-value", subsidyTable[0]);
+  } else if (Math.round(e.target.value) >= salaryTable[3]) setElementValue("#application-value", subsidyTable[0]);
 
   if (e.target.value == "") setElementValue("#application-value", "");
 };
 
-const displayFaqAnswer = (questionNumber) => {
-  return handleEventListener(`#show-btn-${questionNumber}`, "click", () => {
-    if (getDisplayStyle(`#faq-${questionNumber}`) == "none") {
-      setDisplayStyle(`#faq-${questionNumber}`, "block");
-      setText(`#show-btn-${questionNumber}`, "UKRYJ ODPOWIEDŹ");
-    } else if (getDisplayStyle(`#faq-${questionNumber}`) == "block") {
-      setDisplayStyle(`#faq-${questionNumber}`, "none");
-      setText(`#show-btn-${questionNumber}`, "POKAŻ ODPOWIEDŹ");
+const handleFaqTarget = (e) => {
+  const idArray = e.target.id.split("-");
+  const idNumber = idArray[idArray.length - 1];
+  if (e.target.classList[0] == "btn") {
+    if (getDisplayStyle(`#faq-${idNumber}`) == "none") {
+      setDisplayStyle(`#faq-${idNumber}`, "block");
+      setText(`#show-btn-${idNumber}`, "UKRYJ ODPOWIEDŹ");
+    } else if (getDisplayStyle(`#faq-${idNumber}`) == "block") {
+      setDisplayStyle(`#faq-${idNumber}`, "none");
+      setText(`#show-btn-${idNumber}`, "POKAŻ ODPOWIEDŹ");
     }
-  });
+  }
+};
+
+const displayFaqAnswers = () => {
+  handleEventListener(".wrapper", "click", handleFaqTarget);
 };
 
 const generatePassword = () => {
   let length = 8,
-    charset =
-      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?!#%&",
+    charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
     retVal = "";
   for (let i = 0, n = charset.length; i < length; ++i) {
     retVal += charset.charAt(Math.floor(Math.random() * n));
@@ -237,18 +197,8 @@ const generatePassword = () => {
 const authorize = () => {
   return handleEventListener("#check-btn-auth", "click", (e) => {
     let checkAuthInputs =
-      getElementValue("#fname") == ""
-        ? true
-        : getElementValue("#sname") == ""
-        ? true
-        : getElementValue("#lastThree") == ""
-        ? true
-        : false;
-    let authUser = `${
-      getElementValue("#fname").toLowerCase() +
-      getElementValue("#sname").toLowerCase() +
-      getElementValue("#lastThree").toLowerCase()
-    }`;
+      getElementValue("#fname") == "" ? true : getElementValue("#sname") == "" ? true : getElementValue("#lastThree") == "" ? true : false;
+
     let link;
     if (checkAuthInputs) {
       setDisplayStyle("#message-container-dismiss-auth", "block");
@@ -256,19 +206,13 @@ const authorize = () => {
       e.preventDefault();
     } else {
       link = getElementBy("#check-btn-auth");
-      link.href = `${link.href}/pracownik?fname=${getElementValue(
-        "#fname"
-      ).toLowerCase()}&sname=${getElementValue(
+      link.href = `${link.href}/pracownik?fname=${getElementValue("#fname").toLowerCase()}&sname=${getElementValue(
         "#sname"
-      ).toLowerCase()}&id=${generatePassword()}${Math.floor(
-        100000 + Math.random() * 900000
-      )}${getElementValue("#lastThree").toLowerCase()[2]}${Math.floor(
-        100000 + Math.random() * 900000
-      )}${getElementValue("#lastThree").toLowerCase()[0]}${Math.floor(
-        100000 + Math.random() * 900000
-      )}${getElementValue("#lastThree").toLowerCase()[1]}${Math.floor(
-        100000 + Math.random() * 900000
-      )}`;
+      ).toLowerCase()}&id=${generatePassword()}${Math.floor(100000 + Math.random() * 900000)}${
+        getElementValue("#lastThree").toLowerCase()[2]
+      }${Math.floor(100000 + Math.random() * 900000)}${getElementValue("#lastThree").toLowerCase()[0]}${Math.floor(100000 + Math.random() * 900000)}${
+        getElementValue("#lastThree").toLowerCase()[1]
+      }${Math.floor(100000 + Math.random() * 900000)}`;
     }
   });
 };
@@ -286,4 +230,32 @@ const authorizePostSection = () => {
       link.href = `${link.href}/${authUser}`;
     }
   });
+};
+
+const handleApplication = () => {
+  handleEventListener("#check-btn", "click", (e) => {
+    e.preventDefault();
+
+    fetchData(
+      `/wniosek/${getElementValue("#fname").toLowerCase() + getElementValue("#sname").toLowerCase() + getElementValue("#lastThree").toLowerCase()}`,
+      (person) => {
+        handleIndividualInputs(person);
+      }
+    );
+    handlePeselCheck();
+    setElementValue(
+      "#sign-employee",
+      new Date().toLocaleString("pl-PL", {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+      })
+    );
+  });
+
+  handleEventListener("#submit-btn", "click", handleGeneratePDF);
+  handleEventListener("#application-own", "click", hideKidsSection);
+  handleEventListener("#application-kids", "click", hideOwnSection);
+  handleEventListener("#statement-kids", "click", showKidsQuantitySection);
+  handleEventListener("#statement-salary", "input", displaySubsidy);
 };

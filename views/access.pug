@@ -1,7 +1,7 @@
 include index.pug
 div(id="message-container-dismiss-auth" style="display: none;")
     div.m-3.border.border-dark.border-1.bg-light
-        h2.m-3.text-center BRAK AUTORYZACJI - NIEWYPEŁNIONE WSZYSTKIE WYMAGANE POLA
+        h2.m-3.text-center BŁĄD - NIEWYPEŁNIONE WSZYSTKIE WYMAGANE POLA
         p.m-3.fw-bold.text-center 
             em Uzupełnij wszystkie pola i spróbuj uzyskać dostęp ponownie lub wróc do 
             |
@@ -9,9 +9,9 @@ div(id="message-container-dismiss-auth" style="display: none;")
 
 div(id="message-container-get-auth" style="display: block;")
     div.m-3.border.border-dark.border-1.bg-light
-        h2.m-3.text-center SEKCJA DOSTĘPNA PO AUTORYZACJI
+        h2.m-3.text-center SEKCJA DLA PRACOWNIKÓW
         p.m-3.fw-bold.text-center 
-            em Autoryzacja polega na wpisaniu swojego imienia, nazwisko oraz 3 ostatnich cyfr numeru PESEL do poniższego formularza.
+            em Podaj swoje imię, nazwisko oraz 3 ostatnie cyfry z numeru PESEL do poniższego formularza.
 div(class="input-group mb-3")
         input(type="text" class="form-control ms-3 bg-light" id="fname" placeholder="Wpisz swoje IMIĘ")
         input(type="text" class="form-control  bg-light" id="sname" placeholder="Wpisz swoje NAZWISKO")
