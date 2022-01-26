@@ -1,2 +1,2 @@
-getElementBy("h3").scrollIntoView();
+"use strict";
 displayFaqAnswers();

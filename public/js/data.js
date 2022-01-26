@@ -1,5 +1,4 @@
 "use strict";
-
 class PersonData {
   constructor(nrprac, pesel, imie, nazwisko, jednorg) {
     this.nrprac = nrprac;

@@ -166,7 +166,7 @@ const displaySubsidy = (e) => {
   if (e.target.value == "") setElementValue("#application-value", "");
 };
 
-const handleFaqTarget = (e) => {
+const handleFaq = (e) => {
   const idArray = e.target.id.split("-");
   const idNumber = idArray[idArray.length - 1];
   if (e.target.classList[0] == "btn") {
@@ -181,7 +181,8 @@ const handleFaqTarget = (e) => {
 };
 
 const displayFaqAnswers = () => {
-  handleEventListener(".wrapper", "click", handleFaqTarget);
+  getElementBy("h3").scrollIntoView({ behavior: "smooth" });
+  handleEventListener(".wrapper", "click", handleFaq);
 };
 
 const generatePassword = () => {
@@ -219,7 +220,7 @@ const authorize = () => {
 
 const authorizePostSection = () => {
   return handleEventListener("#check-btn-auth-post", "click", (e) => {
-    let authUser = getElementValue("#password").toLowerCase();
+    let password = getElementValue("#password");
     let link;
     if (getElementValue("#password") == "") {
       setDisplayStyle("#message-container-dismiss-auth", "block");
@@ -227,12 +228,13 @@ const authorizePostSection = () => {
       e.preventDefault();
     } else {
       link = getElementBy("#check-btn-auth-post");
-      link.href = `${link.href}/${authUser}`;
+      link.href = `${link.href}/access?password=${password}`;
     }
   });
 };
 
 const handleApplication = () => {
+  getElementBy("#person-container").scrollIntoView({ behavior: "smooth" });
   handleEventListener("#check-btn", "click", (e) => {
     e.preventDefault();
 

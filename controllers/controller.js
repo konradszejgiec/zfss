@@ -16,7 +16,7 @@ exports.displayRules = async (req, res) => {
       pracownik: req.query.fname + req.query.sname + req.query.id[21] + req.query.id[28] + req.query.id[14],
     });
     if (personData) {
-      res.render("regulamin-zasady-wnioski");
+      res.render("rules");
     } else res.render("access-message", { link: "/regulamin-zasady-wnioski" });
   } catch (err) {
     res.status(404).end();
@@ -55,7 +55,7 @@ exports.displayAccessPage = async (req, res) => {
 };
 
 exports.displayAddApplication = async (req, res) => {
-  res.render("wniosek");
+  res.render("application");
 };
 
 exports.displayRodo = async (req, res) => {
@@ -67,7 +67,7 @@ exports.displayFaqPage = async (req, res) => {
 };
 
 exports.displayContact = async (req, res) => {
-  res.render("kontakt");
+  res.render("contact");
 };
 
 exports.displayAccessPostPage = async (req, res) => {
@@ -76,7 +76,7 @@ exports.displayAccessPostPage = async (req, res) => {
 
 exports.displayPostPage = async (req, res) => {
   try {
-    if (req.path == `/post-data/${process.env.FORM_PASSWORD}`) {
+    if (req.query.password == process.env.FORM_PASSWORD) {
       res.render("post-data");
     } else res.render("access-message", { link: "/post-data" });
   } catch (err) {

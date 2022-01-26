@@ -1,5 +1,4 @@
 "use strict";
-
 const sendData = (route, item) => {
   if (!item) return;
   return fetch(`${route}`, {
