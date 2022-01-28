@@ -42,6 +42,10 @@ const handleEventListener = (elementSelector, eventListener, callback) => {
   return getElementBy(elementSelector).addEventListener(eventListener, callback);
 };
 
+const handleEventListeners = (elementSelector, eventListener, callback) => {
+  return getElementsBy(elementSelector).forEach((el) => el.addEventListener(eventListener, callback));
+};
+
 const changeClass = (selector, removedClass, newClass) => {
   removeClass(selector, removedClass);
   setClass(selector, newClass);
@@ -55,6 +59,32 @@ const removeClass = (selector, removedClass) => {
   return getElementBy(selector).classList.remove(removedClass);
 };
 
+const checkingInputFulfillment = (selector1, selector2, selector3) => {
+  return getElementValue(selector1) == "" ? true : getElementValue(selector2) == "" ? true : getElementValue(selector3) == "" ? true : false;
+};
+
+const hideKidsSection = (e) => {
+  if (e.target.checked) {
+    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1620/                           /2022`, "#application-kids-div", false);
+  } else {
+    handleSectionVisibilityAndAutofill("#application-number", "", "#application-kids-div", true);
+  }
+};
+
+const hideOwnSection = (e) => {
+  if (e.target.checked) {
+    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1621/                           /2022`, "#application-own-div", false);
+  } else {
+    handleSectionVisibilityAndAutofill("#application-number", "", "#application-own-div", true);
+  }
+};
+
+const showKidsQuantitySection = (e) => {
+  if (e.target.checked) {
+    removeClass("#statement-kids-quantity", "invisible");
+  } else setClass("#statement-kids-quantity", "invisible");
+};
+
 const handleXls = async (event) => {
   const file = event.target.files[0];
   const data = await file.arrayBuffer();
@@ -65,16 +95,12 @@ const handleXls = async (event) => {
   });
 };
 
-const checkingAppInputFulfillment = () => {
-  return getElementValue("#name") == "" ? true : getElementValue("#unit") == "" ? true : getElementValue("#statement-salary") == "" ? true : false;
-};
-
-const handleAlertMsg = () => {
-  setDisplayStyle("#alert", "block");
+const handleAlertMsg = (messageSelector) => {
+  setDisplayStyle(messageSelector, "block");
   setDisplayStyle("#full-form", "none");
 
-  handleEventListener("#confirm-btn", "click", () => {
-    setDisplayStyle("#alert", "none");
+  handleEventListeners("#confirm-btn", "click", () => {
+    setDisplayStyle(messageSelector, "none");
     setDisplayStyle("#full-form", "block");
   });
 };
@@ -104,8 +130,18 @@ const generatePDF = () => {
 
 const handleGeneratePDF = (e) => {
   e.preventDefault();
-  if (checkingAppInputFulfillment()) handleAlertMsg();
-  else generatePDF();
+
+  if (checkingInputFulfillment("#name", "#unit", "#statement-salary")) {
+    handleAlertMsg("#alert-name-salary");
+  } else if (!getElementBy("#application-own").checked & !getElementBy("#application-kids").checked) {
+    handleAlertMsg("#alert-purpose");
+  } else if (getElementBy("#statement-kids").checked & (getElementBy("#statement-kids-quantity-input").value == "")) {
+    handleAlertMsg("#alert-kids-quantity");
+  } else if (getElementBy("#application-kids").checked) {
+    if (getElementBy("#to-check-input-date").value == "" || getElementBy("#to-check-input-name").value == "") {
+      handleAlertMsg("#alert-kids");
+    } else generatePDF();
+  } else generatePDF();
 };
 
 const handleIndividualInputs = (person) => {
@@ -116,9 +152,8 @@ const handleIndividualInputs = (person) => {
 
 const handlePeselCheck = () => {
   setDisplayStyle("#person-container", "none");
-  removeClass("#id-container", "invisible");
-  removeClass("#form-container", "invisible");
-  removeClass("#submit-btn", "invisible");
+  setDisplayStyle("#form-printable", "block");
+  setDisplayStyle("#submit-btn", "block");
   getElementBy("#form-container").scrollIntoView();
 };
 
@@ -132,31 +167,10 @@ const handleSectionVisibilityAndAutofill = (autofillSection, autofillTxt, invisi
   }
 };
 
-const hideKidsSection = (e) => {
-  if (e.target.checked) {
-    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1620/                           /2022`, "#application-kids-div", false);
-  } else {
-    handleSectionVisibilityAndAutofill("#application-number", "", "#application-kids-div", true);
-  }
-};
-
-const hideOwnSection = (e) => {
-  if (e.target.checked) {
-    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1621/                           /2022`, "#application-own-div", false);
-  } else {
-    handleSectionVisibilityAndAutofill("#application-number", "", "#application-own-div", true);
-  }
-};
-
-const showKidsQuantitySection = (e) => {
-  if (e.target.checked) {
-    removeClass("#statement-kids-quantity", "invisible");
-  } else setClass("#statement-kids-quantity", "invisible");
-};
-
 const displaySubsidy = (e) => {
   const subsidyTable = [800, 950, 1100];
   const salaryTable = [1499, 1500, 1999, 2000];
+
   if (Math.round(e.target.value) <= salaryTable[0]) {
     setElementValue("#application-value", subsidyTable[2]);
   } else if ((Math.round(e.target.value) >= salaryTable[1]) & (Math.round(e.target.value) <= salaryTable[2])) {
@@ -169,6 +183,7 @@ const displaySubsidy = (e) => {
 const handleFaq = (e) => {
   const idArray = e.target.id.split("-");
   const idNumber = idArray[idArray.length - 1];
+
   if (e.target.classList[0] == "btn") {
     if (getDisplayStyle(`#faq-${idNumber}`) == "none") {
       setDisplayStyle(`#faq-${idNumber}`, "block");
@@ -197,11 +212,8 @@ const generatePassword = () => {
 
 const authorize = () => {
   return handleEventListener("#check-btn-auth", "click", (e) => {
-    let checkAuthInputs =
-      getElementValue("#fname") == "" ? true : getElementValue("#sname") == "" ? true : getElementValue("#lastThree") == "" ? true : false;
-
     let link;
-    if (checkAuthInputs) {
+    if (checkingInputFulfillment("#fname", "#sname", "#lastThree")) {
       setDisplayStyle("#message-container-dismiss-auth", "block");
       setDisplayStyle("#message-container-get-auth", "none");
       e.preventDefault();
@@ -233,28 +245,28 @@ const authorizePostSection = () => {
   });
 };
 
+const fetchPersonData = (e) => {
+  e.preventDefault();
+  fetchData(
+    `/wniosek/${getElementValue("#fname").toLowerCase() + getElementValue("#sname").toLowerCase() + getElementValue("#lastThree").toLowerCase()}`,
+    (person) => {
+      handleIndividualInputs(person);
+    }
+  );
+  handlePeselCheck();
+  setElementValue(
+    "#sign-employee",
+    new Date().toLocaleString("pl-PL", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    })
+  );
+};
+
 const handleApplication = () => {
   getElementBy("#person-container").scrollIntoView({ behavior: "smooth" });
-  handleEventListener("#check-btn", "click", (e) => {
-    e.preventDefault();
-
-    fetchData(
-      `/wniosek/${getElementValue("#fname").toLowerCase() + getElementValue("#sname").toLowerCase() + getElementValue("#lastThree").toLowerCase()}`,
-      (person) => {
-        handleIndividualInputs(person);
-      }
-    );
-    handlePeselCheck();
-    setElementValue(
-      "#sign-employee",
-      new Date().toLocaleString("pl-PL", {
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-      })
-    );
-  });
-
+  handleEventListener("#check-btn", "click", fetchPersonData);
   handleEventListener("#submit-btn", "click", handleGeneratePDF);
   handleEventListener("#application-own", "click", hideKidsSection);
   handleEventListener("#application-kids", "click", hideOwnSection);

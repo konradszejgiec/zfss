@@ -1,8 +1,8 @@
-- const getFooterDate = () => {return new Date().toLocaleString("pl-PL", {year: "numeric"});}
-footer(class="border-top bg-secondary")
+
+footer(class="border-top bg-light")
     div(class="container px-4 px-lg-5")
         div(class="row gx-4 gx-lg-5 justify-content-center")
             div(class="col-md-10 col-lg-8 col-xl-7")
                 div(class="small text-center text-muted fst-italic") 
-                    span.text-light.text-center Copyright &copy; Samodzielny Publiczny Szpital Kliniczny nr 4 w Lublinie #{getFooterDate()}
+                    span.text-dark.text-center Copyright &copy; Samodzielny Publiczny Szpital Kliniczny nr 4 w Lublinie #{getYearDate()}
 
