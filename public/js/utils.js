@@ -35,15 +35,23 @@ const addElementValue = (selector, newValue) => {
 };
 
 const insertItemHTML = (existingElementSelector, newElementHtml) => {
-  return getElementBy(existingElementSelector).insertAdjacentHTML("beforeend", newElementHtml);
+  return getElementBy(existingElementSelector).insertAdjacentHTML(
+    "beforeend",
+    newElementHtml
+  );
 };
 
 const handleEventListener = (elementSelector, eventListener, callback) => {
-  return getElementBy(elementSelector).addEventListener(eventListener, callback);
+  return getElementBy(elementSelector).addEventListener(
+    eventListener,
+    callback
+  );
 };
 
 const handleEventListeners = (elementSelector, eventListener, callback) => {
-  return getElementsBy(elementSelector).forEach((el) => el.addEventListener(eventListener, callback));
+  return getElementsBy(elementSelector).forEach((el) =>
+    el.addEventListener(eventListener, callback)
+  );
 };
 
 const changeClass = (selector, removedClass, newClass) => {
@@ -60,22 +68,48 @@ const removeClass = (selector, removedClass) => {
 };
 
 const checkingInputFulfillment = (selector1, selector2, selector3) => {
-  return getElementValue(selector1) == "" ? true : getElementValue(selector2) == "" ? true : getElementValue(selector3) == "" ? true : false;
+  return getElementValue(selector1) == ""
+    ? true
+    : getElementValue(selector2) == ""
+    ? true
+    : getElementValue(selector3) == ""
+    ? true
+    : false;
 };
 
 const hideKidsSection = (e) => {
   if (e.target.checked) {
-    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1620/                           /2022`, "#application-kids-div", false);
+    handleSectionVisibilityAndAutofill(
+      "#application-number",
+      `FDK.KS.1620/                           /2022`,
+      "#application-kids-div",
+      false
+    );
   } else {
-    handleSectionVisibilityAndAutofill("#application-number", "", "#application-kids-div", true);
+    handleSectionVisibilityAndAutofill(
+      "#application-number",
+      "",
+      "#application-kids-div",
+      true
+    );
   }
 };
 
 const hideOwnSection = (e) => {
   if (e.target.checked) {
-    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1621/                           /2022`, "#application-own-div", false);
+    handleSectionVisibilityAndAutofill(
+      "#application-number",
+      `FDK.KS.1621/                           /2022`,
+      "#application-own-div",
+      false
+    );
   } else {
-    handleSectionVisibilityAndAutofill("#application-number", "", "#application-own-div", true);
+    handleSectionVisibilityAndAutofill(
+      "#application-number",
+      "",
+      "#application-own-div",
+      true
+    );
   }
 };
 
@@ -89,7 +123,9 @@ const handleXls = async (event) => {
   const file = event.target.files[0];
   const data = await file.arrayBuffer();
   const workbook = XLSX.readFile(data);
-  const personData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[workbook.SheetNames[0]]);
+  const personData = XLSX.utils.sheet_to_row_object_array(
+    workbook.Sheets[workbook.SheetNames[0]]
+  );
   sendData("/post-data", {
     content: personData,
   });
@@ -106,7 +142,9 @@ const handleAlertMsg = (messageSelector) => {
 };
 
 const generatePDF = () => {
-  return html2canvas(document.getElementById("form-printable")).then(function (canvas) {
+  return html2canvas(document.getElementById("form-printable")).then(function (
+    canvas
+  ) {
     const imgData = canvas.toDataURL("image/png");
     const imgWidth = 210;
     const pageHeight = 297;
@@ -133,13 +171,27 @@ const handleGeneratePDF = (e) => {
 
   if (checkingInputFulfillment("#name", "#unit", "#statement-salary")) {
     handleAlertMsg("#alert-name-salary");
-  } else if (!getElementBy("#application-own").checked & !getElementBy("#application-kids").checked) {
+  } else if (
+    !getElementBy("#application-own").checked &
+    !getElementBy("#application-kids").checked
+  ) {
     handleAlertMsg("#alert-purpose");
-  } else if (getElementBy("#statement-kids").checked & (getElementBy("#statement-kids-quantity-input").value == "")) {
+  } else if (
+    getElementBy("#statement-kids").checked &
+    (getElementBy("#statement-kids-quantity-input").value == "")
+  ) {
     handleAlertMsg("#alert-kids-quantity");
   } else if (getElementBy("#application-kids").checked) {
-    if (getElementBy("#to-check-input-date").value == "" || getElementBy("#to-check-input-name").value == "") {
+    if (
+      getElementBy("#to-check-input-date").value == "" ||
+      getElementBy("#to-check-input-name").value == ""
+    ) {
       handleAlertMsg("#alert-kids");
+    } else if (
+      getElementBy("#application-kids").checked &
+      !getElementBy("#statement-kids").checked
+    ) {
+      handleAlertMsg("#alert-kids-camp");
     } else generatePDF();
   } else generatePDF();
 };
@@ -157,7 +209,12 @@ const handlePeselCheck = () => {
   getElementBy("#form-container").scrollIntoView();
 };
 
-const handleSectionVisibilityAndAutofill = (autofillSection, autofillTxt, invisibleSection, isRemoveClass) => {
+const handleSectionVisibilityAndAutofill = (
+  autofillSection,
+  autofillTxt,
+  invisibleSection,
+  isRemoveClass
+) => {
   if (isRemoveClass) {
     setElementValue(autofillSection, autofillTxt);
     removeClass(invisibleSection, "invisible");
@@ -173,9 +230,13 @@ const displaySubsidy = (e) => {
 
   if (Math.round(e.target.value) <= salaryTable[0]) {
     setElementValue("#application-value", subsidyTable[2]);
-  } else if ((Math.round(e.target.value) >= salaryTable[1]) & (Math.round(e.target.value) <= salaryTable[2])) {
+  } else if (
+    (Math.round(e.target.value) >= salaryTable[1]) &
+    (Math.round(e.target.value) <= salaryTable[2])
+  ) {
     setElementValue("#application-value", subsidyTable[1]);
-  } else if (Math.round(e.target.value) >= salaryTable[3]) setElementValue("#application-value", subsidyTable[0]);
+  } else if (Math.round(e.target.value) >= salaryTable[3])
+    setElementValue("#application-value", subsidyTable[0]);
 
   if (e.target.value == "") setElementValue("#application-value", "");
 };
@@ -210,45 +271,68 @@ const generatePassword = () => {
   return retVal;
 };
 
+const generateId = () => {
+  return (
+    generatePassword() +
+    Math.floor(100000 + Math.random() * 900000) +
+    getElementValue("#lastThree").toLowerCase()[2] +
+    Math.floor(100000 + Math.random() * 900000) +
+    getElementValue("#lastThree").toLowerCase()[0] +
+    Math.floor(100000 + Math.random() * 900000) +
+    getElementValue("#lastThree").toLowerCase()[1] +
+    Math.floor(100000 + Math.random() * 900000)
+  );
+};
+
+const displayDismissMsg = () => {
+  setDisplayStyle("#message-container-dismiss-auth", "block");
+  setDisplayStyle("#message-container-get-auth", "none");
+  e.preventDefault();
+};
+
+const handleRedirect = (link, condition, adress) => {
+  if (condition) {
+    displayDismissMsg();
+  } else {
+    link.href = `${link.href}${adress}`;
+  }
+};
+
 const authorize = () => {
   return handleEventListener("#check-btn-auth", "click", (e) => {
-    let link;
-    if (checkingInputFulfillment("#fname", "#sname", "#lastThree")) {
-      setDisplayStyle("#message-container-dismiss-auth", "block");
-      setDisplayStyle("#message-container-get-auth", "none");
-      e.preventDefault();
-    } else {
-      link = getElementBy("#check-btn-auth");
-      link.href = `${link.href}/pracownik?fname=${getElementValue("#fname").toLowerCase()}&sname=${getElementValue(
-        "#sname"
-      ).toLowerCase()}&id=${generatePassword()}${Math.floor(100000 + Math.random() * 900000)}${
-        getElementValue("#lastThree").toLowerCase()[2]
-      }${Math.floor(100000 + Math.random() * 900000)}${getElementValue("#lastThree").toLowerCase()[0]}${Math.floor(100000 + Math.random() * 900000)}${
-        getElementValue("#lastThree").toLowerCase()[1]
-      }${Math.floor(100000 + Math.random() * 900000)}`;
-    }
+    handleRedirect(
+      getElementBy("#check-btn-auth"),
+      checkingInputFulfillment("#fname", "#sname", "#lastThree"),
+      "/pracownik?fname=" +
+        getElementValue("#fname").toLowerCase() +
+        "&" +
+        "sname=" +
+        getElementValue("#sname").toLowerCase() +
+        "&" +
+        "id=" +
+        generateId()
+    );
   });
 };
 
 const authorizePostSection = () => {
   return handleEventListener("#check-btn-auth-post", "click", (e) => {
-    let password = getElementValue("#password");
-    let link;
-    if (getElementValue("#password") == "") {
-      setDisplayStyle("#message-container-dismiss-auth", "block");
-      setDisplayStyle("#message-container-get-auth", "none");
-      e.preventDefault();
-    } else {
-      link = getElementBy("#check-btn-auth-post");
-      link.href = `${link.href}/access?password=${password}`;
-    }
+    handleRedirect(
+      getElementBy("#check-btn-auth-post"),
+      getElementValue("#password") == "",
+      "/access?password=" + getElementValue("#password")
+    );
   });
 };
 
 const fetchPersonData = (e) => {
   e.preventDefault();
   fetchData(
-    `/wniosek/${getElementValue("#fname").toLowerCase() + getElementValue("#sname").toLowerCase() + getElementValue("#lastThree").toLowerCase()}`,
+    `/wniosek/${
+      getElementValue("#fname").toLowerCase() +
+      getElementValue("#sname").toLowerCase() +
+      getElementValue("#lastThree").toLowerCase()
+    }`,
     (person) => {
       handleIndividualInputs(person);
     }
