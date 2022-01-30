@@ -284,15 +284,15 @@ const generateId = () => {
   );
 };
 
-const displayDismissMsg = () => {
+const displayDismissMsg = (e) => {
   setDisplayStyle("#message-container-dismiss-auth", "block");
   setDisplayStyle("#message-container-get-auth", "none");
   e.preventDefault();
 };
 
-const handleRedirect = (link, condition, adress) => {
+const handleRedirect = (e, link, condition, adress) => {
   if (condition) {
-    displayDismissMsg();
+    displayDismissMsg(e);
   } else {
     link.href = `${link.href}${adress}`;
   }
@@ -301,6 +301,7 @@ const handleRedirect = (link, condition, adress) => {
 const authorize = () => {
   return handleEventListener("#check-btn-auth", "click", (e) => {
     handleRedirect(
+      e,
       getElementBy("#check-btn-auth"),
       checkingInputFulfillment("#fname", "#sname", "#lastThree"),
       "/pracownik?fname=" +
