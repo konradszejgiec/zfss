@@ -178,7 +178,7 @@ const handleGeneratePDF = (e) => {
     handleAlertMsg("#alert-purpose");
   } else if (
     getElementBy("#statement-kids").checked &
-    (getElementBy("#statement-kids-quantity-input").value == "")
+    (getElementBy("#statement-kids-quantity-input").value == ("" || 0))
   ) {
     handleAlertMsg("#alert-kids-quantity");
   } else if (getElementBy("#application-kids").checked) {
