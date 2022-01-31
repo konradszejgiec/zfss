@@ -1,20 +1,28 @@
 include index.pug 
 div.container.px-4.px-lg-5.mb-5
-    p.fw-bold.text-justify.m-3.my-5.border-bottom
+    p.fw-bold.text-justify.border-bottom
         span Masz pytanie i
         | 
         a(href="/faq") nie znalazłeś odpowiedzi w sekcji FAQ?
         | 
         span Zapraszam do kontaktu.
+    div.row
+        div.col
+            div.form-field
+                a(href="https://www.spsk4.lublin.pl/" target="blank")
+                    img(src="../../assets/img/SPSK4_logo_i_nazwa.png" class="rounded mx-auto d-block")
 
-
-    p.text-justify.m-1.ms-5
-        i.fas.fa-map-marker-alt  Dział Kadr i Płac - Sekcja Socjalna
-    p.text-justify.m-1.ms-5
-        i.fa.fa-phone-square-alt  (81) 72-44-235
-    p.text-justify.m-1.ms-5.mb-5
-        i.fas.fa-at  
-            a(href="mailto:konrad.szejgiec@spsk4.lublin.pl") konrad.szejgiec@spsk4.lublin.pl
+        div.col
+            div.form-field
+                p.text-justify.m-1
+                    i.fas.fa-map-marker-alt  Dział Kadr i Płac - Sekcja Socjalna
+                p.text-justify.m-1
+                    i.fa.fa-phone-square-alt  (81) 72-44-235
+                p.text-justify.m-1
+                    i.fas.fa-at  
+                        a(href="mailto:konrad.szejgiec@spsk4.lublin.pl") konrad.szejgiec@spsk4.lublin.pl
+        div.col
+            div.form-field
 
 script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js") 
 include footer.pug 
