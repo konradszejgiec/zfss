@@ -11,9 +11,7 @@ const routes = (app, bodyParser, controller) => {
 
   app.route("/regulamin-zasady-wnioski/").get(controller.displayAccessPage);
 
-  app
-    .route("/regulamin-zasady-wnioski/:pracownik")
-    .get(controller.displayRules);
+  app.route("/regulamin-zasady-wnioski/:pracownik").get(controller.displayRules);
 
   app.route("/faq").get(controller.displayAccessPage);
 
@@ -23,12 +21,23 @@ const routes = (app, bodyParser, controller) => {
 
   app.route("/kontakt").get(controller.displayContact);
 
-  app
-    .route("/post-data")
-    .get(controller.displayAccessPostPage)
-    .post(jsonParser, controller.postDatabase);
+  app.route("/dodaj").get(controller.displayAddPage);
 
-  app.route("/post-data/:admin").get(controller.displayPostPage);
+  app.route("/dodaj/baza").get(controller.displayAccessPostPage);
+
+  app.route("/dodaj/news").get(controller.displayAccessPostPage);
+
+  app.route("/dodaj/baza/:admin").get(controller.displayPostPage).post(jsonParser, controller.postDatabase);
+
+  app.route("/dodaj/news/:admin").get(controller.displayPostPage).post(jsonParser, controller.postNews);
+
+  app.route("/dodaj/success").get(controller.displaySuccessMsg);
+
+  app.route("/news").get(controller.displayNews);
+
+  app.route("/news.json").get(controller.getNews);
+
+  app.route("/news/:id").get(controller.getSingleNews);
 };
 
 module.exports = routes;

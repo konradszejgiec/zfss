@@ -6,10 +6,16 @@ dotenv.config({ path: "./config.env" });
 
 const Person = require("../models/person");
 
+const News = require("../models/news");
+
 exports.displayMainPage = async (req, res) => {
   res.render("main", {
     route: "background-image: url('../../assets/img/home-bg.jpg')",
   });
+};
+
+exports.displayNews = async (req, res) => {
+  res.render("news", { route: "background-image: url('../../assets/img/news-bg.jpg')", sectionMsg: "Aktualności" });
 };
 
 exports.displayRules = async (req, res) => {
@@ -95,6 +101,10 @@ exports.displayContact = async (req, res) => {
   });
 };
 
+exports.displayAddPage = async (req, res) => {
+  res.render("add", { route: "background-image: url('../../assets/img/admin-bg.jpg')", sectionMsg: "Panel administratora" });
+};
+
 exports.displayAccessPostPage = async (req, res) => {
   res.render("access-post-data", {
     route: "background-image: url('../../assets/img/password-bg.jpg')",
@@ -106,20 +116,36 @@ exports.displayAccessPostPage = async (req, res) => {
 exports.displayPostPage = async (req, res) => {
   try {
     if (req.query.password == process.env.FORM_PASSWORD) {
-      res.render("post-data", {
-        route: "background-image: url('../../assets/img/password-success-bg.jpg')",
-        sectionMsg: "Panel administratora",
-      });
+      if (req.path == "/dodaj/news/access") {
+        res.render("add-news", {
+          route: "background-image: url('../../assets/img/password-success-bg.jpg')",
+          sectionMsg: "Panel administratora",
+        });
+      } else if (req.path == "/dodaj/baza/access") {
+        res.render("post-data", {
+          route: "background-image: url('../../assets/img/password-success-bg.jpg')",
+          sectionMsg: "Panel administratora",
+          link: "/dodaj/success",
+        });
+      }
     } else
       res.render("access-message", {
         route: "background-image: url('../../assets/img/password-bg.jpg')",
         sectionMsg: "Panel administratora",
-        link: "/post-data",
+        link: "/dodaj",
       });
   } catch (err) {
     res.status(404).end();
     console.log(err);
   }
+};
+
+exports.displaySuccessMsg = async (req, res) => {
+  res.render("success", {
+    route: "background-image: url('../../assets/img/password-success-bg.jpg')",
+    sectionMsg: "Panel administratora",
+    link: "/",
+  });
 };
 
 exports.getPersonData = async (req, res) => {
@@ -150,6 +176,41 @@ exports.postDatabase = async (req, res) => {
   try {
     const person = await Person.insertMany(req.body.content);
     res.status(200).end();
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
+};
+
+exports.getNews = async (req, res) => {
+  try {
+    const news = await News.find();
+    res.status(200).send(news);
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
+};
+
+exports.postNews = async (req, res) => {
+  try {
+    const news = await News.create(req.body.content);
+    res.status(200).end();
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
+};
+
+exports.getSingleNews = async (req, res) => {
+  try {
+    const news = await News.findById(req.params.id);
+    res.render("single-news", {
+      id: news._id,
+      title: news.title,
+      date: news.date.toLocaleString("pl-PL", { weekday: "long", year: "numeric", month: "long", day: "numeric" }),
+      link: "/news",
+    });
   } catch (err) {
     res.status(404).end();
     console.log(err);

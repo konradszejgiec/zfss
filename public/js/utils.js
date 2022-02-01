@@ -59,8 +59,16 @@ const removeClass = (selector, removedClass) => {
   return getElementBy(selector).classList.remove(removedClass);
 };
 
-const checkingInputFulfillment = (selector1, selector2, selector3) => {
-  return getElementValue(selector1) == "" ? true : getElementValue(selector2) == "" ? true : getElementValue(selector3) == "" ? true : false;
+const checkingInputFulfillment = (selector1, selector2, selector3, selector4) => {
+  return getElementValue(selector1) == ""
+    ? true
+    : getElementValue(selector2) == ""
+    ? true
+    : getElementValue(selector3) == ""
+    ? true
+    : getElementValue(selector4) == ""
+    ? true
+    : false;
 };
 
 const hideKidsSection = (e) => {
@@ -90,7 +98,7 @@ const handleXls = async (event) => {
   const data = await file.arrayBuffer();
   const workbook = XLSX.readFile(data);
   const personData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[workbook.SheetNames[0]]);
-  sendData("/post-data", {
+  sendData("/dodaj/baza/access", {
     content: personData,
   });
 };
@@ -131,7 +139,7 @@ const generatePDF = () => {
 const handleGeneratePDF = (e) => {
   e.preventDefault();
 
-  if (checkingInputFulfillment("#name", "#unit", "#statement-salary")) {
+  if (checkingInputFulfillment("#name", "#unit", "#statement-salary", "#sign-employee")) {
     handleAlertMsg("#alert-name-salary");
   } else if (!getElementBy("#application-own").checked & !getElementBy("#application-kids").checked) {
     handleAlertMsg("#alert-purpose");
@@ -244,7 +252,7 @@ const authorize = () => {
     handleRedirect(
       e,
       getElementBy("#check-btn-auth"),
-      checkingInputFulfillment("#fname", "#sname", "#lastThree"),
+      checkingInputFulfillment("#fname", "#sname", "#lastThree", "#lastThree"),
       "/pracownik?fname=" +
         getElementValue("#fname").toLowerCase() +
         "&" +
@@ -290,4 +298,139 @@ const handleApplication = () => {
   handleEventListener("#application-kids", "click", hideOwnSection);
   handleEventListener("#statement-kids", "click", showKidsQuantitySection);
   handleEventListener("#statement-salary", "input", displaySubsidy);
+};
+
+const sortArticles = (articles) => {
+  let sortedArray = articles.sort((a, b) => {
+    let dateA = new Date(a.date);
+    let dateB = new Date(b.date);
+    return dateB - dateA;
+  });
+  return sortedArray;
+};
+
+const renderCart = (articles) => {
+  sortArticles(articles).forEach((item) => {
+    insertItemHTML(".list-group", getItemHTML(item));
+  });
+};
+
+const insertLink = (selector, link, title) => {
+  return addElementValue(selector, `<a href=${link}>${title}</a>`);
+};
+
+const insertImg = (selector, link, title) => {
+  return addElementValue(selector, `<img src=${link} alt=${title} class=img-fluid>`);
+};
+
+const insertVideo = (selector, link, title) => {
+  return addElementValue(
+    selector,
+    `<video src=${link} alt=${title} autoplay="autoplay" muted="true" loop="true" playsinline="true" width="100%"></video>`
+  );
+};
+
+const insertBold = (selector) => {
+  return addElementValue(selector, `<b>Tutaj wstaw tekst</b>`);
+};
+
+const insertEmphasize = (selector) => {
+  return addElementValue(selector, `<em>Tutaj wstaw tekst</em>`);
+};
+
+const insertAttachment = (sectionSelector) => {
+  if (getElementBy("#insert").classList.contains("link")) {
+    insertLink(sectionSelector, getElementValue("#source-link"), getElementValue("#source-title"));
+    removeClass("#insert", "link");
+  }
+  if (getElementBy("#insert").classList.contains("obraz")) {
+    insertImg(sectionSelector, getElementValue("#source-link"), getElementValue("#source-title"));
+    removeClass("#insert", "obraz");
+  }
+  if (getElementBy("#insert").classList.contains("video")) {
+    insertVideo(sectionSelector, getElementValue("#source-link"), getElementValue("#source-title"));
+    removeClass("#insert", "video");
+  }
+};
+
+const getItemHTML = (item) => {
+  return `<a href="/news/${item._id}" class="btn btn-outline-secondary mb-2 text-center">Aktualności z dnia - ${new Date(item.date).toLocaleString(
+    "pl-PL",
+    {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }
+  )}<p class="text-center m-1" style="font-size:15px;"><em>Tematyka: ${item.description}<em></p></a>`;
+};
+
+const getLastNewsHTML = (item) => {
+  return `<a href="/news/${item._id}" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2"><h3 class="text-center">${
+    item.title
+  }</h3><p class="text-center"><em>Aktualności z dnia - ${new Date(item.date).toLocaleString("pl-PL", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })}<p class="text-center">Tematyka: ${item.description}</p></em></p>`;
+};
+
+const getContentHTML = (item) => {
+  return `${item.content.split("\n").join("<br />")}`;
+};
+
+const handleSubmitBtn = (target) => {
+  handleEventListener("#submitBtn", "click", (e) => {
+    if (checkingInputFulfillment("#title", "#news", "#date", "#description")) {
+      handleAlertMsg("#alert-admin");
+    } else {
+      sendData(`/dodaj/${target}/access`, {
+        content: new News(getElementValue("#title"), getElementValue("#news"), getDate("#date"), getElementValue("#description")),
+      });
+      getElementBy("#submitBtn").href = `/dodaj/success`;
+    }
+  });
+};
+
+const notFilledNewsInput = () => {
+  return getElementValue("#title") == ""
+    ? true
+    : getElementValue("#date") == ""
+    ? true
+    : getElementValue("#news") == ""
+    ? true
+    : getElementValue("#description") == ""
+    ? true
+    : false;
+};
+
+const handleInputUtlis = (selector) => {
+  return handleEventListener(`.${selector}`, "click", (e) => {
+    if (selector == "bold") {
+      return insertBold("#news");
+    }
+    if (selector == "emphasize") {
+      return insertEmphasize("#news");
+    }
+    setClass("#insert", selector);
+    changeClass("#insert", "d-none", "d-grid");
+    getElementsBy(".form").forEach((el) => (el.style.display = "none"));
+    setText(".add-btn", `Dodaj ${selector}`);
+  });
+};
+
+const resetInputLink = () => {
+  setElementValue("#source-link", "");
+  setElementValue("#source-title", "");
+};
+
+const renderContent = (items) => {
+  items.forEach((element, index) => {
+    if (items[index]._id == getElementBy(".post-title").id) return insertItemHTML(".font-weight-bold", getContentHTML(items[index]));
+  });
+};
+
+const renderLastNews = (news) => {
+  insertItemHTML(".news", getLastNewsHTML(news));
 };
