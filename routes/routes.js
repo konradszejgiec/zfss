@@ -9,9 +9,13 @@ const routes = (app, bodyParser, controller) => {
 
   app.route("/wniosek/:pracownik").get(controller.getPersonData);
 
+  app.route("/sekcja-pracownik").get(controller.displayEmployeeSection);
+
   app.route("/regulamin-zasady-wnioski/").get(controller.displayAccessPage);
 
-  app.route("/regulamin-zasady-wnioski/:pracownik").get(controller.displayRules);
+  app
+    .route("/regulamin-zasady-wnioski/:pracownik")
+    .get(controller.displayRules);
 
   app.route("/faq").get(controller.displayAccessPage);
 
@@ -27,9 +31,15 @@ const routes = (app, bodyParser, controller) => {
 
   app.route("/dodaj/news").get(controller.displayAccessPostPage);
 
-  app.route("/dodaj/baza/:admin").get(controller.displayPostPage).post(jsonParser, controller.postDatabase);
+  app
+    .route("/dodaj/baza/:admin")
+    .get(controller.displayPostPage)
+    .post(jsonParser, controller.postDatabase);
 
-  app.route("/dodaj/news/:admin").get(controller.displayPostPage).post(jsonParser, controller.postNews);
+  app
+    .route("/dodaj/news/:admin")
+    .get(controller.displayPostPage)
+    .post(jsonParser, controller.postNews);
 
   app.route("/dodaj/success").get(controller.displaySuccessMsg);
 

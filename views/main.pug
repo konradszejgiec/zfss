@@ -1,45 +1,38 @@
 include index.pug  
 
 div.container.px-4.px-lg-5
-    h3.m-3.text-center.border-bottom Witaj na stronie Zakładowego Funduszu Świadczeń Socjalnych
+    h3.mx-3.text-center.border-bottom.mb-3 Witaj na stronie Zakładowego Funduszu Świadczeń Socjalnych
 
-div.container.px-4.px-lg-5
+div(class="container px-4 px-lg-5 my-5")
+    h5.text-center 
+        em Ważne informacje
     div.row.gx-4.gx-lg-5.justify-content-center.m-3.news
-    
-    h5.text-center Sekcje:
 
+    h3.text-center.mb-3.mt-3 
     div.row.gx-4.gx-lg-5.justify-content-center.m-3
-        a(href="/news" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
-            h3.text-center Aktualności
-            p.text-center 
-            em Zobacz wszystkie aktualności dotyczące Zakładowego Funduszu Świadczeń Socjalnych
-
-    div.row.gx-4.gx-lg-5.justify-content-center.m-3
-        a(href="/wniosek" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
+        a(href="/wniosek" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 border border-5 rounded-3")
             h3.text-center Wniosek o dofinansowanie z ZFŚS
             p.text-center 
-            em Przejdź do wypełnienia interaktywnego formularza
+            em Przejdź bezpośrednio do wypełnienia interaktywnego formularza
+
+div(class="container px-4 px-lg-5 mb-5")    
+    h5.my-3.text-center 
+        em Sekcje
 
     div.row.gx-4.gx-lg-5.justify-content-center.m-3
-        a(href="/regulamin-zasady-wnioski" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
-            h3.text-center Regulamin ZFŚS, zasady, progi dochodowe, stawki pożyczek oraz druki
+        a(href="/news" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2 border border-5 rounded-3")
+            h3.text-center Aktualności
             p.text-center 
-            em Przejdź do sekcji ze wszelkimi dokumentami oraz drukami dotyczącymi Zakładowego Funduszu Świadczeń Socjalnych
+            em Komunikaty i aktualne informacje dotyczące Zakładowego Funduszu Świadczeń Socjalnych
 
     div.row.gx-4.gx-lg-5.justify-content-center.m-3
-        a(href="/rodo" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
-            h3.text-center Klauzula RODO
-            p.text-center 
-            em Dowiedz się w jakim zakresie będą wykorzystywane Twoje dane osobowe
-
-    div.row.gx-4.gx-lg-5.justify-content-center.m-3
-        a(href="/faq" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
-            h3.text-center Najczęściej zadawane pytania
-            p.text-center 
-            em Zobacz odpowiedzi na najczęściej zadawane pytania
+        a(href="/sekcja-pracownik" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2 border border-5 rounded-3")
+            h3.text-center Sekcja dla pracownika
+            p
+            em Zapoznaj się ze wszystkimi niezbędnymi informacjami dotyczącymi ZFŚŚ, m.in. zobacz odpowiedzi na najczęściej zadawane pytania, zapoznaj się z Regulaminem ZFŚŚ oraz innymi dokumentami dotyczącymi Funduszu Socjalnego, pobierz odpowiedni druk lub wniosek lub też poznaj w jakim zakresie będą przetwarzane Twoje dane osobowe.
         
     div.row.gx-4.gx-lg-5.justify-content-center.m-3
-        a(href="/kontakt" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
+        a(href="/kontakt" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-4 border border-5 rounded-3")
             h3.text-center Kontakt z pracownikiem socjalnym
             p.text-center 
             em Masz pytania? Skontaktuj się z pracownikiem socjalnym

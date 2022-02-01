@@ -1,14 +1,15 @@
 include index.pug
-div(class="hidden-form") 
-  div.m-3
-    p.fw-bold Pamiętaj, żeby zachować właściwy format pliku excel: zachować format zgodny z mongoose model schema, brak spacji i kropek w etykietach wierszy, brak pustych komórek, brak duplikatów w nrprac. To chyba tyle.
+div.container.px-4.px-lg-5.mb-5
+  div(class="hidden-form") 
+    div.m-3
+      p.fw-bold Pamiętaj, żeby zachować właściwy format pliku excel: zachować format zgodny z mongoose model schema, brak spacji i kropek w etykietach wierszy, brak pustych komórek, brak duplikatów w nrprac. To chyba tyle.
 
-  div(class="mx-auto" style="width: 500px;")
-    label(for="formFile" class="form-label")
-    input(class="form-control" type="file" id="form-file")
-  div(class="mx-auto" style="width: 500px;")
-    a(href=link id="send-file" class="btn btn-primary mx-auto mt-3 mb-3" style="width: 500px;") Wyślij plik z danymi w formacie xls 
-br
+    div(class="mx-auto" style="width: 500px;")
+      label(for="formFile" class="form-label")
+      input(class="form-control rounded-3" type="file" id="form-file")
+    div(class="mx-auto" style="width: 500px;")
+      a(href=link id="send-file" class="btn btn-primary mx-auto mt-3 mb-3 rounded-3" style="width: 500px;") Wyślij plik z danymi w formacie xls 
+  br
 
 
 script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js")

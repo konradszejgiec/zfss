@@ -33,7 +33,7 @@ div(class="mx-auto" id="alert-kids-quantity" style="width: 700px; display: none;
     div.container.px-4.px-lg-5
         div.row.gx-4.gx-lg-5.justify-content-center.mb-3
             div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                p.fw-bold.text-center.m-3 Nie zostało uzupełnione lub podano błędną wartość pola
+                p.fw-bold.text-center.m-3 Nie zostało uzupełnione pole lub podano błędną wartość w polu
                     | 
                     em "wpisz liczbę dzieci" w sekcji II
                 div.d-grid.gap-2.col-6.mx-auto 
@@ -43,57 +43,56 @@ div(class="mx-auto" id="alert-kids-camp" style="width: 700px; display: none;")
     div.container.px-4.px-lg-5
         div.row.gx-4.gx-lg-5.justify-content-center.mb-3
             div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                p.fw-bold.text-justify.m-3 Zaznaczono formę wypoczynku w sekcji I - "Zorganizowany w formie obozu, kolonii, półkolonii, zielonej szkoły wypoczynek mojego dziecka".
+                p.fw-bold.text-center.m-3 Zaznaczono formę wypoczynku w sekcji I - "2. Zorganizowany w formie obozu, kolonii, półkolonii, zielonej szkoły wypoczynek mojego dziecka".
                     | 
-                    em Zaznacz pole "Dzieci" w sekcji II lub zmień formę wypoczynku na "Różne formy wypoczynku organizowanego we własnym zakresie."
+                    em Zaznacz pole "Dzieci" w sekcji II lub zmień formę wypoczynku na "1. Różne formy wypoczynku organizowanego we własnym zakresie."
                 div.d-grid.gap-2.col-6.mx-auto 
                     a(class="btn btn-outline-secondary m-3" id="confirm-btn" role="button") Ok
 
 div(id="person-container" style="display: block;")
-    div.m-3.border.border-dark.border-1.bg-light
-        h2.m-3.text-center Instrukcja wypełnienia WNIOSKU O DOFINANSOWANIE
-        p.m-3.fw-bold 
-            em 1. Wniosek można wypełnić z opcją autouzupełnienia danych - wystarczy uzupełnić poniższe dane oraz kliknąć "WYSZUKAJ SWÓJ WNIOSEK". 
-        p.m-3.fw-bold 
-            em 2. Po kliknięcu "WYSZKUKAJ SWÓJ WNIOSEK" wyświelti się gotowy i wstępnie uzupełniony formularz. Należy go wypełnić.
-        p.m-3.fw-bold  
-            em 3. Następnie należy wniosek wygenerować (PDF), wydrukować (klikając na samym dole w przycisk "WYDRUKUJ WNIOSEK I PODPISZ") i podpisać.
-        p.m-1.ms-5
-            em (NIEREKOMENDOWANE) Wniosek można wypełnić bez opcji autouzupełnienia danych - wystarczy wtedy kliknąć "WYSZUKAJ SWÓJ WNIOSEK".  
-        p.m-1.ms-5
-            em (NIEREKOMENDOWANE) Wniosek można wypełnić także odręcznie pobierając wniosek i drukując - 
-            |
-            span 
-                a(href="/regulamin-zasady-wnioski") KLIKNIJ TUTAJ
-        p.m-3.mb-1.fw-bold UWAGI TECHNICZNE:
-        p.m-1.ms-5.mb-3 
-            em Rekomendowana przeglądarka do uzupełnienia wniosku - Google Chrome. Nierekomendowana - Mozilla Firefox.
+    div.container.px-4.px-lg-5.mb-5
+        div.m-3.border.border-dark.border-1.bg-light
+            h2.m-3.text-center Instrukcja wypełnienia WNIOSKU O DOFINANSOWANIE
+            p.m-3.fw-bold 
+                em 1. Wniosek posiada opcję autouzupełnienia danych - uzupełnij poniższe dane i kliknij "WYSZUKAJ SWÓJ WNIOSEK". 
+            p.m-3.fw-bold 
+                em 2. Po kliknięcu "WYSZKUKAJ SWÓJ WNIOSEK" wyświelti się gotowy i wstępnie uzupełniony formularz. Należy go wypełnić.
+            p.m-3.fw-bold  
+                em 3. Następnie wygeneruj wniosek (PDF), wydrukuj (klikając na samym dole "WYDRUKUJ WNIOSEK I PODPISZ") i podpisz.
+            p.m-1.ms-5
+                em (NIEREKOMENDOWANE) Wniosek można wypełnić bez opcji autouzupełnienia - kliknij "WYSZUKAJ SWÓJ WNIOSEK".  
+            p.m-1.ms-5
+                em (NIEREKOMENDOWANE) Wniosek można wypełnić także odręcznie pobierając wniosek i drukując - 
+                |
+                span 
+                    a(href="/regulamin-zasady-wnioski") KLIKNIJ TUTAJ
+            p.m-3.mb-1.fw-bold UWAGI TECHNICZNE:
+            p.m-1.ms-5.mb-3 
+                em Rekomendowana przeglądarka do uzupełnienia wniosku - Google Chrome. Nierekomendowana - Mozilla Firefox.
 
-        p.m-1.ms-5 1. W przypadku problemów z autouzupełnieniem wniosku należy chwilę odczekać, aż pobiorą się dane (maksymalnie do 30 sekund).
-        p.m-1.ms-5 2. W przypadku braku pobrania danych należy odświeżyć stronę, ponownie wpisać dane (sprawdzając wcześniej ich poprawność) i wyszukać. 
-        p.m-1.ms-5 3. W razie problemów z wygenerowaniem wniosku w formacie PDF należy odświeżyć stronę lub zmienić przeglądarkę na inną.  
-        p.m-1.ms-5.mb-3 4. W przypadku wystąpienia innych problemów należy skontaktować się z pracownikiem socjalnym -
-            | 
-            span
-                a(href="/kontakt" target="blank") KLIKNIJ TUTAJ 
+            p.m-1.ms-5 1. W przypadku problemów z autouzupełnieniem należy chwilę odczekać, aż pobiorą się dane (maksymalnie do 30 sekund).
+            p.m-1.ms-5 2. W razie niepobrania danych odśwież stronę, ponownie wpisz dane (sprawdzając wcześniej ich poprawność) i wyszukaj. 
+            p.m-1.ms-5 3. W przypadku niewygenerowania się wniosku do pliku PDF, odśwież stronę i ponów próbę lub zmień przeglądarkę.  
+            p.m-1.ms-5.mb-3 4. W przypadku wystąpienia innych problemów skontaktuj się z pracownikiem socjalnym -
+                | 
+                span
+                    a(href="/kontakt" target="blank") KLIKNIJ TUTAJ 
 
-    div(class="input-group mb-3")
-        input(type="text" class="form-control ms-3 bg-light" id="fname" placeholder="Wpisz swoje IMIĘ")
-        input(type="text" class="form-control  bg-light" id="sname" placeholder="Wpisz swoje NAZWISKO")
-        input(type="text" class="form-control  bg-light" id="lastThree" placeholder="Wpisz 3 OSTANIE CYFRY NR PESEL")
-        button(id="check-btn" class="btn btn-secondary me-3" type="button") Wyszukaj swój wniosek
+        div(class="input-group mb-3")
+            input(type="text" class="form-control ms-3 bg-light" id="fname" placeholder="Wpisz swoje IMIĘ")
+            input(type="text" class="form-control  bg-light" id="sname" placeholder="Wpisz swoje NAZWISKO")
+            input(type="text" class="form-control  bg-light" id="lastThree" placeholder="Wpisz 3 OSTANIE CYFRY NR PESEL")
+            button(id="check-btn" class="btn btn-secondary me-3" type="button") Wyszukaj swój wniosek
 
 div(class="mx-auto" id="full-form" style="width: 1200px;")
     form(id="form-printable" class="formularz" style="display: none;")
         div.m-3.row
             div.col
-                div(id="id-container" class="m-3 form-field")
-                    a(href="https://www.spsk4.lublin.pl/" target="blank")
-                        img(src="../../assets/img/SPSK4_logo_i_nazwa.png")
-                        br
+            br
 
             div.col
                 div(id="id-container" class="m-3 form-field")
+                    label(for="id" class="form-label")
                     input(type="text" class="form-control" id="id" readonly style="font-size: 20px;")  
 
         div(id="form-container" class="m-3")
@@ -146,7 +145,7 @@ div(class="mx-auto" id="full-form" style="width: 1200px;")
                     div.mx-3.form-check
                         input(type="checkbox" value="" class="form-check-input" id="statement-consort")
                         | 
-                        label(for="statement-consort" class="form-check-label") Współmałżonek
+                        label(for="statement-consort" class="form-check-label") Małżonek
                 div.row.mx-3        
                     div.mx-3.form-check.col
                         input(type="checkbox" value="" class="form-check-input" id="statement-kids")
