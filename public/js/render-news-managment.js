@@ -1,7 +1,7 @@
 "use strict";
 
 fetchData("/news.json", (items) => {
-  renderCart(items, deleteNewsHTML);
+  renderNews(items, deleteNewsHTML);
 });
 
 handleEventListener(".list-group", "click", (e) => {
