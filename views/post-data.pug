@@ -1,8 +1,9 @@
 include index.pug
 div.container.px-4.px-lg-5.mb-5
-  div(class="hidden-form") 
+  div(class="hidden-form")
+    h3.text-center.text-black-50 Dodaj bazę pracowników 
     div.m-3
-      p.fw-bold Pamiętaj, żeby zachować właściwy format pliku excel: zachować format zgodny z mongoose model schema, brak spacji i kropek w etykietach wierszy, brak pustych komórek, brak duplikatów w nrprac. To chyba tyle.
+      p.fw-bold Pamiętaj, żeby zachować właściwy format pliku excel: format zgodny z mongoose model schema ({pracownik: imię + nazwisko + 3 ostatnie cyfry pesel, nrprac: numer pracownika, imię: imię pracownika, nazwisko: nazwisko pracownika, jednorg: jednostka organizacyjna}), brak spacji i kropek w etykietach wierszy, brak pustych komórek, brak duplikatów.
 
     div(class="mx-auto" style="width: 500px;")
       label(for="formFile" class="form-label")
