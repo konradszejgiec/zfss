@@ -43,26 +43,18 @@ const addElementValue = (selector, newValue) => {
 // c) event handling
 
 const handleEventListener = (elementSelector, eventListener, callback) => {
-  return getElementBy(elementSelector).addEventListener(
-    eventListener,
-    callback
-  );
+  return getElementBy(elementSelector).addEventListener(eventListener, callback);
 };
 
 const handleEventListeners = (elementSelector, eventListener, callback) => {
-  return getElementsBy(elementSelector).forEach((el) =>
-    el.addEventListener(eventListener, callback)
-  );
+  return getElementsBy(elementSelector).forEach((el) => el.addEventListener(eventListener, callback));
 };
 
 // 2. handling of HTML elements
 // a) inserting elements
 
 const insertItemHTML = (existingElementSelector, newElementHtml) => {
-  return getElementBy(existingElementSelector).insertAdjacentHTML(
-    "beforeend",
-    newElementHtml
-  );
+  return getElementBy(existingElementSelector).insertAdjacentHTML("beforeend", newElementHtml);
 };
 
 // b) manipulating classes
@@ -83,12 +75,7 @@ const removeClass = (selector, removedClass) => {
 //3. Application section
 // a) checkings
 
-const checkingInputFulfillment = (
-  selector1,
-  selector2,
-  selector3,
-  selector4
-) => {
+const checkingInputFulfillment = (selector1, selector2, selector3, selector4) => {
   return getElementValue(selector1) == ""
     ? true
     : getElementValue(selector2) == ""
@@ -120,12 +107,7 @@ const handlePeselCheck = () => {
   getElementBy("#form-container").scrollIntoView();
 };
 
-const handleSectionVisibilityAndAutofill = (
-  autofillSection,
-  autofillTxt,
-  invisibleSection,
-  isRemoveClass
-) => {
+const handleSectionVisibilityAndAutofill = (autofillSection, autofillTxt, invisibleSection, isRemoveClass) => {
   if (isRemoveClass) {
     setElementValue(autofillSection, autofillTxt);
     removeClass(invisibleSection, "invisible");
@@ -141,13 +123,9 @@ const displaySubsidy = (e) => {
 
   if (Math.round(e.target.value) <= salaryTable[0]) {
     setElementValue("#application-value", subsidyTable[2]);
-  } else if (
-    (Math.round(e.target.value) >= salaryTable[1]) &
-    (Math.round(e.target.value) <= salaryTable[2])
-  ) {
+  } else if ((Math.round(e.target.value) >= salaryTable[1]) & (Math.round(e.target.value) <= salaryTable[2])) {
     setElementValue("#application-value", subsidyTable[1]);
-  } else if (Math.round(e.target.value) >= salaryTable[3])
-    setElementValue("#application-value", subsidyTable[0]);
+  } else if (Math.round(e.target.value) >= salaryTable[3]) setElementValue("#application-value", subsidyTable[0]);
 
   if (e.target.value == "") setElementValue("#application-value", "");
 };
@@ -156,37 +134,17 @@ const displaySubsidy = (e) => {
 
 const hideOwnSection = (e) => {
   if (e.target.checked) {
-    handleSectionVisibilityAndAutofill(
-      "#application-number",
-      `FDK.KS.1621/                           /2022`,
-      "#application-own-div",
-      false
-    );
+    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1621/                           /2022`, "#application-own-div", false);
   } else {
-    handleSectionVisibilityAndAutofill(
-      "#application-number",
-      "",
-      "#application-own-div",
-      true
-    );
+    handleSectionVisibilityAndAutofill("#application-number", "", "#application-own-div", true);
   }
 };
 
 const hideKidsSection = (e) => {
   if (e.target.checked) {
-    handleSectionVisibilityAndAutofill(
-      "#application-number",
-      `FDK.KS.1620/                           /2022`,
-      "#application-kids-div",
-      false
-    );
+    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1620/                           /2022`, "#application-kids-div", false);
   } else {
-    handleSectionVisibilityAndAutofill(
-      "#application-number",
-      "",
-      "#application-kids-div",
-      true
-    );
+    handleSectionVisibilityAndAutofill("#application-number", "", "#application-kids-div", true);
   }
 };
 
@@ -205,9 +163,7 @@ const handleIndividualInputs = (person) => {
 // e) handling pdf
 
 const generatePDF = () => {
-  return html2canvas(document.getElementById("form-printable")).then(function (
-    canvas
-  ) {
+  return html2canvas(document.getElementById("form-printable")).then(function (canvas) {
     const imgData = canvas.toDataURL("image/png");
     const imgWidth = 210;
     const pageHeight = 297;
@@ -232,35 +188,16 @@ const generatePDF = () => {
 const handleGeneratePDF = (e) => {
   e.preventDefault();
 
-  if (
-    checkingInputFulfillment(
-      "#name",
-      "#unit",
-      "#statement-salary",
-      "#sign-employee"
-    )
-  ) {
+  if (checkingInputFulfillment("#name", "#unit", "#statement-salary", "#sign-employee")) {
     handleAlertMsg("#alert-name-salary");
-  } else if (
-    !getElementBy("#application-own").checked &
-    !getElementBy("#application-kids").checked
-  ) {
+  } else if (!getElementBy("#application-own").checked & !getElementBy("#application-kids").checked) {
     handleAlertMsg("#alert-purpose");
-  } else if (
-    getElementBy("#statement-kids").checked &
-    (getElementBy("#statement-kids-quantity-input").value == ("" || 0))
-  ) {
+  } else if (getElementBy("#statement-kids").checked & (getElementBy("#statement-kids-quantity-input").value == ("" || 0))) {
     handleAlertMsg("#alert-kids-quantity");
   } else if (getElementBy("#application-kids").checked) {
-    if (
-      getElementBy("#to-check-input-date").value == "" ||
-      getElementBy("#to-check-input-name").value == ""
-    ) {
+    if (getElementBy("#to-check-input-date").value == "" || getElementBy("#to-check-input-name").value == "") {
       handleAlertMsg("#alert-kids");
-    } else if (
-      getElementBy("#application-kids").checked &
-      !getElementBy("#statement-kids").checked
-    ) {
+    } else if (getElementBy("#application-kids").checked & !getElementBy("#statement-kids").checked) {
       handleAlertMsg("#alert-kids-camp");
     } else generatePDF();
   } else generatePDF();
@@ -271,11 +208,7 @@ const handleGeneratePDF = (e) => {
 const fetchPersonData = (e) => {
   e.preventDefault();
   fetchData(
-    `/wniosek/${
-      getElementValue("#fname").toLowerCase() +
-      getElementValue("#sname").toLowerCase() +
-      getElementValue("#lastThree").toLowerCase()
-    }`,
+    `/wniosek/${getElementValue("#fname").toLowerCase() + getElementValue("#sname").toLowerCase() + getElementValue("#lastThree").toLowerCase()}`,
     (person) => {
       handleIndividualInputs(person);
     }
@@ -393,15 +326,11 @@ const getContentHTML = (item) => {
 // b) get news list
 
 const getNewsHTML = (item) => {
-  return `<a href="/news/${
-    item._id
-  }" class="btn btn-outline-secondary mb-2 text-center rounded-3">${
+  return `<a href="/news/${item._id}" class="btn btn-outline-secondary mb-2 text-center rounded-3">${
     item.title
   }<p class="text-center m-1" style="font-size:15px;"><em>Tematyka: ${
     item.description
-  }<em></p><p class="text-center m-1" style="font-size:15px;">Data: ${new Date(
-    item.date
-  ).toLocaleString("pl-PL", {
+  }<em></p><p class="text-center m-1" style="font-size:15px;">Data: ${new Date(item.date).toLocaleString("pl-PL", {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -413,8 +342,7 @@ const getNewsHTML = (item) => {
 
 const renderContent = (items) => {
   items.forEach((element, index) => {
-    if (items[index]._id == getElementBy(".post-title").id)
-      return insertItemHTML(".font-weight-bold", getContentHTML(items[index]));
+    if (items[index]._id == getElementBy(".post-title").id) return insertItemHTML(".font-weight-bold", getContentHTML(items[index]));
   });
 };
 
@@ -430,11 +358,7 @@ const getLastNewsHTML = (item) => {
     year: "numeric",
     month: "long",
     day: "numeric",
-  })}</p><h3 class="text-center">${
-    item.title
-  }</h3><p class="text-center m-1" style="font-size:15px;"">Tematyka: ${
-    item.description
-  }</em></p>`;
+  })}</p><h3 class="text-center">${item.title}</h3><p class="text-center m-1" style="font-size:15px;"">Tematyka: ${item.description}</em></p>`;
 };
 
 const renderLastNews = (news) => {
@@ -450,10 +374,7 @@ const insertLink = (selector, link, title) => {
 };
 
 const insertImg = (selector, link, title) => {
-  return addElementValue(
-    selector,
-    `<img src=${link} alt=${title} class=img-fluid>`
-  );
+  return addElementValue(selector, `<img src=${link} alt=${title} class=img-fluid>`);
 };
 
 const insertVideo = (selector, link, title) => {
@@ -471,49 +392,47 @@ const insertEmphasize = (selector) => {
   return addElementValue(selector, `<em>Tutaj wstaw tekst</em>`);
 };
 
+const insertColorAndBold = (selector) => {
+  return addElementValue(selector, `<b><span class="text-danger">Tutaj wstaw tekst</span></b>`);
+};
+
 // insert html
 
 const insertAttachment = (sectionSelector) => {
+  console.log(sectionSelector);
   if (getElementBy("#insert").classList.contains("link")) {
-    insertLink(
-      sectionSelector,
-      getElementValue("#source-link"),
-      getElementValue("#source-title")
-    );
+    insertLink(sectionSelector, getElementValue("#source-link"), getElementValue("#source-title"));
     removeClass("#insert", "link");
   }
   if (getElementBy("#insert").classList.contains("obraz")) {
-    insertImg(
-      sectionSelector,
-      getElementValue("#source-link"),
-      getElementValue("#source-title")
-    );
+    insertImg(sectionSelector, getElementValue("#source-link"), getElementValue("#source-title"));
     removeClass("#insert", "obraz");
   }
   if (getElementBy("#insert").classList.contains("video")) {
-    insertVideo(
-      sectionSelector,
-      getElementValue("#source-link"),
-      getElementValue("#source-title")
-    );
+    insertVideo(sectionSelector, getElementValue("#source-link"), getElementValue("#source-title"));
     removeClass("#insert", "video");
   }
 };
 
 // handle message when insertin link, video, bold, emphasize, etc.
 
-const handleInputUtlis = (selector) => {
+const handleInputUtlis = (e, selector, inputElement) => {
   return handleEventListener(`.${selector}`, "click", (e) => {
-    if (selector == "bold") {
-      return insertBold("#news");
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    if (selector.includes("bold")) {
+      return insertBold(inputElement);
     }
-    if (selector == "emphasize") {
-      return insertEmphasize("#news");
+    if (selector.includes("emphasize")) {
+      return insertEmphasize(inputElement);
     }
-    setClass("#insert", selector);
+    if (selector.includes("color")) {
+      return insertColorAndBold(inputElement);
+    }
+    setClass("#insert", selector.split("-")[0]);
     changeClass("#insert", "d-none", "d-grid");
     getElementsBy(".form").forEach((el) => (el.style.display = "none"));
-    setText(".add-btn", `Dodaj ${selector}`);
+    setText(".add-btn", `Dodaj ${selector.split("-")[0]}`);
   });
 };
 
@@ -530,12 +449,7 @@ const handleSubmitBtn = (target) => {
       handleAlertMsg("#alert-admin");
     } else {
       sendData(`/dodaj/${target}/access`, {
-        content: new News(
-          getElementValue("#title"),
-          getElementValue("#news"),
-          getDate("#date"),
-          getElementValue("#description")
-        ),
+        content: new News(getElementValue("#title"), getElementValue("#news"), getDate("#date"), getElementValue("#description")),
       });
       getElementBy("#submitBtn").href = `/dodaj/success`;
     }
@@ -545,14 +459,20 @@ const handleSubmitBtn = (target) => {
 // b) news managment
 // insert news html
 
-const deleteNewsHTML = (item) => {
-  return `<div class="container px-4 px-lg-5 border border-dark pt-3 m-1"><div class="input-group mb-3">
+const getDeleteNewsHTML = (item) => {
+  return `<div class="container-${item._id} px-4 px-lg-5 border border-dark pt-3 m-1 form"><div class="input-group mb-3 form">
   <input type="text" class="form-control" value="${item.title}" readonly>
-  <button id="${item._id}" class="delete btn btn-outline-secondary" type="button" style="width: 100px;"> Usuń </button>
-</div><div class="input-group mb-3">
-<input type="text" id="update-${item._id}" class="form-control" value="${item.content}">
+  <button id="${item._id}" class="delete btn btn-outline-secondary" type="button" style="width: 100px;">Usuń</button>
+</div><div class="input-group mb-3 form">
+<textarea type="text" id="update-${item._id}" class="form-control">${item.content}</textarea>
 <button id="${item._id}" class="update btn btn-outline-secondary" type="button" style="width: 100px;">Edytuj</button>
-</div></div>`;
+</div>${insertEditButtons(item)}</div>`;
+};
+
+//insert style buttons
+
+const insertEditButtons = (item) => {
+  return `<div class="buttons form" id="buttons-${item._id}" style="display: none;"><button id="${item._id}" class="btn btn-outline-secondary obraz-${item._id} mb-3 me-3" type="button" style="width: 150px;">Obraz</button><button id="${item._id}" class="btn btn-outline-secondary video-${item._id} mb-3 me-3" type="button" style="width: 150px;">Video</button><button id="${item._id}" class="btn btn-outline-secondary link-${item._id} mb-3 me-3" type="button" style="width: 150px;">Link</button><button id="${item._id}" class="btn btn-outline-secondary bold-${item._id} mb-3 me-3" type="button" style="width: 150px;">Pogrubienie</button><button id="${item._id}" class="btn btn-outline-secondary emphasize-${item._id} mb-3 me-3" type="button" style="width: 150px;">Pochyl</button><button id="${item._id}" class="btn btn-outline-secondary color-${item._id} mb-3 me-3" type="button" style="width: 150px;">Kolor</button></buttons>`;
 };
 
 // delete news
@@ -565,11 +485,7 @@ const deleteNews = (e) => {
 // update news
 
 const updateNews = (e) => {
-  updateData(
-    "/managment/news/update",
-    e.target.id,
-    getElementBy(`#update-${e.target.id}`).value
-  );
+  updateData("/managment/news/update", e.target.id, getElementBy(`#update-${e.target.id}`).value);
   window.location.reload();
 };
 
@@ -579,9 +495,7 @@ const handleXls = async (event) => {
   const file = event.target.files[0];
   const data = await file.arrayBuffer();
   const workbook = XLSX.readFile(data);
-  const personData = XLSX.utils.sheet_to_row_object_array(
-    workbook.Sheets[workbook.SheetNames[0]]
-  );
+  const personData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[workbook.SheetNames[0]]);
   sendData("/dodaj/baza/access", {
     content: personData,
   });
@@ -609,11 +523,10 @@ const authorize = () => {
 
 const authorizePostSection = () => {
   return handleEventListener("#check-btn-auth-post", "click", (e) => {
-    handleRedirect(
-      e,
-      getElementBy("#check-btn-auth-post"),
-      getElementValue("#password") == "",
-      "/access?password=" + getElementValue("#password")
-    );
+    handleRedirect(e, getElementBy("#check-btn-auth-post"), getElementValue("#password") == "", "/access?password=" + getElementValue("#password"));
   });
+};
+
+const containsElement = (selector, element) => {
+  return getElementBy(selector).contains(getElementBy(element));
 };

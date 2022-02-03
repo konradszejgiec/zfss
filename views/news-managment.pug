@@ -1,9 +1,16 @@
 include index.pug
-div.container.px-4.px-lg-5
-    h3.text-center.text-black-50 Edycja dokumentów
-    div.m3
-        div.post-preview
-            div.list-group.m-3 
+div(id="full-form")
+    div(class="d-none gap-2 d md-flex justify-content-md-center m-3" id="insert")
+                label(for="source-link" class="form-label") Podaj adres (źródło obrazu/video/odnośnika)
+                input(type="text" class="form-control" id="source-link" placeholder="Wstaw link")
+                label(for="source-title" class="form-label") Podaj nazwę/tytuł
+                input(type="text" class="form-control" id="source-title" placeholder="Wpisz nazwę/tytuł")
+                a(class="btn btn-secondary add-btn" role="button") Dodaj
+    div.container.px-4.px-lg-5.form
+        h3.text-center.text-black-50 Edycja dokumentów
+        div.m3
+            div.post-preview
+                div.list-group.m-3 
 
 script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js")
 script(src="/js/single-news.js") 
