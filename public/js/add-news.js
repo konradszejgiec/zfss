@@ -1,12 +1,12 @@
 "use strict";
 
 handleSubmitBtn("news");
-handleInputUtlis(e, "link", "#news");
-handleInputUtlis(e, "obraz", "#news");
-handleInputUtlis(e, "video", "#news");
-handleInputUtlis(e, "bold", "#news");
-handleInputUtlis(e, "emphasize", "#news");
-handleInputUtlis(e, "color", "#news");
+handleInputUtlis("link", "#news");
+handleInputUtlis("obraz", "#news");
+handleInputUtlis("video", "#news");
+handleInputUtlis("bold", "#news");
+handleInputUtlis("emphasize", "#news");
+handleInputUtlis("color", "#news");
 
 handleEventListener(".add-btn", "click", (e) => {
   insertAttachment("#news");

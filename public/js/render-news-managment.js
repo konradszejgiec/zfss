@@ -3,30 +3,36 @@
 fetchData("/news.json", (items) => {
   renderNews(items, getDeleteNewsHTML);
   //e.target.id.split("-").includes("update")
+  let id;
   handleEventListener(".list-group", "click", (e) => {
-    e.stopImmediatePropagation();
-    e.preventDefault();
-    let id = e.target.id.split("-")[1];
+    id = e.target.id.split("-")[1];
     if (!e.target.id) return;
-    if (items.some((item) => item._id == id)) {
-      if (e.target == document.activeElement) {
-        setDisplayStyle(`#buttons-${id}`, "block");
-        handleInputUtlis(e, `link-${id}`, `#update-${id}`);
-        handleInputUtlis(e, `obraz-${id}`, `#update-${id}`);
-        handleInputUtlis(e, `video-${id}`, `#update-${id}`);
-        handleInputUtlis(e, `bold-${id}`, `#update-${id}`);
-        handleInputUtlis(e, `emphasize-${id}`, `#update-${id}`);
-        handleInputUtlis(e, `color-${id}`, `#update-${id}`);
-        handleEventListener(".add-btn", "click", (e) => {
-          e.stopImmediatePropagation();
-          e.preventDefault();
-          insertAttachment(`#update-${id}`);
-          getElementsBy(".form").forEach((el) => (el.style.display = null));
-          changeClass("#insert", "d-grid", "d-none");
-          resetInputLink();
-        });
-      }
-    }
+    getElementsBy(".buttons").forEach((el) => {
+      if (el.id.split("-")[1] == id) {
+        if (
+          getDisplayStyle(`#${el.id}`) == "" ||
+          getDisplayStyle(`#${el.id}`) == "none"
+        ) {
+          setDisplayStyle(`#${el.id}`, "block");
+        } else setDisplayStyle(`#${el.id}`, "none");
+      } else setDisplayStyle(`#${el.id}`, "none");
+
+      handleInputUtlis(`link-${id}`, `#update-${id}`);
+      handleInputUtlis(`obraz-${id}`, `#update-${id}`);
+      handleInputUtlis(`video-${id}`, `#update-${id}`);
+      handleInputUtlis(`bold-${id}`, `#update-${id}`);
+      handleInputUtlis(`emphasize-${id}`, `#update-${id}`);
+      handleInputUtlis(`color-${id}`, `#update-${id}`);
+
+      handleEventListener(".add-btn", "click", (e) => {
+        e.stopImmediatePropagation();
+        insertAttachment(`#update-${id}`);
+        getElementsBy(".form").forEach((el) => (el.style.display = null));
+        getElementsBy(".buttons").forEach((el) => (el.style.display = "none"));
+        changeClass("#insert", "d-grid", "d-none");
+        resetInputLink();
+      });
+    });
     if (e.target.classList.item(0) == "update") updateNews(e);
     if (e.target.classList.item(0) == "delete") deleteNews(e);
   });
