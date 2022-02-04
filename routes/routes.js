@@ -57,23 +57,25 @@ const routes = (app, bodyParser, controller) => {
 
   // admin panel - delete and update news
 
-  app.route("/managment/news").get(controller.displayAccessPostPage);
+  app.route("/zarzadzaj/news").get(controller.displayAccessPostPage);
 
-  app.route("/managment/news/:admin").get(controller.displayPostPage);
+  app.route("/zarzadzaj/news/:admin").get(controller.displayPostPage);
 
-  app.route("/managment/news/delete").delete(jsonParser, controller.deleteNews);
+  app.route("/zarzadzaj/news/usun").delete(jsonParser, controller.deleteNews);
 
-  app.route("/managment/news/update").patch(jsonParser, controller.updateNews);
+  app.route("/zarzadzaj/news/edytuj").patch(jsonParser, controller.updateNews);
 
   // admin panel - database
 
-  app.route("/dodaj/baza").get(controller.displayAccessPostPage);
+  app.route("/baza").get(controller.displayAccessPostPage);
 
-  app.route("/dodaj/baza/:admin").get(controller.displayPostPage).post(jsonParser, controller.postDatabase);
+  app.route("/baza/:admin").get(controller.displayPostPage).post(jsonParser, controller.postPersonData);
+
+  app.route("/baza/usun/:admin").get(controller.displaySuccessMsg).delete(controller.clearPersonData);
 
   // admin panel - success message
 
-  app.route("/dodaj/success").get(controller.displaySuccessMsg);
+  app.route("/sukces").get(controller.displaySuccessMsg);
 };
 
 module.exports = routes;

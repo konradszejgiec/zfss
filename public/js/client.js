@@ -40,3 +40,12 @@ const updateData = (route, id, item) => {
     body: JSON.stringify({ id: id, item: item }),
   });
 };
+
+const clearPersonDatabase = (route) => {
+  return fetch(`${route}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};

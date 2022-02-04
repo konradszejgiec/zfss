@@ -8,18 +8,15 @@ const Person = require("../models/person");
 
 const News = require("../models/news");
 
+//render main page
+
 exports.displayMainPage = async (req, res) => {
   res.render("main", {
     route: "background-image: url('../../assets/img/home-bg.jpg')",
   });
 };
 
-exports.displayEmployeeSection = async (req, res) => {
-  res.render("employee-section", {
-    route: "background-image: url('../../assets/img/employee-section-bg.jpg')",
-    sectionMsg: "Sekcja dla pracowników",
-  });
-};
+//render news page
 
 exports.displayNews = async (req, res) => {
   res.render("news", {
@@ -28,59 +25,16 @@ exports.displayNews = async (req, res) => {
   });
 };
 
-exports.displayRules = async (req, res) => {
-  try {
-    const personData = await Person.findOne({
-      pracownik:
-        req.query.fname +
-        req.query.sname +
-        req.query.id[21] +
-        req.query.id[28] +
-        req.query.id[14],
-    });
-    if (personData) {
-      res.render("rules", {
-        route: "background-image: url('../../assets/img/rules-bg.jpg')",
-        sectionMsg: "Regulamin, zasady, wnioski do pobrania",
-      });
-    } else
-      res.render("access-message", {
-        route: "background-image: url('../../assets/img/rules-bg.jpg')",
-        sectionMsg: "Regulamin, zasady, wnioski do pobrania",
-        link: "/regulamin-zasady-wnioski",
-      });
-  } catch (err) {
-    res.status(404).end();
-    console.log(err);
-  }
+// render employee section - main
+
+exports.displayEmployeeSection = async (req, res) => {
+  res.render("employee-section", {
+    route: "background-image: url('../../assets/img/employee-section-bg.jpg')",
+    sectionMsg: "Sekcja dla pracowników",
+  });
 };
 
-exports.displayFaq = async (req, res) => {
-  try {
-    const personData = await Person.findOne({
-      pracownik:
-        req.query.fname +
-        req.query.sname +
-        req.query.id[21] +
-        req.query.id[28] +
-        req.query.id[14],
-    });
-    if (personData) {
-      res.render("faq", {
-        route: "background-image: url('../../assets/img/faq-bg.jpg')",
-        sectionMsg: "Odpowiedzi na najczęściej zadawane pytania",
-      });
-    } else
-      res.render("access-message", {
-        route: "background-image: url('../../assets/img/faq-bg.jpg')",
-        sectionMsg: "Odpowiedzi na najczęściej zadawane pytania",
-        link: "/faq",
-      });
-  } catch (err) {
-    res.status(404).end();
-    console.log(err);
-  }
-};
+// render employee section - access
 
 exports.displayAccessPage = async (req, res) => {
   let image, message;
@@ -100,12 +54,64 @@ exports.displayAccessPage = async (req, res) => {
   });
 };
 
+// employee section - render application
+
 exports.displayAddApplication = async (req, res) => {
   res.render("application", {
     route: "background-image: url('../../assets/img/application-bg.jpg')",
     sectionMsg: "Wniosek o dofinansowanie",
   });
 };
+
+// employee section - render faq
+
+exports.displayFaq = async (req, res) => {
+  try {
+    const personData = await Person.findOne({
+      pracownik: req.query.fname + req.query.sname + req.query.id[21] + req.query.id[28] + req.query.id[14],
+    });
+    if (personData) {
+      res.render("faq", {
+        route: "background-image: url('../../assets/img/faq-bg.jpg')",
+        sectionMsg: "Odpowiedzi na najczęściej zadawane pytania",
+      });
+    } else
+      res.render("access-message", {
+        route: "background-image: url('../../assets/img/faq-bg.jpg')",
+        sectionMsg: "Odpowiedzi na najczęściej zadawane pytania",
+        link: "/faq",
+      });
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
+};
+
+// employee section - render rules
+
+exports.displayRules = async (req, res) => {
+  try {
+    const personData = await Person.findOne({
+      pracownik: req.query.fname + req.query.sname + req.query.id[21] + req.query.id[28] + req.query.id[14],
+    });
+    if (personData) {
+      res.render("rules", {
+        route: "background-image: url('../../assets/img/rules-bg.jpg')",
+        sectionMsg: "Regulamin, zasady, wnioski do pobrania",
+      });
+    } else
+      res.render("access-message", {
+        route: "background-image: url('../../assets/img/rules-bg.jpg')",
+        sectionMsg: "Regulamin, zasady, wnioski do pobrania",
+        link: "/regulamin-zasady-wnioski",
+      });
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
+};
+
+// employee section - render privacy policy
 
 exports.displayRodo = async (req, res) => {
   res.render("rodo", {
@@ -114,6 +120,8 @@ exports.displayRodo = async (req, res) => {
   });
 };
 
+// render contact page
+
 exports.displayContact = async (req, res) => {
   res.render("contact", {
     route: "background-image: url('../../assets/img/contact-bg.jpg')",
@@ -121,12 +129,16 @@ exports.displayContact = async (req, res) => {
   });
 };
 
+// admin panel - main
+
 exports.displayAddPage = async (req, res) => {
   res.render("add", {
     route: "background-image: url('../../assets/img/admin-bg.jpg')",
     sectionMsg: "Panel administratora",
   });
 };
+
+// admin panel - access
 
 exports.displayAccessPostPage = async (req, res) => {
   res.render("access-post-data", {
@@ -136,27 +148,38 @@ exports.displayAccessPostPage = async (req, res) => {
   });
 };
 
+// admin panel - success message
+
+exports.displaySuccessMsg = async (req, res) => {
+  res.render("success", {
+    route: "background-image: url('../../assets/img/password-success-bg.jpg')",
+    sectionMsg: "Panel administratora",
+    link: "/",
+  });
+};
+
+// admin panel - render managment sections
+
 exports.displayPostPage = async (req, res) => {
   try {
     if (req.query.password == process.env.FORM_PASSWORD) {
       if (req.path == "/dodaj/news/access") {
         res.render("add-news", {
-          route:
-            "background-image: url('../../assets/img/password-success-bg.jpg')",
+          route: "background-image: url('../../assets/img/password-success-bg.jpg')",
           sectionMsg: "Panel administratora",
         });
-      } else if (req.path == "/dodaj/baza/access") {
+      } else if (req.path == "/baza/access") {
         res.render("post-data", {
-          route:
-            "background-image: url('../../assets/img/password-success-bg.jpg')",
+          route: "background-image: url('../../assets/img/password-success-bg.jpg')",
           sectionMsg: "Panel administratora",
-          link: "/dodaj/success",
+          sendLink: "/sukces",
+          deleteLink: `/baza/usun/${req.query.password}`,
         });
-      } else if (req.path == "/managment/news/access") {
+      } else if (req.path == "/zarzadzaj/news/access") {
         res.render("news-managment", {
-          route:
-            "background-image: url('../../assets/img/password-success-bg.jpg')",
+          route: "background-image: url('../../assets/img/password-success-bg.jpg')",
           sectionMsg: "Panel administratora",
+          addLink: `/dodaj/news/access?password=${req.query.password}`,
         });
       }
     } else
@@ -171,6 +194,8 @@ exports.displayPostPage = async (req, res) => {
   }
 };
 
+// admin panel - render managment sections
+
 exports.displaySuccessMsg = async (req, res) => {
   res.render("success", {
     route: "background-image: url('../../assets/img/password-success-bg.jpg')",
@@ -179,59 +204,9 @@ exports.displaySuccessMsg = async (req, res) => {
   });
 };
 
-exports.getPersonData = async (req, res) => {
-  try {
-    const personData = await Person.findOne({
-      pracownik: req.params.pracownik,
-    });
-    res.status(200).send(personData);
-  } catch (err) {
-    res.status(404).end();
-    console.log(err);
-  }
-};
+// GET DATA
 
-exports.getPersonData = async (req, res) => {
-  try {
-    const personData = await Person.findOne({
-      pracownik: req.params.pracownik,
-    });
-    res.status(200).send(personData);
-  } catch (err) {
-    res.status(404).end();
-    console.log(err);
-  }
-};
-
-exports.postDatabase = async (req, res) => {
-  try {
-    const person = await Person.insertMany(req.body.content);
-    res.status(200).end();
-  } catch (err) {
-    res.status(404).end();
-    console.log(err);
-  }
-};
-
-exports.getNews = async (req, res) => {
-  try {
-    const news = await News.find();
-    res.status(200).send(news);
-  } catch (err) {
-    res.status(404).end();
-    console.log(err);
-  }
-};
-
-exports.postNews = async (req, res) => {
-  try {
-    const news = await News.create(req.body.content);
-    res.status(200).end();
-  } catch (err) {
-    res.status(404).end();
-    console.log(err);
-  }
-};
+// render single news
 
 exports.getSingleNews = async (req, res) => {
   try {
@@ -255,15 +230,59 @@ exports.getSingleNews = async (req, res) => {
   }
 };
 
-exports.deleteNews = async (req, res) => {
+// get person data
+
+exports.getPersonData = async (req, res) => {
   try {
-    await News.findByIdAndDelete(req.body.id);
+    const personData = await Person.findOne({
+      pracownik: req.params.pracownik,
+    });
+    res.status(200).send(personData);
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
+};
+
+// get news data
+
+exports.getNews = async (req, res) => {
+  try {
+    const news = await News.find();
+    res.status(200).send(news);
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
+};
+
+// POST DATA
+
+// posta employees database
+
+exports.postPersonData = async (req, res) => {
+  try {
+    const person = await Person.insertMany(req.body.content);
     res.status(200).end();
   } catch (err) {
     res.status(404).end();
     console.log(err);
   }
 };
+
+// post news
+
+exports.postNews = async (req, res) => {
+  try {
+    const news = await News.create(req.body.content);
+    res.status(200).end();
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
+};
+
+// UPDATE DATA
 
 exports.updateNews = async (req, res) => {
   try {
@@ -275,6 +294,32 @@ exports.updateNews = async (req, res) => {
         runValidators: true,
       }
     );
+    res.status(200).end();
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
+};
+
+// DELETE DATA
+
+// delete news
+
+exports.deleteNews = async (req, res) => {
+  try {
+    await News.findByIdAndDelete(req.body.id);
+    res.status(200).end();
+  } catch (err) {
+    res.status(404).end();
+    console.log(err);
+  }
+};
+
+//delete person database
+
+exports.clearPersonData = async (req, res) => {
+  try {
+    await Person.deleteMany({});
     res.status(200).end();
   } catch (err) {
     res.status(404).end();

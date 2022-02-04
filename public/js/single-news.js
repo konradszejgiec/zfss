@@ -1,5 +1,4 @@
 "use strict";
-
 class News {
   constructor(title, content, date, description) {
     this.title = title;
