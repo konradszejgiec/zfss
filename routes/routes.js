@@ -29,7 +29,9 @@ const routes = (app, bodyParser, controller) => {
 
   app.route("/regulamin-zasady-wnioski/").get(controller.displayAccessPage);
 
-  app.route("/regulamin-zasady-wnioski/:pracownik").get(controller.displayRules);
+  app
+    .route("/regulamin-zasady-wnioski/:pracownik")
+    .get(controller.displayRules);
 
   // employee section - faq
 
@@ -47,13 +49,16 @@ const routes = (app, bodyParser, controller) => {
 
   // admin ponel
 
-  app.route("/dodaj").get(controller.displayAddPage);
+  app.route("/admin").get(controller.displayAddPage);
 
   // admin panel - add news
 
   app.route("/dodaj/news").get(controller.displayAccessPostPage);
 
-  app.route("/dodaj/news/:admin").get(controller.displayPostPage).post(jsonParser, controller.postNews);
+  app
+    .route("/dodaj/news/:admin")
+    .get(controller.displayPostPage)
+    .post(jsonParser, controller.postNews);
 
   // admin panel - delete and update news
 
@@ -69,9 +74,15 @@ const routes = (app, bodyParser, controller) => {
 
   app.route("/baza").get(controller.displayAccessPostPage);
 
-  app.route("/baza/:admin").get(controller.displayPostPage).post(jsonParser, controller.postPersonData);
+  app
+    .route("/baza/:admin")
+    .get(controller.displayPostPage)
+    .post(jsonParser, controller.postPersonData);
 
-  app.route("/baza/usun/:admin").get(controller.displaySuccessMsg).delete(controller.clearPersonData);
+  app
+    .route("/baza/usun/:admin")
+    .get(controller.displaySuccessMsg)
+    .delete(controller.clearPersonData);
 
   // admin panel - success message
 

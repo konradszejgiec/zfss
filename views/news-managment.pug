@@ -7,12 +7,15 @@ div(id="full-form")
                 input(type="text" class="form-control" id="source-title" placeholder="Wpisz nazwę/tytuł")
                 a(class="btn btn-secondary add-btn" role="button") Dodaj
     div.container.px-4.px-lg-5.form
-        br
-        h3.text-center.text-black-50 Dodaj dokument
-        br
-        div.d-grid.gap-2.col-10.mx-auto.mb-5
-            a(class="btn btn-outline-secondary" href=addLink role="button") Dodaj aktualności
+        div.d-grid.gap-2.d.md-flex.justify-content-md-auto.m-3.form
+            a(href="/admin" class="btn btn-secondary form") WYJDŹ
+        div.d-grid.gap-2.d.md-flex.justify-content-md-auto.m-3.form 
+            a(href=backLink class="btn btn-secondary form") PRZEJDŹ DO: ZARZĄDZANIE BAZĄ
+        div.d-grid.gap-2.d.md-flex.justify-content-md-auto.m-3.form 
+            a(class="btn btn-secondary" href=addLink role="button") DODAJ AKTUALNOŚCI
+            br
         h3.text-center.text-black-50 Edycja dokumentów
+        br
         div.m3
             div.post-preview
                 div.list-group.m-3 
