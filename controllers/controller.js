@@ -164,6 +164,17 @@ exports.displaySuccessMsg = async (req, res) => {
   res.render("success", {
     route: "background-image: url('../../assets/img/password-success-bg.jpg')",
     sectionMsg: "Panel administratora",
+    successMsg: "POMYŚLNIE DODANO",
+    link: "/",
+  });
+};
+
+exports.displaySuccessMsgDelete = async (req, res) => {
+  res.render("success-delete", {
+    route: "background-image: url('../../assets/img/password-success-bg.jpg')",
+    sectionMsg: "Panel administratora",
+    successMsg: "POMYŚLNIE USUNIĘTO",
+    deletePath: req.path,
     link: "/",
   });
 };
@@ -211,14 +222,6 @@ exports.displayPostPage = async (req, res) => {
 };
 
 // admin panel - render managment sections
-
-exports.displaySuccessMsg = async (req, res) => {
-  res.render("success", {
-    route: "background-image: url('../../assets/img/password-success-bg.jpg')",
-    sectionMsg: "Panel administratora",
-    link: "/",
-  });
-};
 
 // GET DATA
 
@@ -335,7 +338,9 @@ exports.deleteNews = async (req, res) => {
 
 exports.clearPersonData = async (req, res) => {
   try {
-    await Person.deleteMany({});
+    await Person.deleteMany((err) =>
+      console.log("Collection removed succesfully")
+    );
     res.status(200).end();
   } catch (err) {
     res.status(404).end();

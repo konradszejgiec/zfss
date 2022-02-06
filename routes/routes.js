@@ -81,7 +81,7 @@ const routes = (app, bodyParser, controller) => {
 
   app
     .route("/baza/usun/:admin")
-    .get(controller.displaySuccessMsg)
+    .get(controller.displaySuccessMsgDelete)
     .delete(controller.clearPersonData);
 
   // admin panel - success message
