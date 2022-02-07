@@ -11,8 +11,13 @@ const News = require("../models/news");
 //render main page
 
 exports.displayMainPage = async (req, res) => {
+  let displayProperty = "display: none;";
+  // if (new Date() <= new Date(2022, 4, 1)) displayProperty = "display: block;";
+
   res.render("main", {
     route: "background-image: url('../../assets/img/home-bg.jpg')",
+    display: displayProperty,
+    date: "1 kwietnia 2022 roku",
   });
 };
 
@@ -57,10 +62,18 @@ exports.displayAccessPage = async (req, res) => {
 // employee section - render application
 
 exports.displayAddApplication = async (req, res) => {
-  res.render("application", {
-    route: "background-image: url('../../assets/img/application-bg.jpg')",
-    sectionMsg: "Wniosek o dofinansowanie",
-  });
+  if (new Date() >= new Date(2022, 4, 1)) {
+    res.render("success", {
+      route: "background-image: url('../../assets/img/application-bg.jpg')",
+      sectionMsg: "Wniosek o dofinansowanie",
+      successMsg: "Sekcja dostępna od 1 kwietnia 2022 r.",
+      link: "/",
+    });
+  } else
+    res.render("application", {
+      route: "background-image: url('../../assets/img/application-bg.jpg')",
+      sectionMsg: "Wniosek o dofinansowanie",
+    });
 };
 
 // employee section - render faq
