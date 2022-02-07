@@ -68,12 +68,7 @@ exports.displayAddApplication = async (req, res) => {
 exports.displayFaq = async (req, res) => {
   try {
     const personData = await Person.findOne({
-      pracownik:
-        req.query.fname +
-        req.query.sname +
-        req.query.id[21] +
-        req.query.id[28] +
-        req.query.id[14],
+      pracownik: req.query.fname + req.query.sname + req.query.id[21] + req.query.id[28] + req.query.id[14],
     });
     if (personData) {
       res.render("faq", {
@@ -97,12 +92,7 @@ exports.displayFaq = async (req, res) => {
 exports.displayRules = async (req, res) => {
   try {
     const personData = await Person.findOne({
-      pracownik:
-        req.query.fname +
-        req.query.sname +
-        req.query.id[21] +
-        req.query.id[28] +
-        req.query.id[14],
+      pracownik: req.query.fname + req.query.sname + req.query.id[21] + req.query.id[28] + req.query.id[14],
     });
     if (personData) {
       res.render("rules", {
@@ -186,15 +176,13 @@ exports.displayPostPage = async (req, res) => {
     if (req.query.password == process.env.FORM_PASSWORD) {
       if (req.path == "/dodaj/news/access") {
         res.render("add-news", {
-          route:
-            "background-image: url('../../assets/img/password-success-bg.jpg')",
+          route: "background-image: url('../../assets/img/password-success-bg.jpg')",
           sectionMsg: "Panel administratora",
           backLink: `/zarzadzaj/news/access?password=${req.query.password}`,
         });
       } else if (req.path == "/baza/access") {
         res.render("post-data", {
-          route:
-            "background-image: url('../../assets/img/password-success-bg.jpg')",
+          route: "background-image: url('../../assets/img/password-success-bg.jpg')",
           sectionMsg: "Panel administratora",
           backLink: `/zarzadzaj/news/access?password=${req.query.password}`,
           sendLink: "/sukces",
@@ -202,8 +190,7 @@ exports.displayPostPage = async (req, res) => {
         });
       } else if (req.path == "/zarzadzaj/news/access") {
         res.render("news-managment", {
-          route:
-            "background-image: url('../../assets/img/password-success-bg.jpg')",
+          route: "background-image: url('../../assets/img/password-success-bg.jpg')",
           sectionMsg: "Panel administratora",
           backLink: `/baza/access?password=${req.query.password}`,
           addLink: `/dodaj/news/access?password=${req.query.password}`,
@@ -338,9 +325,7 @@ exports.deleteNews = async (req, res) => {
 
 exports.clearPersonData = async (req, res) => {
   try {
-    await Person.deleteMany((err) =>
-      console.log("Collection removed succesfully")
-    );
+    await Person.deleteMany();
     res.status(200).end();
   } catch (err) {
     res.status(404).end();
