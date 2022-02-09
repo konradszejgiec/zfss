@@ -35,7 +35,7 @@ exports.displayNews = async (req, res) => {
 exports.displayEmployeeSection = async (req, res) => {
   res.render("employee-section", {
     route: "background-image: url('../../assets/img/employee-section-bg.jpg')",
-    sectionMsg: "Sekcja dla pracowników",
+    sectionMsg: "Sekcja dla pracownika",
   });
 };
 
