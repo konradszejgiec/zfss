@@ -213,7 +213,7 @@ exports.displayPostPage = async (req, res) => {
       res.render("access-message", {
         route: "background-image: url('../../assets/img/password-bg.jpg')",
         sectionMsg: "Panel administratora",
-        link: "/dodaj",
+        link: "/admin",
       });
   } catch (err) {
     res.status(404).end();
