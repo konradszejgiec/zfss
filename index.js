@@ -25,7 +25,7 @@ app.listen(port, () => {
 });
 
 app.use(express.static(`${__dirname}/public`));
-app.use(cors());
+// app.use(cors());
 app.set("view engine", "pug");
 
 routes(app, bodyParser, controller);
