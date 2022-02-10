@@ -8,7 +8,6 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 const port = process.env.PORT || 3000;
 const DB = process.env.DATABASE.replace("<PASSWORD>", process.env.DATABASE_PASSWORD);
-const cors = require("cors");
 
 mongoose
   .connect(DB, {
@@ -25,7 +24,7 @@ app.listen(port, () => {
 });
 
 app.use(express.static(`${__dirname}/public`));
-// app.use(cors());
+
 app.set("view engine", "pug");
 
 routes(app, bodyParser, controller);
