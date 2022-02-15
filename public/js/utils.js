@@ -72,6 +72,15 @@ const removeClass = (selector, removedClass) => {
   return getElementBy(selector).classList.remove(removedClass);
 };
 
+// c) hiding routes
+
+(function hideRoute() {
+  if (history.pushState) {
+    const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    return window.history.pushState({ path: newurl }, "", newurl);
+  }
+})();
+
 //3. Application section
 // a) checkings
 
@@ -207,12 +216,6 @@ const handleGeneratePDF = (e) => {
 
 const fetchPersonData = (e) => {
   e.preventDefault();
-  fetchData(
-    `/wniosek/${getElementValue("#fname").toLowerCase() + getElementValue("#sname").toLowerCase() + getElementValue("#lastThree").toLowerCase()}`,
-    (person) => {
-      handleIndividualInputs(person);
-    }
-  );
   handlePeselCheck();
   setElementValue(
     "#sign-employee",
@@ -221,6 +224,13 @@ const fetchPersonData = (e) => {
       month: "numeric",
       day: "numeric",
     })
+  );
+  if (!getElementValue("#fname") || !getElementValue("#sname") || !getElementValue("#lastThree")) return;
+  fetchData(
+    `/wniosek/${getElementValue("#fname").toLowerCase() + getElementValue("#sname").toLowerCase() + getElementValue("#lastThree").toLowerCase()}`,
+    (person) => {
+      handleIndividualInputs(person);
+    }
   );
 };
 
@@ -240,35 +250,15 @@ const handleApplication = () => {
 
 // a) utils
 
-const generatePassword = () => {
-  let length = 8,
-    charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-    retVal = "";
-  for (let i = 0, n = charset.length; i < length; ++i) {
-    retVal += charset.charAt(Math.floor(Math.random() * n));
-  }
-  return retVal;
-};
-
-const generateId = () => {
-  return (
-    generatePassword() +
-    Math.floor(100000 + Math.random() * 900000) +
-    getElementValue("#lastThree").toLowerCase()[2] +
-    Math.floor(100000 + Math.random() * 900000) +
-    getElementValue("#lastThree").toLowerCase()[0] +
-    Math.floor(100000 + Math.random() * 900000) +
-    getElementValue("#lastThree").toLowerCase()[1] +
-    Math.floor(100000 + Math.random() * 900000)
-  );
-};
-
-const handleRedirect = (e, link, condition, adress) => {
+const handleFulfillment = (e, condition) => {
   if (condition) {
     displayDismissMsg(e);
-  } else {
-    link.href = `${link.href}${adress}`;
   }
+};
+
+const displaySection = () => {
+  getElementBy("h3").scrollIntoView({ behavior: "smooth" });
+  handleEventListener(".wrapper", "click", handleFaq);
 };
 
 // b) alerts
@@ -294,11 +284,6 @@ const handleFaq = (e) => {
       setText(`#show-btn-${idNumber}`, "POKAŻ ODPOWIEDŹ");
     }
   }
-};
-
-const displayFaqAnswers = () => {
-  getElementBy("h3").scrollIntoView({ behavior: "smooth" });
-  handleEventListener(".wrapper", "click", handleFaq);
 };
 
 //4. News
@@ -491,31 +476,12 @@ const insertEditButtons = (item) => {
 
 const handleNewsButtons = (dynamicSelector, elementId, selector) => {
   const buttonTypeArray = ["link", "obraz", "video", "bold", "emphasize", "color"];
-
-  handleInputUtlis(
-    `${dynamicSelector ? `${buttonTypeArray[0]}-${elementId}` : `${buttonTypeArray[0]}`}`,
-    `${dynamicSelector ? `${selector}-${elementId}` : `${selector}`}`
-  );
-  handleInputUtlis(
-    `${dynamicSelector ? `${buttonTypeArray[1]}-${elementId}` : `${buttonTypeArray[1]}`}`,
-    `${dynamicSelector ? `${selector}-${elementId}` : `${selector}`}`
-  );
-  handleInputUtlis(
-    `${dynamicSelector ? `${buttonTypeArray[2]}-${elementId}` : `${buttonTypeArray[2]}`}`,
-    `${dynamicSelector ? `${selector}-${elementId}` : `${selector}`}`
-  );
-  handleInputUtlis(
-    `${dynamicSelector ? `${buttonTypeArray[3]}-${elementId}` : `${buttonTypeArray[3]}`}`,
-    `${dynamicSelector ? `${selector}-${elementId}` : `${selector}`}`
-  );
-  handleInputUtlis(
-    `${dynamicSelector ? `${buttonTypeArray[4]}-${elementId}` : `${buttonTypeArray[4]}`}`,
-    `${dynamicSelector ? `${selector}-${elementId}` : `${selector}`}`
-  );
-  handleInputUtlis(
-    `${dynamicSelector ? `${buttonTypeArray[5]}-${elementId}` : `${buttonTypeArray[5]}`}`,
-    `${dynamicSelector ? `${selector}-${elementId}` : `${selector}`}`
-  );
+  buttonTypeArray.map((element) => {
+    handleInputUtlis(
+      `${dynamicSelector ? `${element}-${elementId}` : `${element}`}`,
+      `${dynamicSelector ? `${selector}-${elementId}` : `${selector}`}`
+    );
+  });
 };
 
 const handleExternalLinkButton = (selector) => {
@@ -570,26 +536,18 @@ const handleXls = async (event) => {
 // d) authorize section
 
 const authorize = () => {
-  return handleEventListener("#check-btn-auth", "click", (e) => {
-    handleRedirect(
-      e,
-      getElementBy("#check-btn-auth"),
-      checkingInputFulfillment("#fname", "#sname", "#lastThree", "#lastThree"),
-      "/pracownik?fname=" +
-        getElementValue("#fname").toLowerCase() +
-        "&" +
-        "sname=" +
-        getElementValue("#sname").toLowerCase() +
-        "&" +
-        "id=" +
-        generateId()
-    );
-  });
-};
-
-const authorizePostSection = () => {
-  return handleEventListener("#check-btn-auth-post", "click", (e) => {
-    handleRedirect(e, getElementBy("#check-btn-auth-post"), getElementValue("#password") == "", "/access?password=" + getElementValue("#password"));
+  let inputArr = [];
+  let section;
+  if (window.location.pathname == "/faq" || window.location.pathname == "/regulamin-zasady-wnioski") {
+    section = "get";
+    inputArr = ["#fname", "#sname", "#lastThree", "#lastThree"];
+  } else {
+    section = "post";
+    inputArr = ["#password", "#password", "#password", "#password"];
+  }
+  if (!getElementBy(`#check-btn-auth-${section}`)) return;
+  handleEventListener(`#check-btn-auth-${section}`, "click", (e) => {
+    handleFulfillment(e, checkingInputFulfillment(inputArr[0], inputArr[1], inputArr[2], inputArr[3]));
   });
 };
 

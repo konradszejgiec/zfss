@@ -54,13 +54,13 @@ div(id="person-container" style="display: block;")
         div.m-3.border.border-dark.border-1.bg-light
             h2.m-3.text-center Instrukcja wypełnienia WNIOSKU O DOFINANSOWANIE
             p.m-3.fw-bold 
-                em 1. Wniosek posiada opcję autouzupełnienia danych - uzupełnij poniższe dane i kliknij "WYSZUKAJ SWÓJ WNIOSEK". 
+                em 1. Wniosek posiada opcję autouzupełnienia danych - uzupełnij poniższe dane i kliknij "WYSZUKAJ". 
             p.m-3.fw-bold 
-                em 2. Po kliknięcu "WYSZKUKAJ SWÓJ WNIOSEK" wyświelti się gotowy i wstępnie uzupełniony formularz. Należy go wypełnić.
+                em 2. Po kliknięcu "WYSZKUKAJ" wyświelti się gotowy i wstępnie uzupełniony formularz. Należy go wypełnić.
             p.m-3.fw-bold  
                 em 3. Następnie wygeneruj wniosek (PDF), wydrukuj (klikając na samym dole "WYDRUKUJ WNIOSEK I PODPISZ") i podpisz.
             p.m-1.ms-5
-                em (NIEREKOMENDOWANE) Wniosek można wypełnić bez opcji autouzupełnienia - kliknij "WYSZUKAJ SWÓJ WNIOSEK".  
+                em (NIEREKOMENDOWANE) Wniosek można wypełnić bez opcji autouzupełnienia - kliknij "WYSZUKAJ".  
             p.m-1.ms-5
                 em (NIEREKOMENDOWANE) Wniosek można wypełnić także odręcznie pobierając wniosek i drukując - 
                 |
@@ -77,12 +77,13 @@ div(id="person-container" style="display: block;")
                 | 
                 span
                     a(href="/kontakt" target="blank") KLIKNIJ TUTAJ 
-
-        div(class="input-group mb-3")
-            input(type="text" class="form-control ms-3 bg-light" id="fname" placeholder="Wpisz swoje IMIĘ")
-            input(type="text" class="form-control  bg-light" id="sname" placeholder="Wpisz swoje NAZWISKO")
-            input(type="text" class="form-control  bg-light" id="lastThree" placeholder="Wpisz 3 OSTANIE CYFRY NR PESEL")
-            button(id="check-btn" class="btn btn-secondary me-3" type="button") Wyszukaj swój wniosek
+    div.container.px-4.px-lg-5.mb-5
+        form(id="action" action="/wniosek")
+            div(class="input-group mb-3")
+                input(type="text" class="form-control ms-3 bg-light" id="fname" name="fname" placeholder="Wpisz swoje IMIĘ")
+                input(type="text" class="form-control  bg-light" id="sname" name="sname" placeholder="Wpisz swoje NAZWISKO")
+                input(type="text" class="form-control  bg-light" id="lastThree" name="lastThree" placeholder="Wpisz 3 OSTANIE CYFRY NR PESEL")
+                button(id="check-btn" class="btn btn-secondary me-3" type="submit") WYSZUKAJ
 
 div(class="mx-auto" id="full-form" style="width: 1200px;")
     form(id="form-printable" class="formularz" style="display: none;")

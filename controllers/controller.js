@@ -55,7 +55,7 @@ exports.displayAccessPage = async (req, res) => {
   res.render("access", {
     route: `background-image: url('../../assets/img/${image}-bg.jpg')`,
     sectionMsg: message,
-    link: req.path,
+    actionRoute: `${req.path}/pracownik`,
   });
 };
 
@@ -81,7 +81,7 @@ exports.displayAddApplication = async (req, res) => {
 exports.displayFaq = async (req, res) => {
   try {
     const personData = await Person.findOne({
-      pracownik: req.query.fname + req.query.sname + req.query.id[21] + req.query.id[28] + req.query.id[14],
+      pracownik: req.query.fname + req.query.sname + req.query.id,
     });
     if (personData) {
       res.render("faq", {
@@ -105,7 +105,7 @@ exports.displayFaq = async (req, res) => {
 exports.displayRules = async (req, res) => {
   try {
     const personData = await Person.findOne({
-      pracownik: req.query.fname + req.query.sname + req.query.id[21] + req.query.id[28] + req.query.id[14],
+      pracownik: req.query.fname + req.query.sname + req.query.id,
     });
     if (personData) {
       res.render("rules", {
@@ -157,7 +157,7 @@ exports.displayAccessPostPage = async (req, res) => {
   res.render("access-post-data", {
     route: "background-image: url('../../assets/img/password-bg.jpg')",
     sectionMsg: "Panel administratora",
-    link: req.path,
+    actionRoute: `${req.path}/access`,
   });
 };
 

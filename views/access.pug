@@ -16,11 +16,12 @@ div(id="message-container-get-auth" style="display: block;")
                 em Podaj swoje imię, nazwisko oraz 3 ostatnie cyfry z numeru PESEL do poniższego formularza.
                 
 div.container.px-4.px-lg-5.mb-5
-    div(class="input-group mb-3")
-            input(type="text" class="form-control ms-3 bg-light" id="fname" placeholder="Wpisz swoje IMIĘ")
-            input(type="text" class="form-control  bg-light" id="sname" placeholder="Wpisz swoje NAZWISKO")
-            input(type="text" class="form-control  bg-light" id="lastThree" placeholder="Wpisz 3 OSTANIE CYFRY NR PESEL")
-            a(href=link id="check-btn-auth" class="btn btn-outline-secondary me-3" type="button") UZYSKAJ DOSTĘP
+    form(id="action" action=actionRoute)
+        div(class="input-group mb-3")
+            input(type="text" class="form-control ms-3 bg-light" id="fname" name="fname" placeholder="Wpisz swoje IMIĘ")
+            input(type="text" class="form-control  bg-light" id="sname" name="sname" placeholder="Wpisz swoje NAZWISKO")
+            input(type="password" class="form-control  bg-light" id="lastThree" name="id" placeholder="Wpisz 3 OSTANIE CYFRY NR PESEL")
+            button(id="check-btn-auth-get" class="btn btn-outline-secondary me-3" type="submit") PRZEJDŹ
 
 include footer.pug
 script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js") 
