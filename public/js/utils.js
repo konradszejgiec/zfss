@@ -511,14 +511,14 @@ const handleDisplayButtonsMenu = (selector, elementId) => {
 
 const deleteNews = (e) => {
   deleteData("/zarzadzaj/news/usun", e.target.id);
-  window.location.reload();
+  location.replace(`${window.location.pathname}?${getElementBy("#base").href.split("?")[1]}`);
 };
 
 // update news
 
 const updateNews = (e) => {
   updateData("/zarzadzaj/news/edytuj", e.target.id, getElementBy(`#update-${e.target.id}`).value);
-  window.location.reload();
+  location.replace(`${window.location.pathname}?${getElementBy("#base").href.split("?")[1]}`);
 };
 
 // c) post employers database
