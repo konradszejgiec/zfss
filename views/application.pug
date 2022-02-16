@@ -158,7 +158,7 @@ div(class="mx-auto" id="full-form" style="width: 1200px;")
                         label(for="statement-kids" class="form-check-label") Dzieci
                     div(class="input-group col invisible mb-2" id="statement-kids-quantity")
                         span.input-group-text.fw-bold Wpisz liczbę dzieci:  
-                        input(type="number" class="form-control" id="statement-kids-quantity-input" value="" style="font-size: 20px;")
+                        input(name="num" type="number" min="1" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" title="Numbers only" class="form-control" id="statement-kids-quantity-input" value="" style="font-size: 20px;")
                     div.mx-3.col
 
             div.border.border-dark.mb-2
