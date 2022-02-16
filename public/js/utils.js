@@ -127,8 +127,8 @@ const handleSectionVisibilityAndAutofill = (autofillSection, autofillTxt, invisi
 };
 
 const displaySubsidy = (e) => {
-  const subsidyTable = [800, 950, 1100];
-  const salaryTable = [1499, 1500, 1999, 2000];
+  const subsidyTable = [850, 1050, 1250];
+  const salaryTable = [1499, 1500, 2499, 2500];
 
   if (Math.round(e.target.value) <= salaryTable[0]) {
     setElementValue("#application-value", subsidyTable[2]);
