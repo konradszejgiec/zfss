@@ -166,7 +166,7 @@ div(class="mx-auto" id="full-form" style="width: 1200px;")
                     a(href="/faq" target="blank" class="fw-bold") III. Oświadczam, że miesięczny dochód brutto na jedną osobę wynosi:*
                     div.input-group.my-3
                         span.input-group-text.fw-bold Dochód brutto
-                        input(type="number" class="form-control bg-white" id="statement-salary" style="height: 75px; font-size: 25px;")
+                        input(name="num" type="number" min="1" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" title="Numbers only" class="form-control bg-white" id="statement-salary" style="height: 75px; font-size: 25px;")
             
             div.border.border-dark.mb-2
                 div.m-3
