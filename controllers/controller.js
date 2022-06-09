@@ -62,7 +62,7 @@ exports.displayAccessPage = async (req, res) => {
 // employee section - render application
 
 exports.displayAddApplication = async (req, res) => {
-  if (new Date() >= new Date(2022, 4, 1)) {
+  if (new Date() < new Date(2022, 4, 1)) {
     res.render("success", {
       route: "background-image: url('../../assets/img/application-bg.jpg')",
       sectionMsg: "Wniosek o dofinansowanie",
