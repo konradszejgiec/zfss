@@ -322,11 +322,11 @@ const getLastNewsHTML = (item) => {
 };
 
 const getNewsHTML = (item) => {
-  return `<a href="/news/${item._id}" class="btn btn-outline-secondary mb-2 text-center rounded-3">${
+  return `<a href="/news/${item._id}" class="btn btn-outline-secondary mb-2 text-center rounded-3"><h3 class="text-center">${
     item.title
-  }<p class="text-center m-1" style="font-size:15px;"><em>Tematyka: ${
+  }</h3><p class="text-center m-1" style="font-size:15px;"><em>Tematyka: ${
     item.description
-  }<em></p><p class="text-center m-1" style="font-size:15px;">Data: ${new Date(item.date).toLocaleString("pl-PL", {
+  }<em></p><p class="text-center m-1" style="font-size:15px;">${new Date(item.date).toLocaleString("pl-PL", {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -368,7 +368,7 @@ const renderLastNews = (news) => {
 // utils
 
 const insertLink = (selector, link, title) => {
-  return addElementValue(selector, `<a href=${link}>${title}</a>`);
+  return addElementValue(selector, `<a href=${link} target="blank">${title}</a>`);
 };
 
 const insertImg = (selector, link, title) => {

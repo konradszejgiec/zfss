@@ -62,11 +62,11 @@ exports.displayAccessPage = async (req, res) => {
 // employee section - render application
 
 exports.displayAddApplication = async (req, res) => {
-  if (new Date() < new Date(2022, 4, 1)) {
+  if (new Date() < new Date(new Date().toLocaleString("pl-PL", { year: "numeric" }), 4, 1)) {
     res.render("success", {
       route: "background-image: url('../../assets/img/application-bg.jpg')",
       sectionMsg: "Wniosek o dofinansowanie",
-      successMsg: "Sekcja dostępna od 1 kwietnia 2022 r.",
+      successMsg: `Sekcja dostępna od 1 kwietnia ${new Date().toLocaleString("pl-PL", { year: "numeric" })} r.`,
       link: "/",
     });
   } else
