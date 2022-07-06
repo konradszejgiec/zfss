@@ -1,36 +1,41 @@
 include index.pug
+div.container.px-4.px-lg-5.mb-3 
+    div.container.px-4.px-lg-5.mb-5
+        h3.m-3.text-center Druki do pobrania - pracownicy
+        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+            a(href="/assets/pdf/wniosek_o_dofinansowanie.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
+                h5.m-3 Wniosek o dofinansowanie w #{getYearDate()} r.  
+            a(href="/assets/pdf/Wniosek o zapomogę.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-5")
+                h5.m-3 Wniosek o zapomogę w #{getYearDate()} r.    
 
-div.container.px-4.px-lg-5.mb-5
-    h3.m-3.text-center Druki do pobrania - pracownicy
-    div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-        a(href="/assets/pdf/wniosek_o_dofinansowanie.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
-            h5.m-3 Wniosek o dofinansowanie w #{getYearDate()} r.  
-        a(href="/assets/pdf/Wniosek o zapomogę.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-5")
-            h5.m-3 Wniosek o zapomogę w #{getYearDate()} r.    
+    div.container.px-4.px-lg-5.mb-5
+        h3.m-3.text-center Druki do pobrania - emeryci
+        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+            a(href="/assets/pdf/Wniosek o przyznanie dofinansowania z ZFŚS - emeryci nowa szata - z RODO - 2021.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")        
+                h5.m-3 Wniosek o dofinansowanie w #{getYearDate()} r.
+            a(href="/assets/pdf/Wniosek o zapomogę - emeryt.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-5")        
+                h5.m-3 Wniosek o zapomogę #{getYearDate()} r.
 
-div.container.px-4.px-lg-5.mb-5
-    h3.m-3.text-center Druki do pobrania - emeryci
-    div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-        a(href="/assets/pdf/Wniosek o przyznanie dofinansowania z ZFŚS - emeryci nowa szata - z RODO - 2021.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")        
-            h5.m-3 Wniosek o dofinansowanie w #{getYearDate()} r.
-        a(href="/assets/pdf/Wniosek o zapomogę - emeryt.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-5")        
-            h5.m-3 Wniosek o zapomogę #{getYearDate()} r.
+    div.container.px-4.px-lg-5.mb-5
+        h3.m-3.text-center Zakładowy Fundusz Mieszkaniowy
+        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+            a(href="/assets/pdf/Wniosek o pożyczkę.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-5")
+                h5.m-3 Wniosek o pożyczkę remontową w #{getYearDate()} r.  
 
-div.container.px-4.px-lg-5.mb-5
-    h3.m-3.text-center Zakładowy Fundusz Mieszkaniowy
-    div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-        a(href="/assets/pdf/Wniosek o pożyczkę.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-5")
-            h5.m-3 Wniosek o pożyczkę remontową w #{getYearDate()} r.  
+    div.container.px-4.px-lg-5.mb-5
+        h4.m-3.text-center Regulamin i Zasady ZFŚS
+        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+            a(href="/assets/pdf/R E G U L A M I N ZFŚS AKTUALNY.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
+                h5.m-3 Regulamin Zakładowego Funduszu Świadczeń Socjalnych w SPSK nr 4 w Lublinie
+            a(href="/assets/pdf/Załącznik Nr 1 -Zasady - 2022.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
+                h5.m-3 Zasady przyznawania świadczeń socjalnych w #{getYearDate()} r.
+            a(href="/assets/pdf/Załącznik Nr 2 - Wysokość świadczeń - 2022.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-5")
+                    h5.m-3 Wysokość świadczeń socjalnych w #{getYearDate()} r.
 
-div.container.px-4.px-lg-5.mb-5
-    h4.m-3.text-center Regulamin i Zasady ZFŚS
-    div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-        a(href="/assets/pdf/R E G U L A M I N ZFŚS AKTUALNY.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
-            h5.m-3 Regulamin Zakładowego Funduszu Świadczeń Socjalnych w SPSK nr 4 w Lublinie
-        a(href="/assets/pdf/Załącznik Nr 1 -Zasady - 2022.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2")
-            h5.m-3 Zasady przyznawania świadczeń socjalnych w #{getYearDate()} r.
-        a(href="/assets/pdf/Załącznik Nr 2 - Wysokość świadczeń - 2022.pdf" target="blank" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-5")
-                h5.m-3 Wysokość świadczeń socjalnych w #{getYearDate()} r.
+    div.container.px-4.px-lg-5.mb-3    
+        div.row.gx-4.gx-lg-5.justify-content-center
+            a(href="/sekcja-pracownik" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2 border border-5")
+                h3.text-center POWRÓT
 
 script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js")
 script(src="/js/utils.js") 

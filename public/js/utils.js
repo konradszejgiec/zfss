@@ -22,6 +22,10 @@ const getDisplayStyle = (selector) => {
   return getElementBy(selector).style.display;
 };
 
+const getYearDate = () => {
+  return new Date().toLocaleString("pl-PL", { year: "numeric" });
+};
+
 // b) setters
 
 const setElementValue = (selector, newValue) => {
@@ -143,7 +147,12 @@ const displaySubsidy = (e) => {
 
 const hideOwnSection = (e) => {
   if (e.target.checked) {
-    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1621/                           /2022`, "#application-own-div", false);
+    handleSectionVisibilityAndAutofill(
+      "#application-number",
+      `FDK.KS.1621/                           /${getYearDate()}`,
+      "#application-own-div",
+      false
+    );
   } else {
     handleSectionVisibilityAndAutofill("#application-number", "", "#application-own-div", true);
   }
@@ -151,7 +160,12 @@ const hideOwnSection = (e) => {
 
 const hideKidsSection = (e) => {
   if (e.target.checked) {
-    handleSectionVisibilityAndAutofill("#application-number", `FDK.KS.1620/                           /2022`, "#application-kids-div", false);
+    handleSectionVisibilityAndAutofill(
+      "#application-number",
+      `FDK.KS.1620/                           /${getYearDate()}`,
+      "#application-kids-div",
+      false
+    );
   } else {
     handleSectionVisibilityAndAutofill("#application-number", "", "#application-kids-div", true);
   }
@@ -227,7 +241,9 @@ const fetchPersonData = (e) => {
   );
   if (!getElementValue("#fname") || !getElementValue("#sname") || !getElementValue("#lastThree")) return;
   fetchData(
-    `/wniosek/${getElementValue("#fname").toLowerCase() + getElementValue("#sname").toLowerCase() + getElementValue("#lastThree").toLowerCase()}`,
+    `/wniosek/${
+      getElementValue("#fname").toLowerCase().trim() + getElementValue("#sname").toLowerCase().trim() + getElementValue("#lastThree").toLowerCase()
+    }`,
     (person) => {
       handleIndividualInputs(person);
     }
@@ -311,7 +327,7 @@ const getContentHTML = (item) => {
 const getLastNewsHTML = (item) => {
   return `<a href="/news/${
     item._id
-  }" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2 border border-5 border-danger rounded-3"><p class="text-center m-1" style="font-size:15px;""><em>${new Date(
+  }" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2 border border-5 border-danger"><p class="text-center m-1" style="font-size:15px;""><em>${new Date(
     item.date
   ).toLocaleString("pl-PL", {
     weekday: "long",
@@ -322,7 +338,7 @@ const getLastNewsHTML = (item) => {
 };
 
 const getNewsHTML = (item) => {
-  return `<a href="/news/${item._id}" class="btn btn-outline-secondary mb-2 text-center rounded-3"><h3 class="text-center">${
+  return `<a href="/news/${item._id}" class="btn btn-outline-secondary mb-2 text-center"><h3 class="text-center">${
     item.title
   }</h3><p class="text-center m-1" style="font-size:15px;"><em>Tematyka: ${
     item.description

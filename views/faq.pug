@@ -1,256 +1,263 @@
 include index.pug
-div.wrapper 
+div.wrapper
     div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Do kiedy należy składać wnioski o dofinansowanie?
-                div(id="faq-00" style="display: none;")
-                    p.fw-bold Wnioski należy składać w nieprzekraczalnym terminie, który przypada na 31 maja każdego roku.
-                    p 
-                        em Pracownicy zatrudnieni po 31 maja składają wnioski niezwłocznie po przyjęciu do pracy.
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-00" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
-
-
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Jak poprawnie obliczyć dochód?
-                div(id="faq-0" style="display: none;")
-                    p 
-                        em Za dochód brutto uznaje się sumę wszystkich dochodów pracownika i członków rodziny pracownika za rok poprzedni z tytułu: wynagrodzeń za pracę, działalności gospodarczej, emerytury, renty, zasiłków, umów cywilno-prawnych, pracy za granicą, innych świadczeń pieniężnych, itp.
-                    p 
-                        em Wyliczenie dochodu brutto na jednego członka rodziny odbywa się poprzez zsumowanie wszystkich dochodów rocznych członków rodziny i podzieleniu ich przez 12 miesięcy, a następnie podzieleniu wychodzącej kwoty przez wszystkich członków rodziny tj.
-                    h3 SUMA DOCHODÓW : 12 MIESIĘCY : ILOŚĆ CZŁONKÓW RODZINY = DOCHÓD NA 1 OSOBĘ (ZAOKRĄGLONY DO PEŁNYCH ZŁOTYCH)
-                    p.fw-bold Podanie nieprawdziwych danych, poświadczenie nieprawdy może być powodem odpowiedzialności karnej, na podstawie art. 286 § 1 i 3 Kodeksu Karnego i może podlegać karze grzywny, karze ograniczenia wolności lub pozbawienia wolności.
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-0" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
-
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Jestem nowym pracownikiem. Czy przysługują mi świadczenia z ZFŚS?
-                div(id="faq-1" style="display: none;")
-                    p.text-justify
-                    p 
-                    em.fw-bold Tak.
-                    p 
-                        em W Samodzielnym Publicznym Szpitalu Klinicznym Nr 4 w Lublinie działa Fundusz Socjalny, z którego mogą korzystać wszyscy pracownicy i ich rodziny. Wypłata środków z Funduszu Socjalnego jest możliwa wyłącznie po wypełnieniu w każdym roku kalendarzowym „Wniosku o przyznanie dofinansowania”, określającego dochody pracownika i jego rodziny.
-                    p 
-                        em Pracownik wypełniający wniosek o dofinansowanie do wypoczynku wybiera cel, na jaki przeznaczy dopłatę. Może to być: 
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Do kiedy należy składać wnioski o dofinansowanie?
+                    div(id="faq-00" style="display: none;")
+                        p.fw-bold Wnioski należy składać w nieprzekraczalnym terminie, który przypada na 31 maja każdego roku.
                         p 
-                            em a)	szeroko rozumiany wypoczynek pracownika zorganizowany przez niego we własnym zakresie,
+                            em Pracownicy zatrudnieni po 31 maja składają wnioski niezwłocznie po przyjęciu do pracy.
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-00" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Jak poprawnie obliczyć dochód?
+                    div(id="faq-0" style="display: none;")
                         p 
-                            em b)	zorganizowany wypoczynek jego dziecka w formie obozu, kolonii, półkolonii, zielonej szkoły.
-
+                            em Za dochód brutto uznaje się sumę wszystkich dochodów pracownika i członków rodziny pracownika za rok poprzedni z tytułu: wynagrodzeń za pracę, działalności gospodarczej, emerytury, renty, zasiłków, umów cywilno-prawnych, pracy za granicą, innych świadczeń pieniężnych, itp.
                         p 
-                            em Jeżeli pracownik we wniosku o dofinansowanie wybierze dopłatę na wypoczynek zorganizowany we własnym zakresie, wówczas wypłata dofinansowania nastąpi po wykorzystaniu urlopu wypoczynkowego w wymiarze nie mniejszym niż 14 dni kalendarzowych. Kwota dopłaty może być pomniejszona o podatek dochodowy jeżeli w danym roku przekroczy limit zwolnienia podatkowego z ZFŚS.
+                            em Wyliczenie dochodu brutto na jednego członka rodziny odbywa się poprzez zsumowanie wszystkich dochodów rocznych członków rodziny i podzieleniu ich przez 12 miesięcy, a następnie podzieleniu wychodzącej kwoty przez wszystkich członków rodziny tj.
+                        h3 SUMA DOCHODÓW : 12 MIESIĘCY : ILOŚĆ CZŁONKÓW RODZINY = DOCHÓD NA 1 OSOBĘ (ZAOKRĄGLONY DO PEŁNYCH ZŁOTYCH)
+                        p.fw-bold Podanie nieprawdziwych danych, poświadczenie nieprawdy może być powodem odpowiedzialności karnej, na podstawie art. 286 § 1 i 3 Kodeksu Karnego i może podlegać karze grzywny, karze ograniczenia wolności lub pozbawienia wolności.
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-0" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Jestem nowym pracownikiem. Czy przysługują mi świadczenia z ZFŚS?
+                    div(id="faq-1" style="display: none;")
+                        p.text-justify
                         p 
-                            em Jeżeli pracownik we wniosku wybierze dofinansowanie na wypoczynek dziecka w formie obozu, kolonii, półkolonii, zielonej szkoły, zorganizowany przez organizatora tych form wypoczynku – wówczas wypłata dofinansowania nie nastąpi w terminie wskazanym powyżej lecz należność zostanie przekazana przelewem na konto organizatora wypoczynku, po przedłożeniu przez pracownika odpowiednich dokumentów (zaświadczenie z nr konta i kwotą za wypoczynek dziecka). Kwota dopłaty, może być wypłacona pracownikowi gotówką,  jeżeli przedłoży on oryginał dowodu wpłaty (faktura, rachunek) na rzecz organizatora wypoczynku.
-                        p    
-                            em W ramach środków pozostałych na koncie funduszu socjalnego Komisja Socjalna może zawnioskować o wypłatę dofinansowania do wypoczynku zimowego pracowników (tzw. gwiazdka). Powyższe świadczenie przysługuje osobom pozostającym w zatrudnieniu na dzień 30 listopada danego roku i które złożyły w danym roku oświadczenie o dochodach.
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-1" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
-
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Jakie świadczenia z ZFŚS przysługują pracownikom SPSK nr 4 w Lublinie?
-                div(id="faq-2" style="display: none;")
-                    p.text-justify 
-                        em Pracownicy mogą corocznie korzystać z dofinansowania do wypoczynku w formie tzw. wczasów pod gruszą lub dofinansowania do zorganizowanego w formie obozu, kolonii, półkolonii, zielonej szkoły wypoczynku dzieci.
-                    p
-                        em Dodatkowo, w ramach środków pozostałych na koncie Funduszu Socjalnego po wypłacie dotacji do wypoczynku letniego i pożyczek mieszkaniowych, Komisja Socjalna może zawnioskować o wypłatę dofinansowania do wypoczynku zimowego pracowników. Świadczenie to przysługuje osobom pozostającym w zatrudnieniu na dzień 30 listopada danego roku, i które złożyły wcześniej oświadczenie o dochodach (wniosek o dofinansowanie).
-                    p
-                        em.fw-bold Wysokość dofinansowań oraz zasady przyznawania świadczeń socjalnych określają coroczne załączniki do Regulaminu ZFŚS dostępne w
-                        | 
-                        a(href="/sekcja-pracownik" class="fw-bold") SEKCJI DLA PRACOWNIKA
-                        | 
-                        span.fw-bold w zakładce  
-                        |
-                        a(href="/regulamin-zasady-wnioski" class="fw-bold") REGULAMIN, ZASADY, STAWKI DOFINANSOWAŃ I POŻYCZEK, DRUKI DO POBRANIA
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-2" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
-
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Jakie świadczenia z ZFŚS przysługują emerytom/rencistom byłym pracownikom SPSK nr 4 w Lublinie?
-                div(id="faq-3" style="display: none;")
-                    p.text-justify 
-                        em Byli pracownicy, którzy przeszli na emeryturę bądź rentę bezpośrednio z SPSK nr 4 w Lublinie mogą corocznie korzystać z dofinansowania do wypoczynku dla emerytów/rencistów po złożeniu wniosku w okresie od 1 września do 30 listopada.
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-3" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
-
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Jakie warunki muszę spełnić, żeby otrzymać dofinansowanie do wypoczynku organizowanego we własnym zakresie tzw. wczasy pod gruszą?
-                div(id="faq-4" style="display: none;")           
-                    p 
-                        em Pracownik wybierając dofinansowanie do różnych form wypoczynku organizowanego we własnym zakresie otrzymuje dofinansowanie po stwierdzeniu wykorzystania nie mniej niż 14 kolejnych dni kalendarzowych urlopu wypoczynkowego. Wypłaty dotacji realizowane są sukcesywnie od 20 czerwca każdego roku, poprzez przekazanie kwoty dotacji do wypoczynku na konta indywidualne.
-                    p 
-                        em.fw-bold Kwota dopłaty może być pomniejszona o podatek dochodowy.
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-4" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
-
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Jakie warunki muszę spełnić, żeby otrzymać dofinansowanie do zorganizowanego w formie obozu, kolonii, półkolonii, zielonej szkoły wypoczynku dzieci?
-                div(id="faq-5" style="display: none;")           
-                    p 
-                        em Jeżeli pracownik zaznaczy, że dofinansowanie ma być przeznaczone na wypoczynek dziecka w formie obozu, kolonii, półkolonii, zielonej szkoły, zorganizowany przez organizatora tych form wypoczynku – wówczas należność, wynikająca z kwoty dofinansowania, zostanie przekazana przelewem na konto organizatora wypoczynku, po przedłożeniu przez pracownika odpowiednich dokumentów (zaświadczenie z numerem konta i kwotą za wypoczynek dziecka). Kwota dopłaty, może być wypłacona pracownikowi gotówką, jeżeli przedłoży on oryginał dowodu wpłaty (rachunek, faktura) na rzecz organizatora wypoczynku. 
-                    p 
-                        em.fw-bold Na konto organizatora wypoczynku dzieci, nie będzie mogła być przekazana kwota większa od przyznanej dopłaty. Oznacza to, że nie będzie stosowana praktyka pokrywania całkowitego kosztu pobytów kolonijnych (obozowych, itp.)
-                    p
-                        em.fw-bold Dofinansowanie do zorganizowanego wypoczynku dzieci do lat 18-tu nie podlega opodatkowaniu.
-                    p 
-                        em.fw-bold Należy pamiętać przy tym, iż na zaświadczeniu/rachunku/fakturze winno się znajdować oświadczenie organizatora zawierające, że wypoczynek odbywać się będzie zgodnie z przepisami Rozp. MEN z dnia 30.03.2016 r. w sprawie wypoczynku dla dzieci i młodzieży z późn. zm. oraz, że podlega rejestracji w bazie wypoczynku Ministerstwa Edukacji Narodowej.
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-5" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
-
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Czy można skorzystać z dotacji do wypoczynku we własnym zakresie (wczasy pod gruszą) oraz uzyskać dofinansowanie do wypoczynku dzieci (kolonie, obozy, itp.) jednocześnie?
-                div(id="faq-6" style="display: none;")
-                    p.text-justify 
-                        em.fw-bold Nie.
-                    p
-                        em Wniosek pracownika, który zaznaczył we wniosku o dofinansowanie obie formy wypoczynku, będzie traktowany jako nieprawidłowy przez co nie będzie możliwe uzyskanie żadnego dofinansowania do czasu poprawienia wniosku.
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-6" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
-
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Przebywam na dłuższym zwolnieniu chorobowym, zasiłku rehabilitacyjnym lub jestem na zasiłku macierzyńskim/urlopie rodzicielskim. Czy przysługują mi świadczenia z ZFŚS?
-                div(id="faq-7" style="display: none;")
-                    p.text-justify 
                         em.fw-bold Tak.
-                    p
-                        em Wymienione wyżej osoby korzystają z tych samych świadczeń co pozostali pracownicy i muszą spełnić te same warunki, żeby otrzymać dofinansowanie.
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-7" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
-
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Przebywam na urlopie wychowawczym. Czy przysługują mi jakieś świadczenia z ZFŚS?
-                div(id="faq-8" style="display: none;")
-                    p
-                        em Pracownicy przebywający na urlopach wychowawczych mogą korzystać w danym roku kalendarzowym z następujących form dofinansowania z ZFŚS: dopłat do kolonii, obozów, półkolonii, zielonych szkół dzieci oraz zapomóg.
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-8" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
-
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Przebywam na urlopie bezpłatnym. Czy przysługują mi jakieś świadczenia z ZFŚS?
-                div(id="faq-9" style="display: none;")
-                    p.text-justify 
-                        em.fw-bold Nie.
-                    p
-                        em Regulamin ZFŚŚ w SPSK nr 4 w Lublinie nie zalicza osób przebywających na urlopach bezpłatnych do uprawnionych do korzystania ze świadczeń Funduszu Socjalnego.
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-9" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
-
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Spotkało mnie nieszczeście lub znalazłem się w trudnej sytuacji życiowej lub materialnej. Czy mogę ubiegać się o zapomogę z ZFŚS?
-                div(id="faq-10" style="display: none;")
-                    p.text-justify 
-                        em.fw-bold Tak.
-                    p
-                        em Środki Funduszu przeznaczone są na, miedzy innymi, na finansowanie zapomóg udzielanych w wypadkach losowych oraz pomocy osobom znajdującym się w szczególnie trudnej sytuacji życiowej.
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-10" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
-
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Kto może ubiegać się o zapomogę?
-                div(id="faq-11" style="display: none;")
-                    p
-                        em Ubiegać się o zapomogę mogą zarówno pracownicy, jak też członkowie rodzin pracowników zmarłych w czasie zatrudnienia oraz emeryci/renciści byli pracownicy SPSK nr 4 w Lublinie.
-                    p
-                        em Zapomogi mogą zostać przyznane w następujących przypadkach: 
                         p 
-                            em a) długotrwała choroba lub śmierć członka najbliższej rodziny (męża, dziecka -jeżeli nie jest zamężne, ojca, matki - jeżeli byli na utrzymaniu pracownika),
+                            em W Samodzielnym Publicznym Szpitalu Klinicznym Nr 4 w Lublinie działa Fundusz Socjalny, z którego mogą korzystać wszyscy pracownicy i ich rodziny. Wypłata środków z Funduszu Socjalnego jest możliwa wyłącznie po wypełnieniu w każdym roku kalendarzowym „Wniosku o przyznanie dofinansowania”, określającego dochody pracownika i jego rodziny.
+                        p 
+                            em Pracownik wypełniający wniosek o dofinansowanie do wypoczynku wybiera cel, na jaki przeznaczy dopłatę. Może to być: 
+                            p 
+                                em a)	szeroko rozumiany wypoczynek pracownika zorganizowany przez niego we własnym zakresie,
+                            p 
+                                em b)	zorganizowany wypoczynek jego dziecka w formie obozu, kolonii, półkolonii, zielonej szkoły.
+
+                            p 
+                                em Jeżeli pracownik we wniosku o dofinansowanie wybierze dopłatę na wypoczynek zorganizowany we własnym zakresie, wówczas wypłata dofinansowania nastąpi po wykorzystaniu urlopu wypoczynkowego w wymiarze nie mniejszym niż 14 dni kalendarzowych. Kwota dopłaty może być pomniejszona o podatek dochodowy jeżeli w danym roku przekroczy limit zwolnienia podatkowego z ZFŚS.
+                            p 
+                                em Jeżeli pracownik we wniosku wybierze dofinansowanie na wypoczynek dziecka w formie obozu, kolonii, półkolonii, zielonej szkoły, zorganizowany przez organizatora tych form wypoczynku – wówczas wypłata dofinansowania nie nastąpi w terminie wskazanym powyżej lecz należność zostanie przekazana przelewem na konto organizatora wypoczynku, po przedłożeniu przez pracownika odpowiednich dokumentów (zaświadczenie z nr konta i kwotą za wypoczynek dziecka). Kwota dopłaty, może być wypłacona pracownikowi gotówką,  jeżeli przedłoży on oryginał dowodu wpłaty (faktura, rachunek) na rzecz organizatora wypoczynku.
+                            p    
+                                em W ramach środków pozostałych na koncie funduszu socjalnego Komisja Socjalna może zawnioskować o wypłatę dofinansowania do wypoczynku zimowego pracowników (tzw. gwiazdka). Powyższe świadczenie przysługuje osobom pozostającym w zatrudnieniu na dzień 30 listopada danego roku i które złożyły w danym roku oświadczenie o dochodach.
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-1" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Jakie świadczenia z ZFŚS przysługują pracownikom SPSK nr 4 w Lublinie?
+                    div(id="faq-2" style="display: none;")
+                        p.text-justify 
+                            em Pracownicy mogą corocznie korzystać z dofinansowania do wypoczynku w formie tzw. wczasów pod gruszą lub dofinansowania do zorganizowanego w formie obozu, kolonii, półkolonii, zielonej szkoły wypoczynku dzieci.
                         p
-                            em b) kradzież, udokumentowana zaświadczeniem z Policji lub pożar w gosp. domowym, udokumentowany zaświadczeniem ze straży pożarnej,
+                            em Dodatkowo, w ramach środków pozostałych na koncie Funduszu Socjalnego po wypłacie dotacji do wypoczynku letniego i pożyczek mieszkaniowych, Komisja Socjalna może zawnioskować o wypłatę dofinansowania do wypoczynku zimowego pracowników. Świadczenie to przysługuje osobom pozostającym w zatrudnieniu na dzień 30 listopada danego roku, i które złożyły wcześniej oświadczenie o dochodach (wniosek o dofinansowanie).
+                        p
+                            em.fw-bold Wysokość dofinansowań oraz zasady przyznawania świadczeń socjalnych określają coroczne załączniki do Regulaminu ZFŚS dostępne w
+                            | 
+                            a(href="/sekcja-pracownik" class="fw-bold") SEKCJI DLA PRACOWNIKA
+                            | 
+                            span.fw-bold w zakładce  
+                            |
+                            a(href="/regulamin-zasady-wnioski" class="fw-bold") REGULAMIN, ZASADY, STAWKI DOFINANSOWAŃ I POŻYCZEK, DRUKI DO POBRANIA
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-2" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Jakie świadczenia z ZFŚS przysługują emerytom/rencistom byłym pracownikom SPSK nr 4 w Lublinie?
+                    div(id="faq-3" style="display: none;")
+                        p.text-justify 
+                            em Byli pracownicy, którzy przeszli na emeryturę bądź rentę bezpośrednio z SPSK nr 4 w Lublinie mogą corocznie korzystać z dofinansowania do wypoczynku dla emerytów/rencistów po złożeniu wniosku w okresie od 1 września do 30 listopada.
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-3" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Jakie warunki muszę spełnić, żeby otrzymać dofinansowanie do wypoczynku organizowanego we własnym zakresie tzw. wczasy pod gruszą?
+                    div(id="faq-4" style="display: none;")           
+                        p 
+                            em Pracownik wybierając dofinansowanie do różnych form wypoczynku organizowanego we własnym zakresie otrzymuje dofinansowanie po stwierdzeniu wykorzystania nie mniej niż 14 kolejnych dni kalendarzowych urlopu wypoczynkowego. Wypłaty dotacji realizowane są sukcesywnie od 20 czerwca każdego roku, poprzez przekazanie kwoty dotacji do wypoczynku na konta indywidualne.
+                        p 
+                            em.fw-bold Kwota dopłaty może być pomniejszona o podatek dochodowy.
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-4" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Jakie warunki muszę spełnić, żeby otrzymać dofinansowanie do zorganizowanego w formie obozu, kolonii, półkolonii, zielonej szkoły wypoczynku dzieci?
+                    div(id="faq-5" style="display: none;")           
+                        p 
+                            em Jeżeli pracownik zaznaczy, że dofinansowanie ma być przeznaczone na wypoczynek dziecka w formie obozu, kolonii, półkolonii, zielonej szkoły, zorganizowany przez organizatora tych form wypoczynku – wówczas należność, wynikająca z kwoty dofinansowania, zostanie przekazana przelewem na konto organizatora wypoczynku, po przedłożeniu przez pracownika odpowiednich dokumentów (zaświadczenie z numerem konta i kwotą za wypoczynek dziecka). Kwota dopłaty, może być wypłacona pracownikowi gotówką, jeżeli przedłoży on oryginał dowodu wpłaty (rachunek, faktura) na rzecz organizatora wypoczynku. 
+                        p 
+                            em.fw-bold Na konto organizatora wypoczynku dzieci, nie będzie mogła być przekazana kwota większa od przyznanej dopłaty. Oznacza to, że nie będzie stosowana praktyka pokrywania całkowitego kosztu pobytów kolonijnych (obozowych, itp.)
+                        p
+                            em.fw-bold Dofinansowanie do zorganizowanego wypoczynku dzieci do lat 18-tu nie podlega opodatkowaniu.
+                        p 
+                            em.fw-bold Należy pamiętać przy tym, iż na zaświadczeniu/rachunku/fakturze winno się znajdować oświadczenie organizatora zawierające, że wypoczynek odbywać się będzie zgodnie z przepisami Rozp. MEN z dnia 30.03.2016 r. w sprawie wypoczynku dla dzieci i młodzieży z późn. zm. oraz, że podlega rejestracji w bazie wypoczynku Ministerstwa Edukacji Narodowej.
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-5" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Czy można skorzystać z dotacji do wypoczynku we własnym zakresie (wczasy pod gruszą) oraz uzyskać dofinansowanie do wypoczynku dzieci (kolonie, obozy, itp.) jednocześnie?
+                    div(id="faq-6" style="display: none;")
+                        p.text-justify 
+                            em.fw-bold Nie.
+                        p
+                            em Wniosek pracownika, który zaznaczył we wniosku o dofinansowanie obie formy wypoczynku, będzie traktowany jako nieprawidłowy przez co nie będzie możliwe uzyskanie żadnego dofinansowania do czasu poprawienia wniosku.
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-6" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Przebywam na dłuższym zwolnieniu chorobowym, zasiłku rehabilitacyjnym lub jestem na zasiłku macierzyńskim/urlopie rodzicielskim. Czy przysługują mi świadczenia z ZFŚS?
+                    div(id="faq-7" style="display: none;")
+                        p.text-justify 
+                            em.fw-bold Tak.
+                        p
+                            em Wymienione wyżej osoby korzystają z tych samych świadczeń co pozostali pracownicy i muszą spełnić te same warunki, żeby otrzymać dofinansowanie.
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-7" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Przebywam na urlopie wychowawczym. Czy przysługują mi jakieś świadczenia z ZFŚS?
+                    div(id="faq-8" style="display: none;")
+                        p
+                            em Pracownicy przebywający na urlopach wychowawczych mogą korzystać w danym roku kalendarzowym z następujących form dofinansowania z ZFŚS: dopłat do kolonii, obozów, półkolonii, zielonych szkół dzieci oraz zapomóg.
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-8" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Przebywam na urlopie bezpłatnym. Czy przysługują mi jakieś świadczenia z ZFŚS?
+                    div(id="faq-9" style="display: none;")
+                        p.text-justify 
+                            em.fw-bold Nie.
+                        p
+                            em Regulamin ZFŚŚ w SPSK nr 4 w Lublinie nie zalicza osób przebywających na urlopach bezpłatnych do uprawnionych do korzystania ze świadczeń Funduszu Socjalnego.
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-9" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Spotkało mnie nieszczeście lub znalazłem się w trudnej sytuacji życiowej lub materialnej. Czy mogę ubiegać się o zapomogę z ZFŚS?
+                    div(id="faq-10" style="display: none;")
+                        p.text-justify 
+                            em.fw-bold Tak.
+                        p
+                            em Środki Funduszu przeznaczone są na, miedzy innymi, na finansowanie zapomóg udzielanych w wypadkach losowych oraz pomocy osobom znajdującym się w szczególnie trudnej sytuacji życiowej.
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-10" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Kto może ubiegać się o zapomogę?
+                    div(id="faq-11" style="display: none;")
+                        p
+                            em Ubiegać się o zapomogę mogą zarówno pracownicy, jak też członkowie rodzin pracowników zmarłych w czasie zatrudnienia oraz emeryci/renciści byli pracownicy SPSK nr 4 w Lublinie.
+                        p
+                            em Zapomogi mogą zostać przyznane w następujących przypadkach: 
+                            p 
+                                em a) długotrwała choroba lub śmierć członka najbliższej rodziny (męża, dziecka -jeżeli nie jest zamężne, ojca, matki - jeżeli byli na utrzymaniu pracownika),
+                            p
+                                em b) kradzież, udokumentowana zaświadczeniem z Policji lub pożar w gosp. domowym, udokumentowany zaświadczeniem ze straży pożarnej,
+                            p   
+                                em c) szczególnie trudna sytuacja materialna (po przeprowadzeniu wywiadu środowiskowego oraz odpowiednim udokumentowaniu).
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form    
+                        button(id="show-btn-11" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Jak wygląda ścieżka ubiegania się o zapomogę?
+                    div(id="faq-12" style="display: none;")
+                        p 
+                            em Chcąc ubiegać się o zapomogę trzeba wypełnić wniosek o zapomogę, który należy odpowiednio uzasadnić, a także załączyć do niego niezbędną dokumentację. Uzupełniony wniosek należy złożyć w Sekcji Socjalnej Działu Kadr i Płac.
                         p   
-                            em c) szczególnie trudna sytuacja materialna (po przeprowadzeniu wywiadu środowiskowego oraz odpowiednim udokumentowaniu).
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form    
-                    button(id="show-btn-11" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+                            em.fw-bold Kwota przyznanej zapomogi może być pomniejszona o podatek dochodowy, w zależności od rodzaju udzielonej zapomogi.
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form    
+                        button(id="show-btn-12" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
 
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Jak wygląda ścieżka ubiegania się o zapomogę?
-                div(id="faq-12" style="display: none;")
-                    p 
-                        em Chcąc ubiegać się o zapomogę trzeba wypełnić wniosek o zapomogę, który należy odpowiednio uzasadnić, a także załączyć do niego niezbędną dokumentację. Uzupełniony wniosek należy złożyć w Sekcji Socjalnej Działu Kadr i Płac.
-                    p   
-                        em.fw-bold Kwota przyznanej zapomogi może być pomniejszona o podatek dochodowy, w zależności od rodzaju udzielonej zapomogi.
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form    
-                    button(id="show-btn-12" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Potrzebuję pomocy na cele mieszkaniowe i chciałbym skorzystać z pomocy w formie pożyczki zwrotnej. Co muszę zrobić?
+                    div(id="faq-13" style="display: none;")
+                        p 
+                            em Chcąc wnioskować o przyznanie pomocy w formie zwrotnej pożyczki na cele mieszkaniowe pracownik musi być zatrudniony co najmniej dwa lata w SPSK nr 4 w Lublinie. Po spełnieniu tego warunku można uzupełnić i złożyć wniosek o przyznanie pożyczki z ZFŚS w Sekcji Socjalnej Działu Kadr i Płac. Należy pamiętać, że przy przyznawaniu pożyczek będzie brane pod uwagę również kryterium socjalne. 
+                        p   
+                            em Po pozytywnym rozpatrzeniu wniosku o pożyczkę przez Komisję Socjalną, wysokość pożyczki i warunki spłaty ustalane są w formie umowy, którą poręczyć muszą dwie osoby będące pracownikami SPSK nr 4 w Lublinie z umowami o pracę zawartymi na czas nieokreślony.
+                        p 
+                            em.fw-bold Wysokość pożyczek określa coroczny załącznik do Regulaminu ZFŚS dostępny w 
+                            | 
+                            a(href="/sekcja-pracownik" class="fw-bold") SEKCJI DLA PRACOWNIKA
+                            | 
+                            span.fw-bold w zakładce  
+                            |
+                            a(href="/regulamin-zasady-wnioski" class="fw-bold") REGULAMIN, ZASADY, STAWKI DOFINANSOWAŃ I POŻYCZEK, DRUKI DO POBRANIA
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form    
+                        button(id="show-btn-13" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
 
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Potrzebuję pomocy na cele mieszkaniowe i chciałbym skorzystać z pomocy w formie pożyczki zwrotnej. Co muszę zrobić?
-                div(id="faq-13" style="display: none;")
-                    p 
-                        em Chcąc wnioskować o przyznanie pomocy w formie zwrotnej pożyczki na cele mieszkaniowe pracownik musi być zatrudniony co najmniej dwa lata w SPSK nr 4 w Lublinie. Po spełnieniu tego warunku można uzupełnić i złożyć wniosek o przyznanie pożyczki z ZFŚS w Sekcji Socjalnej Działu Kadr i Płac. Należy pamiętać, że przy przyznawaniu pożyczek będzie brane pod uwagę również kryterium socjalne. 
-                    p   
-                        em Po pozytywnym rozpatrzeniu wniosku o pożyczkę przez Komisję Socjalną, wysokość pożyczki i warunki spłaty ustalane są w formie umowy, którą poręczyć muszą dwie osoby będące pracownikami SPSK nr 4 w Lublinie z umowami o pracę zawartymi na czas nieokreślony.
-                    p 
-                        em.fw-bold Wysokość pożyczek określa coroczny załącznik do Regulaminu ZFŚS dostępny w 
-                        | 
-                        a(href="/sekcja-pracownik" class="fw-bold") SEKCJI DLA PRACOWNIKA
-                        | 
-                        span.fw-bold w zakładce  
-                        |
-                        a(href="/regulamin-zasady-wnioski" class="fw-bold") REGULAMIN, ZASADY, STAWKI DOFINANSOWAŃ I POŻYCZEK, DRUKI DO POBRANIA
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form    
-                    button(id="show-btn-13" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Do czego będą wykorzystywane podane przeze mnie dane osobowe?
+                    div(id="faq-14" style="display: none;")
+                        p
+                            em Wszystkie dane są informacjami poufnymi. Wykorzystywane będą wyłącznie w celu ustalenia progów dochodowych, od których zależy wysokość dopłat do świadczeń socjalnych. Komisja Socjalna ma prawo wglądu do zeznań podatkowych, celem potwierdzenia wysokości dochodu.
+                        p
+                            em Klauzula RODO dostępna jest w 
+                            | 
+                            a(href="/sekcja-pracownik") SEKCJI DLA PRACOWNIKA
+                            | 
+                            span w zakładce  
+                            | 
+                            a(href="/rodo") KLAUZULA RODO
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-14" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
 
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Do czego będą wykorzystywane podane przeze mnie dane osobowe?
-                div(id="faq-14" style="display: none;")
-                    p
-                        em Wszystkie dane są informacjami poufnymi. Wykorzystywane będą wyłącznie w celu ustalenia progów dochodowych, od których zależy wysokość dopłat do świadczeń socjalnych. Komisja Socjalna ma prawo wglądu do zeznań podatkowych, celem potwierdzenia wysokości dochodu.
-                    p
-                        em Klauzula RODO dostępna jest w 
-                        | 
-                        a(href="/sekcja-pracownik") SEKCJI DLA PRACOWNIKA
-                        | 
-                        span w zakładce  
-                        | 
-                        a(href="/rodo") KLAUZULA RODO
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-14" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+        div.container.px-4.px-lg-5
+            div.row.gx-4.gx-lg-5.justify-content-center.mb-3
+                div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
+                    h3.text-justify.m-3 Gdzie mogę dostać lub pobrać druki/wnioski o świadczenia z ZFŚS (zapomogi, pożyczki)?
+                    div(id="faq-15" style="display: none;")
+                        p
+                            em.fw-bold Wszystkie druki oraz wnioski można pobrać w 
+                            |
+                            a(href="/sekcja-pracownik" class="fw-bold") SEKCJI DLA PRACOWNIKA
+                            | 
+                            span.fw-bold w zakładce  
+                            |
+                            a(href="/regulamin-zasady-wnioski" class="fw-bold") REGULAMIN, ZASADY, STAWKI DOFINANSOWAŃ I POŻYCZEK, DRUKI DO POBRANIA
+                    div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
+                        button(id="show-btn-15" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
+        
+        div.container.px-4.px-lg-5.mb-3    
+            div.row.gx-4.gx-lg-5.justify-content-center
+                a(href="/sekcja-pracownik" class="btn btn-outline-secondary col-md-10 col-lg-8 col-xl-12 mb-2 border border-5")
+                    h3.text-center POWRÓT
 
-    div.container.px-4.px-lg-5
-        div.row.gx-4.gx-lg-5.justify-content-center.mb-3
-            div.col-md-10.col-lg-8.col-xl-12.border.border-dark.border-1.bg-light
-                h3.text-justify.m-3 Gdzie mogę dostać lub pobrać druki/wnioski o świadczenia z ZFŚS (zapomogi, pożyczki)?
-                div(id="faq-15" style="display: none;")
-                    p
-                        em.fw-bold Wszystkie druki oraz wnioski można pobrać w 
-                        |
-                        a(href="/sekcja-pracownik" class="fw-bold") SEKCJI DLA PRACOWNIKA
-                        | 
-                        span.fw-bold w zakładce  
-                        |
-                        a(href="/regulamin-zasady-wnioski" class="fw-bold") REGULAMIN, ZASADY, STAWKI DOFINANSOWAŃ I POŻYCZEK, DRUKI DO POBRANIA
-                div.d-grid.gap-2.d.md-flex.justify-content-md-end.m-3.form
-                    button(id="show-btn-15" class="btn btn-outline-secondary form") POKAŻ ODPOWIEDŹ
 
 
 script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js")

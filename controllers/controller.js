@@ -79,49 +79,63 @@ exports.displayAddApplication = async (req, res) => {
 // employee section - render faq
 
 exports.displayFaq = async (req, res) => {
-  try {
-    const personData = await Person.findOne({
-      pracownik: req.query.fname + req.query.sname + req.query.id,
+  if (req.query.fname !== undefined) {
+    try {
+      const personData = await Person.findOne({
+        pracownik: req.query.fname.toLowerCase().trim() + req.query.sname.toLowerCase().trim() + req.query.id,
+      });
+      if (personData) {
+        res.render("faq", {
+          route: "background-image: url('../../assets/img/faq-bg.jpg')",
+          sectionMsg: "Odpowiedzi na najczęściej zadawane pytania",
+        });
+      } else
+        res.render("access-message", {
+          route: "background-image: url('../../assets/img/faq-bg.jpg')",
+          sectionMsg: "Odpowiedzi na najczęściej zadawane pytania",
+          link: "/faq",
+        });
+    } catch (err) {
+      res.status(404).end();
+      console.log(err);
+    }
+  } else
+    res.render("lost-access-message", {
+      route: "background-image: url('../../assets/img/faq-bg.jpg')",
+      sectionMsg: "Odpowiedzi na najczęściej zadawane pytania",
+      link: "/faq",
     });
-    if (personData) {
-      res.render("faq", {
-        route: "background-image: url('../../assets/img/faq-bg.jpg')",
-        sectionMsg: "Odpowiedzi na najczęściej zadawane pytania",
-      });
-    } else
-      res.render("access-message", {
-        route: "background-image: url('../../assets/img/faq-bg.jpg')",
-        sectionMsg: "Odpowiedzi na najczęściej zadawane pytania",
-        link: "/faq",
-      });
-  } catch (err) {
-    res.status(404).end();
-    console.log(err);
-  }
 };
 
 // employee section - render rules
 
 exports.displayRules = async (req, res) => {
-  try {
-    const personData = await Person.findOne({
-      pracownik: req.query.fname + req.query.sname + req.query.id,
+  if (req.query.fname !== undefined) {
+    try {
+      const personData = await Person.findOne({
+        pracownik: req.query.fname.toLowerCase().trim() + req.query.sname.toLowerCase().trim() + req.query.id,
+      });
+      if (personData) {
+        res.render("rules", {
+          route: "background-image: url('../../assets/img/rules-bg.jpg')",
+          sectionMsg: "Regulamin, zasady, wnioski do pobrania",
+        });
+      } else
+        res.render("access-message", {
+          route: "background-image: url('../../assets/img/rules-bg.jpg')",
+          sectionMsg: "Regulamin, zasady, wnioski do pobrania",
+          link: "/regulamin-zasady-wnioski",
+        });
+    } catch (err) {
+      res.status(404).end();
+      console.log(err);
+    }
+  } else
+    res.render("lost-access-message", {
+      route: "background-image: url('../../assets/img/rules-bg.jpg')",
+      sectionMsg: "Regulamin, zasady, wnioski do pobrania",
+      link: "/regulamin-zasady-wnioski",
     });
-    if (personData) {
-      res.render("rules", {
-        route: "background-image: url('../../assets/img/rules-bg.jpg')",
-        sectionMsg: "Regulamin, zasady, wnioski do pobrania",
-      });
-    } else
-      res.render("access-message", {
-        route: "background-image: url('../../assets/img/rules-bg.jpg')",
-        sectionMsg: "Regulamin, zasady, wnioski do pobrania",
-        link: "/regulamin-zasady-wnioski",
-      });
-  } catch (err) {
-    res.status(404).end();
-    console.log(err);
-  }
 };
 
 // employee section - render privacy policy
@@ -145,7 +159,7 @@ exports.displayContact = async (req, res) => {
 // admin panel - main
 
 exports.displayAddPage = async (req, res) => {
-  res.render("add", {
+  res.render("admin", {
     route: "background-image: url('../../assets/img/admin-bg.jpg')",
     sectionMsg: "Panel administratora",
   });
