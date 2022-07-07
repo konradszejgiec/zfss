@@ -131,14 +131,14 @@ const handleSectionVisibilityAndAutofill = (autofillSection, autofillTxt, invisi
 };
 
 const displaySubsidy = (e) => {
-  const subsidyTable = [850, 1050, 1250];
-  const salaryTable = [1499, 1500, 2499, 2500];
+  const subsidyArr = [850, 1050, 1250];
+  const salaryArr = [1499, 1500, 2499, 2500];
 
-  if (Math.round(e.target.value) <= salaryTable[0]) {
-    setElementValue("#application-value", subsidyTable[2]);
-  } else if ((Math.round(e.target.value) >= salaryTable[1]) & (Math.round(e.target.value) <= salaryTable[2])) {
-    setElementValue("#application-value", subsidyTable[1]);
-  } else if (Math.round(e.target.value) >= salaryTable[3]) setElementValue("#application-value", subsidyTable[0]);
+  if (Math.round(e.target.value) <= salaryArr[0]) {
+    setElementValue("#application-value", subsidyArr[2]);
+  } else if ((Math.round(e.target.value) >= salaryArr[1]) & (Math.round(e.target.value) <= salaryArr[2])) {
+    setElementValue("#application-value", subsidyArr[1]);
+  } else if (Math.round(e.target.value) >= salaryArr[3]) setElementValue("#application-value", subsidyArr[0]);
 
   if (e.target.value == "") setElementValue("#application-value", "");
 };
