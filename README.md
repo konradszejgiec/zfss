@@ -11,9 +11,9 @@ Link do strony: https://www.zfss-spsk4-lublin.pl/
 
 Projekt stanowi stronę internetową o Zakładowym Funduszu Świadczeń Socjalnych skierowaną przede wszystkim do pracowników. Strona została podzielona na sekcje:
 
-- I. Strona główna,
-- I. Aktualności - zawiera najnowsze wiadomości oraz aktualności dotyczące ZFŚS w zakładzie pracy,
-- III. Sekcja dla pracownika - zawierająca najważniejsze informacje o ZFŚS;
+- I) Strona główna,
+- I) Aktualności - zawiera najnowsze wiadomości oraz aktualności dotyczące ZFŚS w zakładzie pracy,
+- III) Sekcja dla pracownika - zawierająca najważniejsze informacje o ZFŚS;
   Podsekcje:
   a) Wniosek (formularz) interaktywy o dofinansowanie z ZFŚS z opcją autuzupełniania i wydrukiem do PDF - autouzupełnianie wymaga zalogowania,
   b) Sekcja FAQ (dostępna po zalogowaniu),
