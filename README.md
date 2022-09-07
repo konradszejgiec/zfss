@@ -1,6 +1,6 @@
 # Zakładowy Fundusz Świadczeń Socjalnych
 
-Link do strony: https://www.zfss-spsk4-lublin.pl/
+Link do strony: https://zfss.cyclic.app/
 
 ## Spis treści
 
@@ -28,7 +28,7 @@ Projekt stanowi stronę internetową o Zakładowym Funduszu Świadczeń Socjalny
 
 Szkielet HTML strony bazuje na szablonie bootstrapu zaadaptowanym do renderowania po stronie serwera przy pomocy PUGa. Kod po stronie klienta został napisany w czystym JavaScripcie, zaś część po stronie serwera w NodeJS oraz Expressie. Dane przechowywane są w MongoDB. Do połączenia aplikacji z bazą danych użyty został Mongoose. Projekt jest w ciągle w fazie rozwoju.
 
-Projekt postawiony na heroku + cloudflare + domena ovh.
+Projekt postawiony na cyclic.
 
 ## Technologie
 
